@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+	<meta charset="utf-8">
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.min.js"></script>
+</head>
+<body>
+
+<canvas id="myChart" style="width:100%;max-width:600px"></canvas>
+
+<script>
+var xValues = ["1,5", "1.0", "2", "2,5", "3", "3,5", "4", "4,5", "5"];
+var yValues = [4123, 1665, 7902, 11891, 15519, 22320, 26366, 23193, 13909];
+var barColors = ["red", "green","blue","orange","brown", "red","green","blue","orange"];
+
+new Chart("myChart", {
+  type: "bar",
+  data: {
+    labels: xValues,
+    datasets: [{
+      backgroundColor: barColors,
+      data: yValues
+    }]
+  },
+  options: {
+    legend: {display: false},
+    title: {
+      display: true,
+      text: "Business Stars"
+    }
+  }
+});
+</script>
+
+	<div class="container">
+		<table class="table table-hover table-bordered table-sm">
+			<thead class="thead-light">
+				<tr>
+					<th scope="col">stars</th>
+					<th scope="col">amount</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr th:each="business : ${listTest}">
+					<td th:text="${business.stars}">empty</td>
+					<td th:text="${business.amount}">empty</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+
+
+		<script>
+			var date = new Date();
+			var year = date.getFullYear();
+			document.getElementById("today").innerHTML = "&copy; FRA-UAS SocialApp, "+year;
+		</script> 
+</body>
+</html>

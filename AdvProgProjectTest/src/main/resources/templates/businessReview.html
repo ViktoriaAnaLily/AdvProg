@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<meta charset="utf-8">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.min.js"></script>
+</head>
+
+<body>
+
+	<canvas id="myChart" style="width:100%;max-width:1200px"></canvas>
+
+	<script>
+		var xValues = ["Acme Oyster House", "Oceana Grill", "Hattie B’s Hot Chicken - Nashville", "Reading Terminal Market", "Ruby Slipper - New Orleans", "Mother's Restaurant", "Royal House", "Commander's Palace", "Luke", "Cochon", "Pat's King of Steaks", "Pappy's Smokehouse", "Felix's Restaurant & Oyster Bar", "Gumbo Shop", "Cochon Butcher", "Los Agaves", "Willie Mae's Scotch House", "Geno's Steaks", "Grand Sierra Resort and Casino", "Datz"];
+		var yValues = [7568, 7400, 6093, 5721, 5193, 5185, 5070, 4876, 4554, 4421, 4250, 3999, 3966, 3902, 3837, 3834, 3582, 3401, 3345, 3260];
+		var barColors = ["red", "green", "blue", "orange", "brown", "red", "green", "blue", "orange", "red", "red", "green", "blue", "orange", "brown", "red", "green", "blue", "orange", "red"];
+
+		new Chart("myChart", {
+			type: "bar",
+			data: {
+				labels: xValues,
+				datasets: [{
+					backgroundColor: barColors,
+					data: yValues
+				}]
+			},
+			options: {
+				legend: {display: false},
+				title: {
+					display: true,
+					text: "Business Reviews"
+				}
+			}
+		});
+	</script>
+
+	<div class="container">
+		<table class="table table-hover table-bordered table-sm">
+			<thead class="thead-light">
+				<tr>
+					<th scope="col">name</th>
+					<th scope="col">amount</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr th:each="business : ${listTest}">
+					<td th:text="${business.name}">empty</td>
+					<td th:text="${business.amount}">empty</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+
+
+	<script>
+		var date = new Date();
+		var year = date.getFullYear();
+		document.getElementById("today").innerHTML = "&copy; FRA-UAS SocialApp, " + year;
+	</script>
+</body>
+
+</html>

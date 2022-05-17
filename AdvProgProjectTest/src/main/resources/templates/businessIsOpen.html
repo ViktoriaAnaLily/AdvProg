@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<meta charset="utf-8">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.min.js"></script>
+</head>
+
+<body>
+
+	<canvas id="myChart" style="width:100%;max-width:600px"></canvas>
+
+	<script>
+		var xValues = ["is_open", "closed"];
+		var yValues = [100358, 26530];
+		var barColors = [
+			"#b91d47",
+			"#00aba9"
+		];
+
+		new Chart("myChart", {
+			type: "pie",
+			data: {
+				labels: xValues,
+				datasets: [{
+					backgroundColor: barColors,
+					data: yValues
+				}]
+			},
+			options: {
+				title: {
+					display: true,
+					text: "Open/Closed"
+				}
+			}
+		});
+	</script>
+
+
+	<div class="container">
+		<table class="table table-hover table-bordered table-sm">
+			<thead class="thead-light">
+				<tr>
+					<th scope="col">is_open</th>
+					<th scope="col">closed</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr th:each="business : ${listTest}">
+					<td th:text="${business.is_open}">empty</td>
+					<td th:text="${business.closed}">empty</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+
+
+	<script>
+		var date = new Date();
+		var year = date.getFullYear();
+		document.getElementById("today").innerHTML = "&copy; FRA-UAS SocialApp, " + year;
+	</script>
+</body>
+
+</html>

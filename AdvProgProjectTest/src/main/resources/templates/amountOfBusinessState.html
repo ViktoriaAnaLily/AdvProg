@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+	<meta charset="utf-8">
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.min.js"></script>
+</head>
+<body>
+
+<canvas id="myChart" style="width:100%;max-width:600px"></canvas>
+
+<script>
+var xValues = ["AB", "AZ", "CA", "DE", "FL", "ID", "IL", "IN", "LA", "MO", "NJ", "NV", "PA", "TN"];
+var yValues = [5289, 9524, 4864, 2008, 23015, 4382, 1106, 10628, 9303, 7810, 5368, 7475, 24975, 11141];
+var barColors = ["red", "green","blue","orange","brown", "red","green","blue","orange","brown" , "red", "green","blue","orange"];
+
+new Chart("myChart", {
+  type: "bar",
+  data: {
+    labels: xValues,
+    datasets: [{
+      backgroundColor: barColors,
+      data: yValues
+    }]
+  },
+  options: {
+    legend: {display: false},
+    title: {
+      display: true,
+      text: "The amount of businesses in each state"
+    }
+  }
+});
+</script>
+
+	<div class="container">
+		<table class="table table-hover table-bordered table-sm">
+			<thead class="thead-light">
+				<tr>
+					<th scope="col">state</th>
+					<th scope="col">amount</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr th:each="business : ${listTest}">
+					<td th:text="${business.state}">empty</td>
+					<td th:text="${business.amount}">empty</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+
+
+		<script>
+			var date = new Date();
+			var year = date.getFullYear();
+			document.getElementById("today").innerHTML = "&copy; FRA-UAS SocialApp, "+year;
+		</script> 
+</body>
+</html>
