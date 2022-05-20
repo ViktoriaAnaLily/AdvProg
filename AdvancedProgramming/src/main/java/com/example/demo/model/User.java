@@ -1,7 +1,7 @@
 package com.example.demo.model;
 
 import javax.persistence.*;
-
+//USER
 @Entity
 @Table(name = "users")
 public class User {
