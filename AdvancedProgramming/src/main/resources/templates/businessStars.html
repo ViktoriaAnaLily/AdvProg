@@ -3,6 +3,8 @@
 
 <meta charset="utf-8">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.min.js"></script>
+<script src="incubator-echarts-master/dist/echarts.js"></script>//
+<script src="https://d3js.org/d3.v4.min.js"></script>//
 <style>
 	* {
 		box-sizing: border-box;
@@ -45,31 +47,128 @@
 
 <body>
 
-	<canvas id="myChart" style="width:100%;max-width:600px"></canvas>
-
+<div id="main" style="height: 600px;width:900px;"></div>
 	<script>
-		var xValues = ["1,5", "1.0", "2", "2,5", "3", "3,5", "4", "4,5", "5"];
-		var yValues = [4123, 1665, 7902, 11891, 15519, 22320, 26366, 23193, 13909];
-		var barColors = ["red", "green", "blue", "orange", "brown", "red", "green", "blue", "orange"];
 
-		new Chart("myChart", {
-			type: "bar",
-			data: {
-				labels: xValues,
-				datasets: [{
-					backgroundColor: barColors,
-					data: yValues
-				}]
-			},
-			options: {
-				legend: {display: false},
-				title: {
-					display: true,
-					text: "Business Stars"
+		var nameset = [];
+		var numset1 = [];
+
+
+		d3.csv("D:/ADV_PROG/CSV/businessStars.csv", function (error, csvdata) {
+
+
+
+			if (error) {
+
+
+				console.log(error);
+			} else {
+
+
+				for (var i = 0; i < csvdata.length; i++) {
+
+
+					nameset.push(csvdata[i].stars);          
+					numset1.push(parseFloat(csvdata[i].amount));
+
 				}
+
+				var myChart = echarts.init(document.getElementById("main"));
+
+				var option = {
+
+
+					color: ['#4CAF50', '#4CAF50'],
+					tooltip: {
+
+
+						trigger: 'axis',
+					},
+
+					legend: {
+
+
+						data: ['amount']
+					},
+
+					toolbox: {
+
+
+						show: true,
+						feature: {
+
+
+							mark: {
+
+								show: true
+							},
+							dataView: {
+
+								show: true, readOnly: false
+							},
+							magicType: {
+
+								show: true, type: ['line', 'bar']
+							},
+							restore: {
+
+								show: true
+							},
+							saveAsImage: {
+
+								show: true
+							}
+						}
+					},
+					grid: {
+
+
+						left: '3%',
+						right: '4%',
+						bottom: '3%',
+						containLabel: true
+					},
+					calculable: true,
+					xAxis: [
+						{
+
+
+							type: 'category',
+							data: nameset,
+							axisPointer: {
+
+
+								type: 'shadow'
+							}
+						}
+					],
+					yAxis: [
+						{
+
+
+							type: 'value',
+							min: 20,
+							max: 70,
+							interval: 10,
+						}
+					],
+					series: [
+						{
+
+
+							name: 'amount',
+							type: 'bar',
+							data: numset1,
+							color: '#4CAF50'
+						}
+					]
+				};
+
+				myChart.setOption(option);
 			}
-		});
+		});  
 	</script>
+
 
 
 	<h2>Stars</h2>
@@ -226,11 +325,6 @@
 
 
 
-	<script>
-		var date = new Date();
-		var year = date.getFullYear();
-		document.getElementById("today").innerHTML = "&copy; FRA-UAS SocialApp, " + year;
-	</script>
 </body>
 
 </html>

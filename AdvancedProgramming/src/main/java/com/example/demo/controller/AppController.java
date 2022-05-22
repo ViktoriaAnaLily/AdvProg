@@ -79,7 +79,7 @@ public class AppController {
 	@RequestMapping(value = "/businessStars1_0")
 	public String businessStars1_0(Model model) {
 		log.debug("/businessStars --> ");
-		List<Business> listTest = businessRepository.findByStars("1,00");
+		List<Business> listTest = businessRepository.findByStars("1.0");
 		model.addAttribute("listTest", listTest);
 		log.debug("listTest --> " + listTest);
 
