@@ -14,6 +14,9 @@ public interface BusinessRepository extends JpaRepository<Business, Long> {
 	@Query(value = "SELECT * FROM businessdatei b where b.stars like %?1", nativeQuery = true)
 	public List<Business> findByStars(String stars);
 	
+	@Query(value = "SELECT * FROM businessdatei b where b.state like %?1", nativeQuery = true)
+	public List<Business> findByState(String state);
+	
 	
 	
 
