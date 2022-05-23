@@ -85,25 +85,24 @@
 
 
 	<div class="container">
-	<input type="text" id="myInput" onkeyup="myFunction()" placeholder="Search for names.." title="Type in a name">
+		<input type="text" id="myInput" onkeyup="myFunction()" placeholder="Search for names.." title="Type in a name">
 		<table id="myTable" class="table table-hover table-bordered table-sm">
 			<thead class="thead-light">
 				<tr>
 					<th scope="col">name</th>
 					<th scope="col">state</th>
-
+					<th scope="col">open/closed</th>
 				</tr>
 			</thead>
 			<tbody>
 				<tr th:each="business : ${listTest}">
 					<td th:text="${business.name}">empty</td>
-					<td th:text="${business.state}">empty</td>
-
+					<td th:text="${business.is_open}">empty</td>
 				</tr>
 			</tbody>
 		</table>
 	</div>
-<script>
+	<script>
 		function myFunction() {
 			var input, filter, table, tr, td, i, txtValue;
 			input = document.getElementById("myInput");

@@ -2,9 +2,9 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 
 <meta charset="utf-8">
-
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.min.js"></script>
-
+<script src="incubator-echarts-master/dist/echarts.js"></script>//
+<script src="https://d3js.org/d3.v4.min.js"></script>//
 <style>
 	* {
 		box-sizing: border-box;
@@ -47,6 +47,7 @@
 
 <body>
 
+	<h2>Open/Closed</h2>
 	<style>
 		.button {
 			border: none;
@@ -61,70 +62,36 @@
 			cursor: pointer;
 		}
 
-		.businessState {
+		.OpenClose {
 			background-color: white;
 			color: black;
 			border: 2px solid #4CAF50;
 		}
 	</style>
 
-
 	<input type="text" id="myInput" onkeyup="myFunction()" placeholder="Search for names.." title="Type in a name">
 	<table id="myTable">
 		<tr class="header">
-			<th style="width:60%;">State</th>
+			<th style="width:60%;">Open/Close</th>
 			<th style="width:40%;">Check</th>
 		</tr>
 		<tr>
-			<td>AB</td>
+			<td>Open</td>
 			<td>
 				<li>
-					<form class="form-inline" th:action="@{/businessStateAB}" method="post">
-						<input type="hidden" id="nid" name="nid"> <input type="submit" class="button businessState"
+					<form class="form-inline" th:action="@{/businessOpen}" method="post">
+						<input type="hidden" id="nid" name="nid"> <input type="submit" class="button OpenClose"
 							value="Check">
 					</form>
 				</li>
 			</td>
 		</tr>
 		<tr>
-			<td>AZ</td>
+			<td>Close</td>
 			<td>
 				<li>
-					<form class="form-inline" th:action="@{/businessStateAZ}" method="post">
-						<input type="hidden" id="nid" name="nid"> <input type="submit" class="button businessState"
-							value="Check">
-					</form>
-				</li>
-			</td>
-		</tr>
-		<tr>
-			<td>CA</td>
-			<td>
-				<li>
-					<form class="form-inline" th:action="@{/businessStateCA}" method="post">
-						<input type="hidden" id="nid" name="nid"> <input type="submit" class="button businessState"
-							value="Check">
-					</form>
-				</li>
-			</td>
-		</tr>
-		<tr>
-			<td>DE</td>
-			<td>
-				<li>
-					<form class="form-inline" th:action="@{/businessStateDE}" method="post">
-						<input type="hidden" id="nid" name="nid"> <input type="submit" class="button businessState"
-							value="Check">
-					</form>
-				</li>
-			</td>
-		</tr>
-		<tr>
-			<td>FL</td>
-			<td>
-				<li>
-					<form class="form-inline" th:action="@{/businessStateFL}" method="post">
-						<input type="hidden" id="nid" name="nid"> <input type="submit" class="button businessState"
+					<form class="form-inline" th:action="@{/businessClose}" method="post">
+						<input type="hidden" id="nid" name="nid"> <input type="submit" class="button OpenClose"
 							value="Check">
 					</form>
 				</li>
@@ -132,6 +99,9 @@
 		</tr>
 
 	</table>
+
+
+
 	<script>
 		function myFunction() {
 			var input, filter, table, tr, td, i, txtValue;
@@ -154,11 +124,7 @@
 	</script>
 
 
-	<script>
-		var date = new Date();
-		var year = date.getFullYear();
-		document.getElementById("today").innerHTML = "&copy; FRA-UAS SocialApp, " + year;
-	</script>
+
 </body>
 
 </html>
