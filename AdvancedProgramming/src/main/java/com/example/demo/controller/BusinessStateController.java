@@ -85,4 +85,94 @@ public class BusinessStateController {
 
 		return "businessStateFL";
 	}
+
+	@RequestMapping(value = "/businessStateID")
+	public String businessStateID(Model model) {
+		log.debug("/businessStateID --> ");
+		List<Business> listTest = businessRepository.findByState("ID");
+		model.addAttribute("listTest", listTest);
+		log.debug("listTest --> " + listTest);
+
+		return "businessStateID";
+	}
+
+	@RequestMapping(value = "/businessStateIL")
+	public String businessStateIL(Model model) {
+		log.debug("/businessStateIL --> ");
+		List<Business> listTest = businessRepository.findByState("IL");
+		model.addAttribute("listTest", listTest);
+		log.debug("listTest --> " + listTest);
+
+		return "businessStateIL";
+	}
+
+	@RequestMapping(value = "/businessStateLA")
+	public String businessStateLA(Model model) {
+		log.debug("/businessStateLA --> ");
+		List<Business> listTest = businessRepository.findByState("LA");
+		model.addAttribute("listTest", listTest);
+		log.debug("listTest --> " + listTest);
+
+		return "businessStateLA";
+	}
+
+	@RequestMapping(value = "/businessStateMO")
+	public String businessStateMO(Model model) {
+		log.debug("/businessStateMO --> ");
+		List<Business> listTest = businessRepository.findByState("MO");
+		model.addAttribute("listTest", listTest);
+		log.debug("listTest --> " + listTest);
+
+		return "businessStateMO";
+	}
+
+	@RequestMapping(value = "/businessStateNJ")
+	public String businessStateNJ(Model model) {
+		log.debug("/businessStateNJ --> ");
+		List<Business> listTest = businessRepository.findByState("NJ");
+		model.addAttribute("listTest", listTest);
+		log.debug("listTest --> " + listTest);
+
+		return "businessStateNJ";
+	}
+
+	@RequestMapping(value = "/businessStateNV")
+	public String businessStateNV(Model model) {
+		log.debug("/businessStateNV --> ");
+		List<Business> listTest = businessRepository.findByState("NV");
+		model.addAttribute("listTest", listTest);
+		log.debug("listTest --> " + listTest);
+
+		return "businessStateNV";
+	}
+
+	@RequestMapping(value = "/businessStatePA")
+	public String businessStatePA(Model model) {
+		log.debug("/businessStatePA --> ");
+		List<Business> listTest = businessRepository.findByState("PA");
+		model.addAttribute("listTest", listTest);
+		log.debug("listTest --> " + listTest);
+
+		return "businessStatePA";
+	}
+
+	@RequestMapping(value = "/businessStateTN")
+	public String businessStateTN(Model model) {
+		log.debug("/businessStateTN --> ");
+		List<Business> listTest = businessRepository.findByState("TN");
+		model.addAttribute("listTest", listTest);
+		log.debug("listTest --> " + listTest);
+
+		return "businessStateTN";
+	}
+
+	@RequestMapping(value = "/businessStateIN")
+	public String businessStateIN(Model model) {
+		log.debug("/businessStateIN --> ");
+		List<Business> listTest = businessRepository.findByState("IN");
+		model.addAttribute("listTest", listTest);
+		log.debug("listTest --> " + listTest);
+
+		return "businessStateIN";
+	}
 }

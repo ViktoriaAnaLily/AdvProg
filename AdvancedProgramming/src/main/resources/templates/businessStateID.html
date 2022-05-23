@@ -18,16 +18,7 @@
 		margin-bottom: 12px;
 	}
 
-	#myInputState {
-		background-image: url('/css/searchicon.png');
-		background-position: 10px 10px;
-		background-repeat: no-repeat;
-		width: 100%;
-		font-size: 16px;
-		padding: 12px 20px 12px 40px;
-		border: 1px solid #ddd;
-		margin-bottom: 12px;
-	}
+
 
 	#myTable {
 		border-collapse: collapse;
@@ -70,6 +61,7 @@
 			margin-bottom: 12px;
 		}
 
+
 		#myTable {
 			border-collapse: collapse;
 			width: 100%;
@@ -97,21 +89,27 @@
 
 	<div class="container">
 		<input type="text" id="myInput" onkeyup="myFunction()" placeholder="Search for names.." title="Type in a name">
-		<input type="text" id="myInputState" onkeyup="myFunctionState()" placeholder="Search for names.."
-			title="Type in a name">
+
+
+
 		<table id="myTable" class="table table-hover table-bordered table-sm">
 			<thead class="thead-light">
 				<tr>
 					<th scope="col">name</th>
 					<th scope="col">state</th>
-					<th scope="col">stars</th>
+
+
+
 				</tr>
 			</thead>
 			<tbody>
 				<tr th:each="business : ${listTest}">
 					<td th:text="${business.name}">empty</td>
 					<td th:text="${business.state}">empty</td>
-					<td th:text="${business.stars}">empty</td>
+
+
+
+
 				</tr>
 			</tbody>
 		</table>
@@ -135,31 +133,6 @@
 				}
 			}
 		}
-		function myFunctionState() {
-			var input, filter, table, tr, td, i, txtValue;
-			input = document.getElementById("myInputState");
-			filter = input.value.toUpperCase();
-			table = document.getElementById("myTable");
-			tr = table.getElementsByTagName("tr");
-			for (i = 0; i < tr.length; i++) {
-				td = tr[i].getElementsByTagName("td")[1];
-				if (td) {
-					txtValue = td.textContent || td.innerText;
-					if (txtValue.toUpperCase().indexOf(filter) > -1) {
-						tr[i].style.display = "";
-					} else {
-						tr[i].style.display = "none";
-					}
-				}
-			}
-		}
-	</script>
 
-	<script>
-		var date = new Date();
-		var year = date.getFullYear();
-		document.getElementById("today").innerHTML = "&copy; FRA-UAS SocialApp, " + year;
-	</script>
-</body>
 
-</html>
+	</script>

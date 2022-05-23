@@ -46,6 +46,32 @@
 </head>
 
 <body>
+	<canvas id="myChart" style="width:100%;max-width:600px"></canvas>
+
+	<script>
+
+		var xValues = [<tr th:each="business : ${listTest}">th:text="${business.state}" </tr>];
+		var yValues = [<tr th:each="business : ${listTest}">th:text="${business.amount}" </tr>];
+		var barColors = ["red", "green", "blue", "orange", "brown", "red", "green", "blue", "orange", "brown", "red", "green", "blue", "orange"];
+
+		new Chart("myChart", {
+			type: "bar",
+			data: {
+				labels: xValues,
+				datasets: [{
+					backgroundColor: barColors,
+					data: yValues
+				}]
+			},
+			options: {
+				legend: {display: false},
+				title: {
+					display: true,
+					text: "The amount of businesses in each state"
+				}
+			}
+		});
+	</script>
 
 	<style>
 		.button {
@@ -124,6 +150,111 @@
 			<td>
 				<li>
 					<form class="form-inline" th:action="@{/businessStateFL}" method="post">
+						<input type="hidden" id="nid" name="nid"> <input type="submit" class="button businessState"
+							value="Check">
+					</form>
+				</li>
+			</td>
+		</tr>
+		<td>ID</td>
+		<td>
+			<li>
+				<form class="form-inline" th:action="@{/businessStateID}" method="post">
+					<input type="hidden" id="nid" name="nid"> <input type="submit" class="button businessState"
+						value="Check">
+				</form>
+			</li>
+		</td>
+		</tr>
+		<tr>
+			<td>IL</td>
+			<td>
+				<li>
+					<form class="form-inline" th:action="@{/businessStateIL}" method="post">
+						<input type="hidden" id="nid" name="nid"> <input type="submit" class="button businessState"
+							value="Check">
+					</form>
+				</li>
+			</td>
+		</tr>
+
+		<tr>
+			<td>IN</td>
+			<td>
+				<li>
+					<form class="form-inline" th:action="@{/businessStateIN}" method="post">
+						<input type="hidden" id="nid" name="nid"> <input type="submit" class="button businessState"
+							value="Check">
+					</form>
+				</li>
+			</td>
+		</tr>
+
+		<tr>
+			<td>LA</td>
+			<td>
+				<li>
+					<form class="form-inline" th:action="@{/businessStateLA}" method="post">
+						<input type="hidden" id="nid" name="nid"> <input type="submit" class="button businessState"
+							value="Check">
+					</form>
+				</li>
+			</td>
+		</tr>
+		<tr>
+			<td>MO</td>
+			<td>
+				<li>
+					<form class="form-inline" th:action="@{/businessStateMO}" method="post">
+						<input type="hidden" id="nid" name="nid"> <input type="submit" class="button businessState"
+							value="Check">
+					</form>
+				</li>
+			</td>
+		</tr>
+
+		<tr>
+			<td>NJ</td>
+			<td>
+				<li>
+					<form class="form-inline" th:action="@{/businessStateNJ}" method="post">
+						<input type="hidden" id="nid" name="nid"> <input type="submit" class="button businessState"
+							value="Check">
+					</form>
+				</li>
+			</td>
+		</tr>
+
+		<tr>
+			<td>NV</td>
+			<td>
+				<li>
+					<form class="form-inline" th:action="@{/businessStateNV}" method="post">
+						<input type="hidden" id="nid" name="nid"> <input type="submit" class="button businessState"
+							value="Check">
+					</form>
+				</li>
+			</td>
+		</tr>
+
+		<tr>
+			<td>PA</td>
+			<td>
+				<li>
+					<form class="form-inline" th:action="@{/businessStatePA}" method="post">
+						<input type="hidden" id="nid" name="nid"> <input type="submit" class="button businessState"
+							value="Check">
+					</form>
+				</li>
+			</td>
+		</tr>
+
+
+		<tr>
+			<td>TN</td>
+			<td>
+				<li>
+					<form class="form-inline" th:action="@{/businessStateTN}" method="post">
 						<input type="hidden" id="nid" name="nid"> <input type="submit" class="button businessState"
 							value="Check">
 					</form>

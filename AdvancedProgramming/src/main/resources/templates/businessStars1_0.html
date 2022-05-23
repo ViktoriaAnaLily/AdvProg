@@ -48,7 +48,18 @@
 			box-sizing: border-box;
 		}
 
-		#myInput {
+		#name {
+			background-image: url('/css/searchicon.png');
+			background-position: 10px 10px;
+			background-repeat: no-repeat;
+			width: 100%;
+			font-size: 16px;
+			padding: 12px 20px 12px 40px;
+			border: 1px solid #ddd;
+			margin-bottom: 12px;
+		}
+
+		#state {
 			background-image: url('/css/searchicon.png');
 			background-position: 10px 10px;
 			background-repeat: no-repeat;
@@ -85,7 +96,8 @@
 
 
 	<div class="container">
-		<input type="text" id="myInput" onkeyup="myFunction()" placeholder="Search for names.." title="Type in a name">
+		<input type="text" id="name" onkeyup="myNameFunction()" placeholder="Search for names.." title="Type in a name">
+		<input type="text" id="state" onkeyup="myStateFunction()" placeholder="Search for names.." title="Type in a name">
 		<table id="myTable" class="table table-hover table-bordered table-sm">
 			<thead class="thead-light">
 				<tr>
@@ -104,9 +116,9 @@
 		</table>
 	</div>
 	<script>
-		function myFunction() {
+		function myNameFunction() {
 			var input, filter, table, tr, td, i, txtValue;
-			input = document.getElementById("myInput");
+			input = document.getElementById("name");
 			filter = input.value.toUpperCase();
 			table = document.getElementById("myTable");
 			tr = table.getElementsByTagName("tr");
@@ -122,7 +134,28 @@
 				}
 			}
 		}
+		function myStateFunction() {
+			var input, filter, table, tr, td, i, txtValue;
+			input = document.getElementById("state");
+			filter = input.value.toUpperCase();
+			table = document.getElementById("myTable");
+			tr = table.getElementsByTagName("tr");
+			for (i = 0; i < tr.length; i++) {
+				td = tr[i].getElementsByTagName("td")[1];
+				if (td) {
+					txtValue = td.textContent || td.innerText;
+					if (txtValue.toUpperCase().indexOf(filter) > -1) {
+						tr[i].style.display = "";
+					} else {
+						tr[i].style.display = "none";
+					}
+				}
+			}
+		}
+
 	</script>
+
+
 
 	<script>
 		var date = new Date();

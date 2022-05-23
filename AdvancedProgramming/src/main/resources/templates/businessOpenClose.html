@@ -3,8 +3,8 @@
 
 <meta charset="utf-8">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.min.js"></script>
-<script src="incubator-echarts-master/dist/echarts.js"></script>//
-<script src="https://d3js.org/d3.v4.min.js"></script>//
+<script src="incubator-echarts-master/dist/echarts.js"></script>
+<script src="https://d3js.org/d3.v4.min.js"></script>
 <style>
 	* {
 		box-sizing: border-box;
@@ -46,6 +46,34 @@
 </head>
 
 <body>
+
+	<canvas id="myChart" style="width:100%;max-width:600px"></canvas>
+
+	<script>
+		var xValues = ["is_open", "closed"];
+		var yValues = [100358, 26530];
+		var barColors = [
+			"#b91d47",
+			"#00aba9"
+		];
+
+		new Chart("myChart", {
+			type: "pie",
+			data: {
+				labels: xValues,
+				datasets: [{
+					backgroundColor: barColors,
+					data: yValues
+				}]
+			},
+			options: {
+				title: {
+					display: true,
+					text: "Open/Closed"
+				}
+			}
+		});
+	</script>
 
 	<h2>Open/Closed</h2>
 	<style>
