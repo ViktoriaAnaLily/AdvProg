@@ -59,9 +59,10 @@ public class AppController {
 
 	@GetMapping("/users")
 	public String listUsers(Model model) {
-		List<User> listUsers = userRepo.findAll();
-		model.addAttribute("listUsers", listUsers);
-
+		 List<User> listUsers = userRepo.findAll();
+		 model.addAttribute("listUsers", listUsers);
+		//List<BusinessStars> listTest = businessStarsRepository.findAll();
+		//model.addAttribute("listTest", listTest);
 		return "users";
 	}
 
@@ -84,6 +85,7 @@ public class AppController {
 
 		return "businessOpenClose";
 	}
+
 	@RequestMapping(value = "/businessOpen")
 	public String businessOpen(Model model) {
 		log.debug("/businessOpen --> ");
@@ -93,6 +95,7 @@ public class AppController {
 
 		return "businessOpen";
 	}
+
 	@RequestMapping(value = "/businessClose")
 	public String businessClose(Model model) {
 		log.debug("/businessClose --> ");

@@ -1,10 +1,9 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
-
 <meta charset="utf-8">
-
-<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.min.js"></script>
-
+<div id="chartContainer" style="height: 300px; width: 100%;"></div>
+<script src="https://canvasjs.com/assets/script/jquery-1.11.1.min.js"></script>
+<script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
 <style>
 	* {
 		box-sizing: border-box;
@@ -45,33 +44,9 @@
 </style>
 </head>
 
+
+
 <body>
-	<canvas id="myChart" style="width:100%;max-width:600px"></canvas>
-
-	<script>
-
-		var xValues = [<tr th:each="business : ${listTest}">th:text="${business.state}" </tr>];
-		var yValues = [<tr th:each="business : ${listTest}">th:text="${business.amount}" </tr>];
-		var barColors = ["red", "green", "blue", "orange", "brown", "red", "green", "blue", "orange", "brown", "red", "green", "blue", "orange"];
-
-		new Chart("myChart", {
-			type: "bar",
-			data: {
-				labels: xValues,
-				datasets: [{
-					backgroundColor: barColors,
-					data: yValues
-				}]
-			},
-			options: {
-				legend: {display: false},
-				title: {
-					display: true,
-					text: "The amount of businesses in each state"
-				}
-			}
-		});
-	</script>
 
 	<style>
 		.button {
@@ -263,6 +238,18 @@
 		</tr>
 
 	</table>
+	<script>
+
+		var table = document.getElementById("myTable");
+		const arr = [];
+		for (var i = 1; i < table.rows.length; i++) {
+			arr.push(table.rows[i].cells[0].innerHTML);
+		}
+		
+		document.getElementById("myTable");
+		console.log(arr);
+
+	</script>
 	<script>
 		function myFunction() {
 			var input, filter, table, tr, td, i, txtValue;
