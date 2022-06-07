@@ -274,6 +274,28 @@
 
 
 		});
+
+
+
+	</script>
+
+	<script>
+		const ctxNEU = document.getElementById('myChart');
+		const myChart = new Chart(
+			ctxNEU,
+			config
+		);
+
+		function clickHandler(click) {
+			const points = myChart.getElementsAtEventForMode(click, 'nearest', {intersect: true}, true);
+			if (points.length) {
+				const firstPoint = points[0];
+				console.log(firstPoint);
+								console.log("HELLO");
+
+			}
+		}
+		ctxNEU.onclick = clickHandler;
 	</script>
 
 

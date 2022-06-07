@@ -9,6 +9,25 @@
 
 	<!--Chart.js JS CDN-->
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.min.js"></script>
+	<style>
+		.chartCard {
+			width: 100vw;
+			height: calc(100vh-40px);
+			background: rgba(255, 26, 104, 0.2);
+			display: flex;
+			align-items: center;
+			justify-content: center;
+		}
+
+		.chartBox {
+			width: 100vw;
+			padding: 20px;
+			border-radius: 20px;
+			border: solid 3px rgba(255, 26, 104, 1);
+			background: white;
+		}
+	</style>
+
 </head>
 
 <body>
@@ -46,15 +65,15 @@
 
 	<script>
 		var table = document.getElementById("myTable");
-		var listTestAmount = [];
+		var listTestAmountStars = [];
 		var listTestStars = [];
 		for (var i = 1; i < table.rows.length; i++) {
-			listTestAmount.push(parseInt(table.rows[i].cells[1].innerHTML));
+			listTestAmountStars.push(parseInt(table.rows[i].cells[1].innerHTML));
 			listTestStars.push(table.rows[i].cells[0].innerHTML);
 		}
 
 		document.getElementById("myTable");
-		console.log(listTestAmount);
+		console.log(listTestAmountStars);
 		console.log(listTestStars);
 
 
@@ -72,18 +91,381 @@
 			data: {
 				labels: listTestStars,
 				datasets: [{
-					data: listTestAmount,
+					data: listTestAmountStars,
 					label: "Total",
 					borderColor: "#3e95cd",
 					backgroundColor: "#7bb6dd",
-					
+
 				}]
 			}
 
 
 		});
+
+		const ctxNEU = document.getElementById('myChart');
+
+
+		function clickHandler(click) {
+			const points = myChart.getElementsAtEventForMode(click, 'nearest', {intersect: true}, true);
+			if (points.length) {
+				const firstPoint = points[0];
+				console.log(points);
+				console.log(firstPoint);
+				const value = myChart.data.datasets[firstPoint.index];
+				console.log(value)
+				window.open('https://www.google.com', '_blank');
+
+			}
+		}
+		ctxNEU.onclick = clickHandler;
 	</script>
 
+	<div>
+		<h1>List of BusinessState</h1>
+	</div>
+
+	<div>
+		<table id="myTableState" class="table table-striped table-bordered">
+			<thead class="thead-dark">
+				<tr>
+					<th>State</th>
+					<th>Amount</th>
+
+				</tr>
+			</thead>
+			<tbody>
+				<tr th:each="business: ${listTestState}">
+					<td th:text="${business.state}">State</td>
+					<td th:text="${business.amount}">Amount</td>
+
+				</tr>
+			</tbody>
+		</table>
+	</div>
+	</div>
+
+
+	<div>
+		<canvas id="myChart2"></canvas>
+	</div>
+
+
+	<script>
+
+		var table = document.getElementById("myTableState");
+		var listTestAmount = [];
+		var listTestState = [];
+		for (var i = 1; i < table.rows.length; i++) {
+			listTestAmount.push(parseInt(table.rows[i].cells[1].innerHTML));
+			listTestState.push(table.rows[i].cells[0].innerHTML);
+		}
+
+		document.getElementById("myTableState");
+		console.log(listTestAmount);
+		console.log(listTestState);
+
+
+	</script>
+
+	<div>
+		<table id="myTableStateAll" class="table table-striped table-bordered">
+			<thead class="thead-dark">
+				<tr>
+					<th>State</th>
+					<th>Stars</th>
+					<th>Amount</th>
+
+				</tr>
+			</thead>
+			<tbody>
+				<tr th:each="business: ${listTestStateAll}">
+					<td th:text="${business.state}">State</td>
+					<td th:text="${business.stars}">Stars</td>
+					<td th:text="${business.amount}">Amount</td>
+
+				</tr>
+			</tbody>
+		</table>
+	</div>
+	</div>
+	<script>
+
+		var table = document.getElementById("myTableStateAll");
+		var listTestAmountAB = [];
+		var listTestAmountAZ = [];
+		var listTestAmountCA = [];
+		var listTestAmountDE = [];
+		var listTestAmountFL = [];
+		var listTestAmountID = [];
+		var listTestAmountIL = [];
+		var listTestAmountIN = [];
+		var listTestAmountLA = [];
+		var listTestAmountMO = [];
+		var listTestAmountNJ = [];
+		var listTestAmountNV = [];
+		var listTestAmountPA = [];
+		var listTestAmountTN = [];
+		for (var i = 1; i <= 9; i++) {
+			listTestAmountAB.push(parseInt(table.rows[i].cells[2].innerHTML));
+		}
+
+		for (var i = 10; i <= 18; i++) {
+			listTestAmountAZ.push(parseInt(table.rows[i].cells[2].innerHTML));
+		}
+		for (var i = 19; i <= 27; i++) {
+			listTestAmountCA.push(parseInt(table.rows[i].cells[2].innerHTML));
+		}
+		for (var i = 28; i <= 36; i++) {
+			listTestAmountDE.push(parseInt(table.rows[i].cells[2].innerHTML));
+		}
+		for (var i = 37; i <= 45; i++) {
+			listTestAmountFL.push(parseInt(table.rows[i].cells[2].innerHTML));
+		}
+		for (var i = 46; i <= 54; i++) {
+			listTestAmountID.push(parseInt(table.rows[i].cells[2].innerHTML));
+		}
+		for (var i = 55; i <= 63; i++) {
+			listTestAmountIL.push(parseInt(table.rows[i].cells[2].innerHTML));
+		}
+
+		for (var i = 64; i <= 72; i++) {
+			listTestAmountIN.push(parseInt(table.rows[i].cells[2].innerHTML));
+		}
+		for (var i = 73; i <= 81; i++) {
+			listTestAmountLA.push(parseInt(table.rows[i].cells[2].innerHTML));
+		}
+		for (var i = 82; i <= 90; i++) {
+			listTestAmountMO.push(parseInt(table.rows[i].cells[2].innerHTML));
+		}
+		for (var i = 91; i <= 99; i++) {
+			listTestAmountNJ.push(parseInt(table.rows[i].cells[2].innerHTML));
+		}
+		for (var i = 100; i <= 108; i++) {
+			listTestAmountNV.push(parseInt(table.rows[i].cells[2].innerHTML));
+		}
+		for (var i = 109; i <= 117; i++) {
+			listTestAmountPA.push(parseInt(table.rows[i].cells[2].innerHTML));
+		}
+		for (var i = 118; i <= 126; i++) {
+			listTestAmountTN.push(parseInt(table.rows[i].cells[2].innerHTML));
+		}
+		document.getElementById("myTableStateAll");
+		//console.log(listTestAmountAB);
+
+
+	</script>
+	<script>
+		var ctx2 = document.getElementById('myChart2').getContext('2d');
+		var myChart2 = new Chart(ctx2, {
+			type: 'bar',
+
+			data: {
+				labels: listTestState,
+				datasets: [{
+					data: listTestAmount,
+					label: "Total",
+					borderColor: "#3e95cd",
+					backgroundColor: "#7bb6dd",
+
+				}]
+			}
+
+
+		});
+
+
+
+
+
+
+	</script>
+
+	<div class="chartCard">
+		<div class="chartBox">
+			<canvas id="testMyChart1"></canvas>
+			<canvas id="testMyChartStars"></canvas>
+			<canvas id="testMyChartMonday"></canvas>
+		</div>
+	</div>
+
+	<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+	<div>
+		<table id="myTableMonday" class="table table-striped table-bordered">
+			<thead class="thead-dark">
+				<tr>
+					<th>Time</th>
+					<!--		<th>Value</th> -->
+
+
+				</tr>
+			</thead>
+			<tbody>
+
+				<tr th:each="businessTime: ${finalMondayListTimes}">
+					<td th:text="${businessTime}">Time</td>
+				</tr>
+				<tr th:each="businessValue: ${finalMondayListValues}">
+					<td th:text="${businessValue}">Value</td>
+				</tr>
+				<tr th:each="businessTimeAB: ${finalMondayListTimesAB}">
+					<td th:text="${businessTimeAB}">Time</td>
+				</tr>
+				<tr th:each="businessValueAB: ${finalMondayListValuesAB}">
+					<td th:text="${businessValueAB}">Value</td>
+				</tr>
+
+
+			</tbody>
+		</table>
+	</div>
+	<script>
+
+		var table = document.getElementById("myTableMonday");
+		var listTestMondayTimes = [];
+		var listTestMondayValues = [];
+		var listTestMondayTimesAB = [];
+		var listTestMondayValuesAB = [];
+		for (var i = 9; i <= 16; i++) {
+			listTestMondayValues.push(parseInt(table.rows[i].cells[0].innerHTML));
+		}
+		for (var i = 1; i <= 8; i++) {
+			listTestMondayTimes.push(parseInt(table.rows[i].cells[0].innerHTML));
+		}
+		for (var i = 17; i <= 24; i++) {
+			listTestMondayTimesAB.push(parseInt(table.rows[i].cells[0].innerHTML));
+		}
+		for (var i = 25; i <= 32; i++) {
+			listTestMondayValuesAB.push(parseInt(table.rows[i].cells[0].innerHTML));
+		}
+
+		document.getElementById("myTableMonday");
+		console.log(listTestMondayTimes);
+		console.log(listTestMondayValues);
+		console.log(listTestMondayTimesAB);
+		console.log(listTestMondayValuesAB);
+
+	</script>
+
+	<script>
+
+		var testMyChart1 = new Chart(
+			document.getElementById('testMyChart1'), {
+			type: 'bar',
+			data: {
+				labels: ['AB', 'AZ', 'CA', 'DE', 'FL', 'ID', 'IL', 'IN', 'LA', 'MO', 'NJ', 'NV', 'PA', 'TN'],
+				datasets: [{
+					label: 'State',
+					data: [
+						{x: 'AB', y: listTestAmount[0], stars: listTestAmountAB, monday: listTestMondayValuesAB},
+						{x: 'AZ', y: listTestAmount[1], stars: listTestAmountAZ, monday: listTestMondayValuesAB},
+						{x: 'CA', y: listTestAmount[2], stars: listTestAmountCA, monday: listTestMondayValuesAB},
+						{x: 'DE', y: listTestAmount[3], stars: listTestAmountDE, monday: listTestMondayValuesAB},
+						{x: 'FL', y: listTestAmount[4], stars: listTestAmountFL, monday: listTestMondayValuesAB},
+						{x: 'ID', y: listTestAmount[5], stars: listTestAmountID, monday: listTestMondayValuesAB},
+						{x: 'IL', y: listTestAmount[6], stars: listTestAmountIL, monday: listTestMondayValuesAB},
+						{x: 'IN', y: listTestAmount[7], stars: listTestAmountIN, monday: listTestMondayValuesAB},
+						{x: 'LA', y: listTestAmount[8], stars: listTestAmountLA, monday: listTestMondayValuesAB},
+						{x: 'MO', y: listTestAmount[9], stars: listTestAmountMO, monday: listTestMondayValuesAB},
+						{x: 'NJ', y: listTestAmount[10], stars: listTestAmountNJ, monday: listTestMondayValuesAB},
+						{x: 'NV', y: listTestAmount[11], stars: listTestAmountNV, monday: listTestMondayValuesAB},
+						{x: 'PA', y: listTestAmount[12], stars: listTestAmountPA, monday: listTestMondayValuesAB},
+						{x: 'TN', y: listTestAmount[13], stars: listTestAmountTN, monday: listTestMondayValuesAB},
+					],
+					backgroundcolor: 'rgba(255,26,104,0.2)',
+					borderColor: 'rgba(255,26,104,1)',
+					borderWidth: 1,
+					options: {
+						scales: {
+							y: {
+								beginAtZero: true
+							}
+						}
+					}
+				}]
+
+			}
+		});
+
+
+	</script>
+
+	<script>
+
+
+		const ctx3 = document.getElementById('testMyChartStars');
+		const testMyChartStars = new Chart(
+			ctx3, {
+			type: 'bar',
+			data: {
+
+				labels: ['1.0', '1.5', '2.0', '2.5', '3.0', '3.5', '4.0', '4.5', '5.0'],
+
+				datasets: [{
+					label: 'Stars',
+					data: [listTestAmountStars[1], listTestAmountStars[0], listTestAmountStars[2], listTestAmountStars[3],
+					listTestAmountStars[4], listTestAmountStars[5],
+					listTestAmountStars[6], listTestAmountStars[7],
+					listTestAmountStars[8]],
+
+					backgroundcolor: 'rgba(255,26,104,0.2)',
+					borderColor: 'rgba(255,26,104,1)',
+					borderWidth: 1
+				}]
+
+			}
+		});
+
+		function clickHandler(click) {
+			const points = testMyChart1.getElementsAtEventForMode(click, 'nearest', {
+				intersect: true
+			}, true);
+
+			if (points.length) {
+				console.log(points.length)
+				console.log(points[0].element.$context.raw.stars)
+				testMyChartStars.data.datasets[0].data = points[0].element.$context.raw.stars;
+				testMyChartMonday.data.datasets[0].data = points[0].element.$context.raw.monday;
+
+				testMyChartStars.update();
+				testMyChartMonday.update();
+
+				//////////////////
+			}
+		};
+
+		document.getElementById('testMyChart1').onclick = clickHandler;
+
+
+	</script>
+
+
+
+	<script>
+
+
+
+
+		var testMyChartMonday = new Chart(
+			document.getElementById('testMyChartMonday'), {
+			type: 'line',
+			data: {
+				//
+				labels: listTestMondayTimes,
+
+				datasets: [{
+					label: 'Opening Hours: Monday',
+					data: [listTestMondayValues[0], listTestMondayValues[1], listTestMondayValues[2], listTestMondayValues[3],
+					listTestMondayValues[4], listTestMondayValues[5], listTestMondayValues[6], listTestMondayValues[7]],
+
+					backgroundcolor: 'rgba(255,26,104,0.2)',
+					borderColor: 'rgba(255,26,104,1)',
+					borderWidth: 1
+				}]
+
+			}
+		});
+	</script>
 
 </body>
 

@@ -6,7 +6,7 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "businessdatei")
+@Table(name = "businessdateinew")
 public class Business {
 	@Id
 	private String business_id;
@@ -23,13 +23,20 @@ public class Business {
 	private int is_open;
 	private String attributes;
 	private String categories;
-	private String monday;
-	private String thuesday;
-	private String wednesday;
-	private String thursday;
-	private String friday;
-	private String saturday;
-	private String sunday;
+	private String mondayopen;
+	private String mondayclosed;
+	private String thuesdayopen;
+	private String thuesdayclosed;
+	private String wednesdayopen;
+	private String wednesdayclosed;
+	private String thursdayopen;
+	private String thursdayclosed;
+	private String fridayopen;
+	private String fridayclosed;
+	private String saturdayopen;
+	private String saturdayclosed;
+	private String sundayopen;
+	private String sundayclosed;
 	
 	
 
@@ -37,11 +44,15 @@ public class Business {
 		super();
 	}
 
-	public Business(String name, String address, String city, String state, String postal_code,
+	
+
+	public Business(String business_id, String name, String address, String city, String state, String postal_code,
 			String latitude, String longitude, String stars, int review_count, int is_open, String attributes,
-			String categories, String monday, String thuesday, String wednesday, String thursday, String friday,
-			String saturday, String sunday) {
+			String categories, String mondayopen, String mondayclosed, String thuesdayopen, String thuesdayclosed,
+			String wednesdayopen, String wednesdayclosed, String thursdayopen, String thursdayclosed, String fridayopen,
+			String fridayclosed, String saturdayopen, String saturdayclosed, String sundayopen, String sundayclosed) {
 		super();
+		this.business_id = business_id;
 		this.name = name;
 		this.address = address;
 		this.city = city;
@@ -54,14 +65,23 @@ public class Business {
 		this.is_open = is_open;
 		this.attributes = attributes;
 		this.categories = categories;
-		this.monday = monday;
-		this.thuesday = thuesday;
-		this.wednesday = wednesday;
-		this.thursday = thursday;
-		this.friday = friday;
-		this.saturday = saturday;
-		this.sunday = sunday;
+		this.mondayopen = mondayopen;
+		this.mondayclosed = mondayclosed;
+		this.thuesdayopen = thuesdayopen;
+		this.thuesdayclosed = thuesdayclosed;
+		this.wednesdayopen = wednesdayopen;
+		this.wednesdayclosed = wednesdayclosed;
+		this.thursdayopen = thursdayopen;
+		this.thursdayclosed = thursdayclosed;
+		this.fridayopen = fridayopen;
+		this.fridayclosed = fridayclosed;
+		this.saturdayopen = saturdayopen;
+		this.saturdayclosed = saturdayclosed;
+		this.sundayopen = sundayopen;
+		this.sundayclosed = sundayclosed;
 	}
+
+
 
 	@Id
 	public String getBusiness_id() {
@@ -180,67 +200,174 @@ public class Business {
 		this.categories = categories;
 	}
 
-	@Column(name = "monday", nullable = true)
-	public String getMonday() {
-		return monday;
+
+	@Column(name = "mondayopen", nullable = true)
+	public String getMondayopen() {
+		return mondayopen;
 	}
 
-	public void setMonday(String monday) {
-		this.monday = monday;
+
+
+	public void setMondayopen(String mondayopen) {
+		this.mondayopen = mondayopen;
 	}
 
-	@Column(name = "thuesday", nullable = true)
-	public String getThuesday() {
-		return thuesday;
+
+	@Column(name = "mondayclosed", nullable = true)
+	public String getMondayclosed() {
+		return mondayclosed;
 	}
 
-	public void setThuesday(String thuesday) {
-		this.thuesday = thuesday;
+
+
+	public void setMondayclosed(String mondayclosed) {
+		this.mondayclosed = mondayclosed;
 	}
 
-	@Column(name = "wednesday", nullable = true)
-	public String getWednesday() {
-		return wednesday;
+
+	@Column(name = "thuesdayopen", nullable = true)
+	public String getThuesdayopen() {
+		return thuesdayopen;
 	}
 
-	public void setWednesday(String wednesday) {
-		this.wednesday = wednesday;
+
+
+	public void setThuesdayopen(String thuesdayopen) {
+		this.thuesdayopen = thuesdayopen;
 	}
 
-	@Column(name = "thursday", nullable = true)
-	public String getThursday() {
-		return thursday;
+
+	@Column(name = "thuesdayclosed", nullable = true)
+	public String getThuesdayclosed() {
+		return thuesdayclosed;
 	}
 
-	public void setThursday(String thursday) {
-		this.thursday = thursday;
+
+
+	public void setThuesdayclosed(String thuesdayclosed) {
+		this.thuesdayclosed = thuesdayclosed;
 	}
 
-	@Column(name = "friday", nullable = true)
-	public String getFriday() {
-		return friday;
+
+	@Column(name = "wednesdayopen", nullable = true)
+	public String getWednesdayopen() {
+		return wednesdayopen;
 	}
 
-	public void setFriday(String friday) {
-		this.friday = friday;
+
+
+	public void setWednesdayopen(String wednesdayopen) {
+		this.wednesdayopen = wednesdayopen;
 	}
 
-	@Column(name = "saturday", nullable = true)
-	public String getSaturday() {
-		return saturday;
+
+	@Column(name = "wednesdayclosed", nullable = true)
+	public String getWednesdayclosed() {
+		return wednesdayclosed;
 	}
 
-	public void setSaturday(String saturday) {
-		this.saturday = saturday;
+
+
+	public void setWednesdayclosed(String wednesdayclosed) {
+		this.wednesdayclosed = wednesdayclosed;
 	}
 
-	@Column(name = "sunday", nullable = true)
-	public String getSunday() {
-		return sunday;
+
+	@Column(name = "thursdayopen", nullable = true)
+	public String getThursdayopen() {
+		return thursdayopen;
 	}
 
-	public void setSunday(String sunday) {
-		this.sunday = sunday;
+
+
+	public void setThursdayopen(String thursdayopen) {
+		this.thursdayopen = thursdayopen;
 	}
+
+
+	@Column(name = "thursdayclosed", nullable = true)
+	public String getThursdayclosed() {
+		return thursdayclosed;
+	}
+
+
+
+	public void setThursdayclosed(String thursdayclosed) {
+		this.thursdayclosed = thursdayclosed;
+	}
+
+
+	@Column(name = "fridayopen", nullable = true)
+	public String getFridayopen() {
+		return fridayopen;
+	}
+
+
+
+	public void setFridayopen(String fridayopen) {
+		this.fridayopen = fridayopen;
+	}
+
+
+	@Column(name = "fridayclosed", nullable = true)
+	public String getFridayclosed() {
+		return fridayclosed;
+	}
+
+
+
+	public void setFridayclosed(String fridayclosed) {
+		this.fridayclosed = fridayclosed;
+	}
+
+
+	@Column(name = "saturdayopen", nullable = true)
+	public String getSaturdayopen() {
+		return saturdayopen;
+	}
+
+
+
+	public void setSaturdayopen(String saturdayopen) {
+		this.saturdayopen = saturdayopen;
+	}
+
+
+	@Column(name = "saturdayclosed", nullable = true)
+	public String getSaturdayclosed() {
+		return saturdayclosed;
+	}
+
+
+
+	public void setSaturdayclosed(String saturdayclosed) {
+		this.saturdayclosed = saturdayclosed;
+	}
+
+
+	@Column(name = "sundayopen", nullable = true)
+	public String getSundayopen() {
+		return sundayopen;
+	}
+
+
+
+	public void setSundayopen(String sundayopen) {
+		this.sundayopen = sundayopen;
+	}
+
+
+	@Column(name = "sundayclosed", nullable = true)
+	public String getSundayclosed() {
+		return sundayclosed;
+	}
+
+
+
+	public void setSundayclosed(String sundayclosed) {
+		this.sundayclosed = sundayclosed;
+	}
+
+	
 
 }
