@@ -285,6 +285,8 @@
 			<canvas id="testMyChart1"></canvas>
 			<canvas id="testMyChartStars"></canvas>
 			<canvas id="testMyChartMonday"></canvas>
+			<canvas id="testMyChartTuesday"></canvas>
+
 		</div>
 	</div>
 
@@ -308,11 +310,97 @@
 				<tr th:each="businessValue: ${finalMondayListValues}">
 					<td th:text="${businessValue}">Value</td>
 				</tr>
-				<tr th:each="businessTimeAB: ${finalMondayListTimesAB}">
-					<td th:text="${businessTimeAB}">Time</td>
-				</tr>
 				<tr th:each="businessValueAB: ${finalMondayListValuesAB}">
 					<td th:text="${businessValueAB}">Value</td>
+				</tr>
+				<tr th:each="businessValueAZ: ${finalMondayListValuesAZ}">
+					<td th:text="${businessValueAZ}">Value</td>
+				</tr>
+				<tr th:each="businessValueCA: ${finalMondayListValuesCA}">
+					<td th:text="${businessValueCA}">Value</td>
+				</tr>
+				<tr th:each="businessValueDE: ${finalMondayListValuesDE}">
+					<td th:text="${businessValueDE}">Value</td>
+				</tr>
+				<tr th:each="businessValueFL: ${finalMondayListValuesFL}">
+					<td th:text="${businessValueFL}">Value</td>
+				</tr>
+
+				<tr th:each="businessValueID: ${finalMondayListValuesID}">
+					<td th:text="${businessValueID}">Value</td>
+				</tr>
+				<tr th:each="businessValueIL: ${finalMondayListValuesIL}">
+					<td th:text="${businessValueIL}">Value</td>
+				</tr>
+				<tr th:each="businessValueIN: ${finalMondayListValuesIN}">
+					<td th:text="${businessValueIN}">Value</td>
+				</tr>
+				<tr th:each="businessValueLA: ${finalMondayListValuesLA}">
+					<td th:text="${businessValueLA}">Value</td>
+				</tr>
+				<tr th:each="businessValueMO: ${finalMondayListValuesMO}">
+					<td th:text="${businessValueMO}">Value</td>
+				</tr>
+
+				<tr th:each="businessValueNJ: ${finalMondayListValuesNJ}">
+					<td th:text="${businessValueNJ}">Value</td>
+				</tr>
+				<tr th:each="businessValueNV: ${finalMondayListValuesNV}">
+					<td th:text="${businessValueNV}">Value</td>
+				</tr>
+				<tr th:each="businessValuePA: ${finalMondayListValuesPA}">
+					<td th:text="${businessValuePA}">Value</td>
+				</tr>
+				<tr th:each="businessValueTN: ${finalMondayListValuesTN}">
+					<td th:text="${businessValueTN}">Value</td>
+				</tr>
+				<tr th:each="businessValue: ${finalTuesdayListValues}">
+					<td th:text="${businessValue}">Value</td>
+				</tr>
+
+				<tr th:each="businessValueAB: ${finalTuesdayListValuesAB}">
+					<td th:text="${businessValueAB}">Value</td>
+				</tr>
+				<tr th:each="businessValueAZ: ${finalTuesdayListValuesAZ}">
+					<td th:text="${businessValueAZ}">Value</td>
+				</tr>
+				<tr th:each="businessValueCA: ${finalTuesdayListValuesCA}">
+					<td th:text="${businessValueCA}">Value</td>
+				</tr>
+				<tr th:each="businessValueDE: ${finalTuesdayListValuesDE}">
+					<td th:text="${businessValueDE}">Value</td>
+				</tr>
+				<tr th:each="businessValueFL: ${finalTuesdayListValuesFL}">
+					<td th:text="${businessValueFL}">Value</td>
+				</tr>
+
+				<tr th:each="businessValueID: ${finalTuesdayListValuesID}">
+					<td th:text="${businessValueID}">Value</td>
+				</tr>
+				<tr th:each="businessValueIL: ${finalTuesdayListValuesIL}">
+					<td th:text="${businessValueIL}">Value</td>
+				</tr>
+				<tr th:each="businessValueIN: ${finalTuesdayListValuesIN}">
+					<td th:text="${businessValueIN}">Value</td>
+				</tr>
+				<tr th:each="businessValueLA: ${finalTuesdayListValuesLA}">
+					<td th:text="${businessValueLA}">Value</td>
+				</tr>
+				<tr th:each="businessValueMO: ${finalTuesdayListValuesMO}">
+					<td th:text="${businessValueMO}">Value</td>
+				</tr>
+
+				<tr th:each="businessValueNJ: ${finalTuesdayListValuesNJ}">
+					<td th:text="${businessValueNJ}">Value</td>
+				</tr>
+				<tr th:each="businessValueNV: ${finalTuesdayListValuesNV}">
+					<td th:text="${businessValueNV}">Value</td>
+				</tr>
+				<tr th:each="businessValuePA: ${finalTuesdayListValuesPA}">
+					<td th:text="${businessValuePA}">Value</td>
+				</tr>
+				<tr th:each="businessValueTN: ${finalTuesdayListValuesTN}">
+					<td th:text="${businessValueTN}">Value</td>
 				</tr>
 
 
@@ -326,17 +414,188 @@
 		var listTestMondayValues = [];
 		var listTestMondayTimesAB = [];
 		var listTestMondayValuesAB = [];
-		for (var i = 9; i <= 16; i++) {
-			listTestMondayValues.push(parseInt(table.rows[i].cells[0].innerHTML));
-		}
+		var listTestMondayTimesAZ = [];
+		var listTestMondayValuesAZ = [];
+		var listTestMondayTimeCA = [];
+		var listTestMondayValuesCA = [];
+		var listTestMondayTimesDE = [];
+		var listTestMondayValuesDE = [];
+		var listTestMondayTimesFL = [];
+		var listTestMondayValuesFL = [];
+		var listTestMondayTimesID = [];
+		var listTestMondayValuesID = [];
+		var listTestMondayTimesIL = [];
+		var listTestMondayValuesIL = [];
+		var listTestMondayTimesIN = [];
+		var listTestMondayValuesIN = [];
+		var listTestMondayTimesLA = [];
+		var listTestMondayValuesLA = [];
+		var listTestMondayTimesMO = [];
+		var listTestMondayValuesMO = [];
+		var listTestMondayTimesNJ = [];
+		var listTestMondayValuesNJ = [];
+		var listTestMondayTimesNV = [];
+		var listTestMondayValuesNV = [];
+		var listTestMondayTimesPA = [];
+		var listTestMondayValuesPA = [];
+		var listTestMondayTimesTN = [];
+		var listTestMondayValuesTN = [];
+
+
+		var listTestTuesdayTimes = [];
+		var listTestTuesdayValues = [];
+		var listTestTuesdayTimesAB = [];
+		var listTestTuesdayValuesAB = [];
+		var listTestTuesdayTimesAZ = [];
+		var listTestTuesdayValuesAZ = [];
+		var listTestTuesdayTimeCA = [];
+		var listTestTuesdayValuesCA = [];
+		var listTestTuesdayTimesDE = [];
+		var listTestTuesdayValuesDE = [];
+		var listTestTuesdayTimesFL = [];
+		var listTestTuesdayValuesFL = [];
+		var listTestTuesdayTimesID = [];
+		var listTestTuesdayValuesID = [];
+		var listTestTuesdayTimesIL = [];
+		var listTestTuesdayValuesIL = [];
+		var listTestTuesdayTimesIN = [];
+		var listTestTuesdayValuesIN = [];
+		var listTestTuesdayTimesLA = [];
+		var listTestTuesdayValuesLA = [];
+		var listTestTuesdayTimesMO = [];
+		var listTestTuesdayValuesMO = [];
+		var listTestTuesdayTimesNJ = [];
+		var listTestTuesdayValuesNJ = [];
+		var listTestTuesdayTimesNV = [];
+		var listTestTuesdayValuesNV = [];
+		var listTestTuesdayTimesPA = [];
+		var listTestTuesdayValuesPA = [];
+		var listTestTuesdayTimesTN = [];
+		var listTestTuesdayValuesTN = [];
+
+
 		for (var i = 1; i <= 8; i++) {
 			listTestMondayTimes.push(parseInt(table.rows[i].cells[0].innerHTML));
 		}
-		for (var i = 17; i <= 24; i++) {
-			listTestMondayTimesAB.push(parseInt(table.rows[i].cells[0].innerHTML));
+		for (var i = 9; i <= 16; i++) {
+			listTestMondayValues.push(parseInt(table.rows[i].cells[0].innerHTML));
 		}
-		for (var i = 25; i <= 32; i++) {
+		for (var i = 17; i <= 24; i++) {
 			listTestMondayValuesAB.push(parseInt(table.rows[i].cells[0].innerHTML));
+		}
+
+		for (var i = 25; i <= 32; i++) {
+			listTestMondayValuesAZ.push(parseInt(table.rows[i].cells[0].innerHTML));
+		}
+
+		for (var i = 33; i <= 40; i++) {
+			listTestMondayValuesCA.push(parseInt(table.rows[i].cells[0].innerHTML));
+		}
+
+		for (var i = 41; i <= 48; i++) {
+			listTestMondayValuesDE.push(parseInt(table.rows[i].cells[0].innerHTML));
+		}
+
+		for (var i = 49; i <= 56; i++) {
+			listTestMondayValuesFL.push(parseInt(table.rows[i].cells[0].innerHTML));
+		}
+
+		for (var i = 57; i <= 64; i++) {
+			listTestMondayValuesID.push(parseInt(table.rows[i].cells[0].innerHTML));
+		}
+
+		for (var i = 65; i <= 72; i++) {
+			listTestMondayValuesIL.push(parseInt(table.rows[i].cells[0].innerHTML));
+		}
+
+		for (var i = 73; i <= 80; i++) {
+			listTestMondayValuesIN.push(parseInt(table.rows[i].cells[0].innerHTML));
+		}
+
+		for (var i = 81; i <= 88; i++) {
+			listTestMondayValuesLA.push(parseInt(table.rows[i].cells[0].innerHTML));
+		}
+
+		for (var i = 89; i <= 96; i++) {
+			listTestMondayValuesMO.push(parseInt(table.rows[i].cells[0].innerHTML));
+		}
+
+		for (var i = 97; i <= 104; i++) {
+			listTestMondayValuesNJ.push(parseInt(table.rows[i].cells[0].innerHTML));
+		}
+
+		for (var i = 105; i <= 112; i++) {
+			listTestMondayValuesNV.push(parseInt(table.rows[i].cells[0].innerHTML));
+		}
+
+		for (var i = 113; i <= 120; i++) {
+			listTestMondayValuesPA.push(parseInt(table.rows[i].cells[0].innerHTML));
+		}
+
+		for (var i = 121; i <= 128; i++) {
+			listTestMondayValuesTN.push(parseInt(table.rows[i].cells[0].innerHTML));
+		}
+
+
+
+
+		for (var i = 129; i <= 136; i++) {
+			listTestTuesdayValues.push(parseInt(table.rows[i].cells[0].innerHTML));
+		}
+		for (var i = 137; i <= 144; i++) {
+			listTestTuesdayValuesAB.push(parseInt(table.rows[i].cells[0].innerHTML));
+		}
+
+		for (var i = 145; i <= 152; i++) {
+			listTestTuesdayValuesAZ.push(parseInt(table.rows[i].cells[0].innerHTML));
+		}
+
+		for (var i = 153; i <= 160; i++) {
+			listTestTuesdayValuesCA.push(parseInt(table.rows[i].cells[0].innerHTML));
+		}
+
+		for (var i = 161; i <= 168; i++) {
+			listTestTuesdayValuesDE.push(parseInt(table.rows[i].cells[0].innerHTML));
+		}
+
+		for (var i = 169; i <= 176; i++) {
+			listTestTuesdayValuesFL.push(parseInt(table.rows[i].cells[0].innerHTML));
+		}
+
+		for (var i = 177; i <= 184; i++) {
+			listTestTuesdayValuesID.push(parseInt(table.rows[i].cells[0].innerHTML));
+		}
+
+		for (var i = 185; i <= 192; i++) {
+			listTestTuesdayValuesIL.push(parseInt(table.rows[i].cells[0].innerHTML));
+		}
+
+		for (var i = 193; i <= 200; i++) {
+			listTestTuesdayValuesIN.push(parseInt(table.rows[i].cells[0].innerHTML));
+		}
+
+		for (var i = 201; i <= 208; i++) {
+			listTestTuesdayValuesLA.push(parseInt(table.rows[i].cells[0].innerHTML));
+		}
+
+		for (var i = 209; i <= 216; i++) {
+			listTestTuesdayValuesMO.push(parseInt(table.rows[i].cells[0].innerHTML));
+		}
+
+		for (var i = 217; i <= 224; i++) {
+			listTestTuesdayValuesNJ.push(parseInt(table.rows[i].cells[0].innerHTML));
+		}
+
+		for (var i = 225; i <= 232; i++) {
+			listTestTuesdayValuesNV.push(parseInt(table.rows[i].cells[0].innerHTML));
+		}
+
+		for (var i = 233; i <= 240; i++) {
+			listTestTuesdayValuesPA.push(parseInt(table.rows[i].cells[0].innerHTML));
+		}
+
+		for (var i = 241; i <= 248; i++) {
+			listTestTuesdayValuesTN.push(parseInt(table.rows[i].cells[0].innerHTML));
 		}
 
 		document.getElementById("myTableMonday");
@@ -344,6 +603,37 @@
 		console.log(listTestMondayValues);
 		console.log(listTestMondayTimesAB);
 		console.log(listTestMondayValuesAB);
+		console.log(listTestMondayValuesAZ);
+		console.log(listTestMondayValuesCA);
+		console.log(listTestMondayValuesDE);
+		console.log(listTestMondayValuesFL);
+		console.log(listTestMondayValuesID);
+		console.log(listTestMondayValuesIL);
+		console.log(listTestMondayValuesIN);
+		console.log(listTestMondayValuesLA);
+		console.log(listTestMondayValuesMO);
+		console.log(listTestMondayValuesNJ);
+		console.log(listTestMondayValuesNV);
+		console.log(listTestMondayValuesPA);
+		console.log(listTestMondayValuesTN);
+
+
+		console.log(listTestTuesdayValues);
+		console.log(listTestTuesdayTimesAB);
+		console.log(listTestTuesdayValuesAB);
+		console.log(listTestTuesdayValuesAZ);
+		console.log(listTestTuesdayValuesCA);
+		console.log(listTestTuesdayValuesDE);
+		console.log(listTestTuesdayValuesFL);
+		console.log(listTestTuesdayValuesID);
+		console.log(listTestTuesdayValuesIL);
+		console.log(listTestTuesdayValuesIN);
+		console.log(listTestTuesdayValuesLA);
+		console.log(listTestTuesdayValuesMO);
+		console.log(listTestTuesdayValuesNJ);
+		console.log(listTestTuesdayValuesNV);
+		console.log(listTestTuesdayValuesPA);
+		console.log(listTestTuesdayValuesTN);
 
 	</script>
 
@@ -357,20 +647,20 @@
 				datasets: [{
 					label: 'State',
 					data: [
-						{x: 'AB', y: listTestAmount[0], stars: listTestAmountAB, monday: listTestMondayValuesAB},
-						{x: 'AZ', y: listTestAmount[1], stars: listTestAmountAZ, monday: listTestMondayValuesAB},
-						{x: 'CA', y: listTestAmount[2], stars: listTestAmountCA, monday: listTestMondayValuesAB},
-						{x: 'DE', y: listTestAmount[3], stars: listTestAmountDE, monday: listTestMondayValuesAB},
-						{x: 'FL', y: listTestAmount[4], stars: listTestAmountFL, monday: listTestMondayValuesAB},
-						{x: 'ID', y: listTestAmount[5], stars: listTestAmountID, monday: listTestMondayValuesAB},
-						{x: 'IL', y: listTestAmount[6], stars: listTestAmountIL, monday: listTestMondayValuesAB},
-						{x: 'IN', y: listTestAmount[7], stars: listTestAmountIN, monday: listTestMondayValuesAB},
-						{x: 'LA', y: listTestAmount[8], stars: listTestAmountLA, monday: listTestMondayValuesAB},
-						{x: 'MO', y: listTestAmount[9], stars: listTestAmountMO, monday: listTestMondayValuesAB},
-						{x: 'NJ', y: listTestAmount[10], stars: listTestAmountNJ, monday: listTestMondayValuesAB},
-						{x: 'NV', y: listTestAmount[11], stars: listTestAmountNV, monday: listTestMondayValuesAB},
-						{x: 'PA', y: listTestAmount[12], stars: listTestAmountPA, monday: listTestMondayValuesAB},
-						{x: 'TN', y: listTestAmount[13], stars: listTestAmountTN, monday: listTestMondayValuesAB},
+						{x: 'AB', y: listTestAmount[0], stars: listTestAmountAB, monday: listTestMondayValuesAB, tuesday: listTestTuesdayValuesAB},
+						{x: 'AZ', y: listTestAmount[1], stars: listTestAmountAZ, monday: listTestMondayValuesAZ, tuesday: listTestTuesdayValuesAZ},
+						{x: 'CA', y: listTestAmount[2], stars: listTestAmountCA, monday: listTestMondayValuesCA, tuesday: listTestTuesdayValuesCA},
+						{x: 'DE', y: listTestAmount[3], stars: listTestAmountDE, monday: listTestMondayValuesDE, tuesday: listTestTuesdayValuesDE},
+						{x: 'FL', y: listTestAmount[4], stars: listTestAmountFL, monday: listTestMondayValuesFL, tuesday: listTestTuesdayValuesFL},
+						{x: 'ID', y: listTestAmount[5], stars: listTestAmountID, monday: listTestMondayValuesID, tuesday: listTestTuesdayValuesID},
+						{x: 'IL', y: listTestAmount[6], stars: listTestAmountIL, monday: listTestMondayValuesIL, tuesday: listTestTuesdayValuesIL},
+						{x: 'IN', y: listTestAmount[7], stars: listTestAmountIN, monday: listTestMondayValuesIN, tuesday: listTestTuesdayValuesIN},
+						{x: 'LA', y: listTestAmount[8], stars: listTestAmountLA, monday: listTestMondayValuesLA, tuesday: listTestTuesdayValuesLA},
+						{x: 'MO', y: listTestAmount[9], stars: listTestAmountMO, monday: listTestMondayValuesMO, tuesday: listTestTuesdayValuesMO},
+						{x: 'NJ', y: listTestAmount[10], stars: listTestAmountNJ, monday: listTestMondayValuesNJ, tuesday: listTestTuesdayValuesNJ},
+						{x: 'NV', y: listTestAmount[11], stars: listTestAmountNV, monday: listTestMondayValuesNV, tuesday: listTestTuesdayValuesNV},
+						{x: 'PA', y: listTestAmount[12], stars: listTestAmountPA, monday: listTestMondayValuesPA, tuesday: listTestTuesdayValuesPA},
+						{x: 'TN', y: listTestAmount[13], stars: listTestAmountTN, monday: listTestMondayValuesTN, tuesday: listTestTuesdayValuesTN},
 					],
 					backgroundcolor: 'rgba(255,26,104,0.2)',
 					borderColor: 'rgba(255,26,104,1)',
@@ -426,9 +716,12 @@
 				console.log(points[0].element.$context.raw.stars)
 				testMyChartStars.data.datasets[0].data = points[0].element.$context.raw.stars;
 				testMyChartMonday.data.datasets[0].data = points[0].element.$context.raw.monday;
+				testMyChartTuesday.data.datasets[0].data = points[0].element.$context.raw.tuesday;
 
 				testMyChartStars.update();
 				testMyChartMonday.update();
+				testMyChartTuesday.update();
+
 
 				//////////////////
 			}
@@ -457,6 +750,31 @@
 					label: 'Opening Hours: Monday',
 					data: [listTestMondayValues[0], listTestMondayValues[1], listTestMondayValues[2], listTestMondayValues[3],
 					listTestMondayValues[4], listTestMondayValues[5], listTestMondayValues[6], listTestMondayValues[7]],
+
+					backgroundcolor: 'rgba(255,26,104,0.2)',
+					borderColor: 'rgba(255,26,104,1)',
+					borderWidth: 1
+				}]
+
+			}
+		});
+	</script>
+	
+	
+	<script>
+
+
+		var testMyChartTuesday = new Chart(
+			document.getElementById('testMyChartTuesday'), {
+			type: 'line',
+			data: {
+				//
+				labels: listTestMondayTimes,
+
+				datasets: [{
+					label: 'Opening Hours: Tuesday',
+					data: [listTestTuesdayValues[0], listTestTuesdayValues[1], listTestTuesdayValues[2], listTestTuesdayValues[3],
+					listTestTuesdayValues[4], listTestTuesdayValues[5], listTestTuesdayValues[6], listTestTuesdayValues[7]],
 
 					backgroundcolor: 'rgba(255,26,104,0.2)',
 					borderColor: 'rgba(255,26,104,1)',

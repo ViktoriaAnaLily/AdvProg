@@ -21,7 +21,9 @@ import com.example.demo.repository.BusinessStarsRepository;
 import com.example.demo.repository.BusinessStarsStateConnectionRepository;
 import com.example.demo.repository.BusinessStateRepository;
 import com.example.demo.repository.UserRepository;
-import com.example.demo.service.BusinessWeekdayService;
+import com.example.demo.service.BusinessCategoryService;
+import com.example.demo.service.BusinessWeekdayServiceMO;
+import com.example.demo.service.BusinessWeekdayServiceTUE;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -31,11 +33,18 @@ public class AppController {
 
 	private static final Logger log = LoggerFactory.getLogger(AppController.class);
 
-	private BusinessWeekdayService businessWeekdayService;
+	private BusinessWeekdayServiceMO businessWeekdayService;
+	private BusinessWeekdayServiceTUE businessWeekdayServiceTUE;
+	private BusinessCategoryService businessCategoryService;
+
 
 	@Autowired
-	public AppController(BusinessWeekdayService businessWeekdayService) {
+	public AppController(BusinessWeekdayServiceMO businessWeekdayService,
+			BusinessWeekdayServiceTUE businessWeekdayServiceTUE, BusinessCategoryService businessCategoryService) {
 		this.businessWeekdayService = businessWeekdayService;
+		this.businessWeekdayServiceTUE = businessWeekdayServiceTUE;
+		this.businessCategoryService = businessCategoryService;
+
 	}
 
 	@Autowired
@@ -85,8 +94,37 @@ public class AppController {
 		// model.addAttribute("listTest", listTest);
 		return "users";
 	}
-
+	
 	// TEST
+	@GetMapping("/users")
+	public String listUsersTest(Model model) {
+		
+		List<BusinessState> listTestState = businessStateRepository.findAll();
+		model.addAttribute("listTestState", listTestState);
+		
+		model.addAttribute("finalListAll", businessCategoryService.businessCategoryAll());
+		model.addAttribute("finalListAB", businessCategoryService.businessCategoryAB());
+		model.addAttribute("finalListAZ", businessCategoryService.businessCategoryAZ());
+		model.addAttribute("finalListCA", businessCategoryService.businessCategoryCA());
+		model.addAttribute("finalListDE", businessCategoryService.businessCategoryDE());
+		model.addAttribute("finalListFL", businessCategoryService.businessCategoryFL());
+		model.addAttribute("finalListID", businessCategoryService.businessCategoryID());
+		model.addAttribute("finalListIN", businessCategoryService.businessCategoryIN());
+		model.addAttribute("finalListIL", businessCategoryService.businessCategoryIL());
+		
+		model.addAttribute("finalListLA", businessCategoryService.businessCategoryLA());
+		model.addAttribute("finalListMO", businessCategoryService.businessCategoryMO());
+		model.addAttribute("finalListNJ", businessCategoryService.businessCategoryNJ());
+		model.addAttribute("finalListNV", businessCategoryService.businessCategoryNV());
+		model.addAttribute("finalListPA", businessCategoryService.businessCategoryPA());
+		model.addAttribute("finalListTN", businessCategoryService.businessCategoryTN());
+		
+
+	
+		return "categories";
+	}
+	
+	/*
 	@GetMapping("/users")
 	public String listUsersTest(Model model) {
 		// List<User> listUsers = userRepo.findAll();
@@ -95,9 +133,86 @@ public class AppController {
 
 		model.addAttribute("finalMondayListTimes", businessWeekdayService.finalMondayListTimes());
 		model.addAttribute("finalMondayListValues", businessWeekdayService.finalMondayListValues());
-		
+
 		model.addAttribute("finalMondayListTimesAB", businessWeekdayService.finalMondayListTimesAB());
 		model.addAttribute("finalMondayListValuesAB", businessWeekdayService.finalMondayListValuesAB());
+
+		model.addAttribute("finalMondayListTimesAZ", businessWeekdayService.finalMondayListTimesAZ());
+		model.addAttribute("finalMondayListValuesAZ", businessWeekdayService.finalMondayListValuesAZ());
+
+		model.addAttribute("finalMondayListTimesCA", businessWeekdayService.finalMondayListTimesCA());
+		model.addAttribute("finalMondayListValuesCA", businessWeekdayService.finalMondayListValuesCA());
+
+		model.addAttribute("finalMondayListTimesDE", businessWeekdayService.finalMondayListTimesDE());
+		model.addAttribute("finalMondayListValuesDE", businessWeekdayService.finalMondayListValuesDE());
+
+		model.addAttribute("finalMondayListTimesFL", businessWeekdayService.finalMondayListTimesFL());
+		model.addAttribute("finalMondayListValuesFL", businessWeekdayService.finalMondayListValuesFL());
+
+		model.addAttribute("finalMondayListTimesID", businessWeekdayService.finalMondayListTimesID());
+		model.addAttribute("finalMondayListValuesID", businessWeekdayService.finalMondayListValuesID());
+
+		model.addAttribute("finalMondayListTimesIL", businessWeekdayService.finalMondayListTimesIL());
+		model.addAttribute("finalMondayListValuesIL", businessWeekdayService.finalMondayListValuesIL());
+
+		model.addAttribute("finalMondayListTimesIN", businessWeekdayService.finalMondayListTimesIN());
+		model.addAttribute("finalMondayListValuesIN", businessWeekdayService.finalMondayListValuesIN());
+
+		model.addAttribute("finalMondayListTimesLA", businessWeekdayService.finalMondayListTimesLA());
+		model.addAttribute("finalMondayListValuesLA", businessWeekdayService.finalMondayListValuesLA());
+
+		model.addAttribute("finalMondayListTimesMO", businessWeekdayService.finalMondayListTimesMO());
+		model.addAttribute("finalMondayListValuesMO", businessWeekdayService.finalMondayListValuesMO());
+
+		model.addAttribute("finalMondayListTimesNJ", businessWeekdayService.finalMondayListTimesNJ());
+		model.addAttribute("finalMondayListValuesNJ", businessWeekdayService.finalMondayListValuesNJ());
+
+		model.addAttribute("finalMondayListTimesNV", businessWeekdayService.finalMondayListTimesNV());
+		model.addAttribute("finalMondayListValuesNV", businessWeekdayService.finalMondayListValuesNV());
+
+		model.addAttribute("finalMondayListTimesPA", businessWeekdayService.finalMondayListTimesPA());
+		model.addAttribute("finalMondayListValuesPA", businessWeekdayService.finalMondayListValuesPA());
+
+		model.addAttribute("finalMondayListTimesTN", businessWeekdayService.finalMondayListTimesTN());
+		model.addAttribute("finalMondayListValuesTN", businessWeekdayService.finalMondayListValuesTN());
+
+		model.addAttribute("finalTuesdayListTimes", businessWeekdayServiceTUE.finalTuesdayListTimes());
+		model.addAttribute("finalTuesdayListValues", businessWeekdayServiceTUE.finalTuesdayListValues());
+
+		model.addAttribute("finalTuesdayListTimesAB", businessWeekdayServiceTUE.finalTuesdayListTimesAB());
+		model.addAttribute("finalTuesdayListValuesAB", businessWeekdayServiceTUE.finalTuesdayListValuesAB());
+
+		model.addAttribute("finalTuesdayListTimesAZ", businessWeekdayServiceTUE.finalTuesdayListTimesAZ());
+		model.addAttribute("finalTuesdayListValuesAZ", businessWeekdayServiceTUE.finalTuesdayListValuesAZ());
+
+		model.addAttribute("finalTuesdayListTimesCA", businessWeekdayServiceTUE.finalTuesdayListTimesCA());
+		model.addAttribute("finalTuesdayListValuesCA", businessWeekdayServiceTUE.finalTuesdayListValuesCA());
+
+		model.addAttribute("finalTuesdayListTimesDE", businessWeekdayServiceTUE.finalTuesdayListTimesDE());
+		model.addAttribute("finalTuesdayListValuesDE", businessWeekdayServiceTUE.finalTuesdayListValuesDE());
+
+		model.addAttribute("finalTuesdayListTimesFL", businessWeekdayServiceTUE.finalTuesdayListTimesFL());
+		model.addAttribute("finalTuesdayListValuesFL", businessWeekdayServiceTUE.finalTuesdayListValuesFL());
+
+		model.addAttribute("finalTuesdayListTimesID", businessWeekdayServiceTUE.finalTuesdayListTimesID());
+		model.addAttribute("finalTuesdayListValuesID", businessWeekdayServiceTUE.finalTuesdayListValuesID());
+		model.addAttribute("finalTuesdayListTimesIL", businessWeekdayServiceTUE.finalTuesdayListTimesIL());
+		model.addAttribute("finalTuesdayListValuesIL", businessWeekdayServiceTUE.finalTuesdayListValuesIL());
+		model.addAttribute("finalTuesdayListTimesIN", businessWeekdayServiceTUE.finalTuesdayListTimesIN());
+		model.addAttribute("finalTuesdayListValuesIN", businessWeekdayServiceTUE.finalTuesdayListValuesIN());
+		model.addAttribute("finalTuesdayListTimesLA", businessWeekdayServiceTUE.finalTuesdayListTimesLA());
+		model.addAttribute("finalTuesdayListValuesLA", businessWeekdayServiceTUE.finalTuesdayListValuesLA());
+		model.addAttribute("finalTuesdayListTimesMO", businessWeekdayServiceTUE.finalTuesdayListTimesMO());
+		model.addAttribute("finalTuesdayListValuesMO", businessWeekdayServiceTUE.finalTuesdayListValuesMO());
+
+		model.addAttribute("finalTuesdayListTimesNJ", businessWeekdayServiceTUE.finalTuesdayListTimesNJ());
+		model.addAttribute("finalTuesdayListValuesNJ", businessWeekdayServiceTUE.finalTuesdayListValuesNJ());
+		model.addAttribute("finalTuesdayListTimesNV", businessWeekdayServiceTUE.finalTuesdayListTimesNV());
+		model.addAttribute("finalTuesdayListValuesNV", businessWeekdayServiceTUE.finalTuesdayListValuesNV());
+		model.addAttribute("finalTuesdayListTimesPA", businessWeekdayServiceTUE.finalTuesdayListTimesPA());
+		model.addAttribute("finalTuesdayListValuesPA", businessWeekdayServiceTUE.finalTuesdayListValuesPA());
+		model.addAttribute("finalTuesdayListTimesTN", businessWeekdayServiceTUE.finalTuesdayListTimesTN());
+		model.addAttribute("finalTuesdayListValuesTN", businessWeekdayServiceTUE.finalTuesdayListValuesTN());
 
 		List<BusinessStars> listTest = businessStarsRepository.findAll();
 		model.addAttribute("listTest", listTest);
@@ -109,6 +224,10 @@ public class AppController {
 		return "test";
 	}
 
+
+
+*/
+	
 	@RequestMapping(value = "/businessStars")
 	public String businessStars(Model model) {
 		log.debug("/businessStars --> ");
