@@ -19,6 +19,11 @@ public interface BusinessCategoryService {
 	List<Integer> businessCategoryNV();	
 	List<Integer> businessCategoryPA();
 	List<Integer> businessCategoryTN();
+	
+	
+	 List<Integer> businessCategoryCoffeeTea();
+	 List<Integer> businessCategoryFood();
+	 List<Integer> businessCategoryBakery();
 
 
 	

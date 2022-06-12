@@ -119,14 +119,20 @@ public class AppController {
 		model.addAttribute("finalListPA", businessCategoryService.businessCategoryPA());
 		model.addAttribute("finalListTN", businessCategoryService.businessCategoryTN());
 		
+		
+		model.addAttribute("finalListFood", businessCategoryService.businessCategoryFood());
+		model.addAttribute("finalListCoffeeTea", businessCategoryService.businessCategoryCoffeeTea());
+		model.addAttribute("finalListBakery", businessCategoryService.businessCategoryBakery());
+
+		
 
 	
 		return "categories";
 	}
 	
-	/*
-	@GetMapping("/users")
-	public String listUsersTest(Model model) {
+	
+	@GetMapping("/weekdays")
+	public String listUsersWeekdays(Model model) {
 		// List<User> listUsers = userRepo.findAll();
 		// model.addAttribute("listUsers", listUsers);
 		log.debug("businessWeekdayService...");
@@ -226,7 +232,7 @@ public class AppController {
 
 
 
-*/
+
 	
 	@RequestMapping(value = "/businessStars")
 	public String businessStars(Model model) {
