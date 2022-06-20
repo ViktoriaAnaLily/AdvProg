@@ -6,7 +6,7 @@
 	<link rel="stylesheet" type="text/css" href="/webjars/bootstrap/css/bootstrap.min.css" />
 	<script type="text/javascript" src="/webjars/jquery/jquery.min.js"></script>
 	<script type="text/javascript" src="/webjars/bootstrap/js/bootstrap.min.js"></script>
-
+	<link rel="stylesheet" type="text/css" href="css/navbar.css" />
 	<!--Chart.js JS CDN-->
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.min.js"></script>
 	<style>
@@ -166,13 +166,12 @@
 
 					<li> <a href="test">Charts</a>
 					<li> <a href="map">Map</a>
-					<li> <a href="users">List of Users</a>
+					<li> <a href="users">Home Page</a>
 					<li> <a href="index">Logout</a>
 				</ul>
 			</div>
 
 		</nav>
-		<div id="map"></div>
 
 	</section>
 	<div>
@@ -470,74 +469,70 @@
 
 
 
-		for (var i = 1; i <= 3; i++) {
+		for (var i = 1; i <= 10; i++) {
 			finalListAll.push(parseInt(table.rows[i].cells[0].innerHTML));
 		}
-		for (var i = 4; i <= 6; i++) {
+		for (var i = 11; i <= 20; i++) {
 			finalListAB.push(parseInt(table.rows[i].cells[0].innerHTML));
 		}
-		for (var i = 7; i <= 9; i++) {
+		for (var i = 21; i <= 30; i++) {
 			finalListAZ.push(parseInt(table.rows[i].cells[0].innerHTML));
 		}
 
-		for (var i = 10; i <= 12; i++) {
+		for (var i = 31; i <= 40; i++) {
 			finalListCA.push(parseInt(table.rows[i].cells[0].innerHTML));
 		}
 
-		for (var i = 13; i <= 15; i++) {
+		for (var i = 41; i <= 50; i++) {
 			finalListDE.push(parseInt(table.rows[i].cells[0].innerHTML));
 		}
 
-		for (var i = 16; i <= 18; i++) {
+		for (var i = 51; i <= 60; i++) {
 			finalListFL.push(parseInt(table.rows[i].cells[0].innerHTML));
 		}
 
-		for (var i = 19; i <= 21; i++) {
+		for (var i = 61; i <= 70; i++) {
 			finalListID.push(parseInt(table.rows[i].cells[0].innerHTML));
 		}
 
-		for (var i = 22; i <= 24; i++) {
+		for (var i = 71; i <= 80; i++) {
 			finalListIL.push(parseInt(table.rows[i].cells[0].innerHTML));
 		}
 
-		for (var i = 25; i <= 27; i++) {
+		for (var i = 81; i <= 90; i++) {
 			finalListIN.push(parseInt(table.rows[i].cells[0].innerHTML));
 		}
 
-		for (var i = 28; i <= 30; i++) {
+		for (var i = 91; i <= 100; i++) {
 			finalListLA.push(parseInt(table.rows[i].cells[0].innerHTML));
 		}
 
-		for (var i = 31; i <= 33; i++) {
+		for (var i = 101; i <= 110; i++) {
 			finalListMO.push(parseInt(table.rows[i].cells[0].innerHTML));
 		}
 
-		for (var i = 34; i <= 36; i++) {
+		for (var i = 111; i <= 120; i++) {
 			finalListNJ.push(parseInt(table.rows[i].cells[0].innerHTML));
 		}
 
-		for (var i = 37; i <= 39; i++) {
+		for (var i = 121; i <= 130; i++) {
 			finalListNV.push(parseInt(table.rows[i].cells[0].innerHTML));
 		}
 
-		for (var i = 40; i <= 42; i++) {
+		for (var i = 131; i <= 140; i++) {
 			finalListPA.push(parseInt(table.rows[i].cells[0].innerHTML));
 		}
 
-		for (var i = 43; i <= 45; i++) {
+		for (var i = 141; i <= 150; i++) {
 			finalListTN.push(parseInt(table.rows[i].cells[0].innerHTML));
 		}
-
-
-
-
-		for (var i = 46; i <= 59; i++) {
+		for (var i = 151; i <= 160; i++) {
 			finalListFood.push(parseInt(table.rows[i].cells[0].innerHTML));
 		}
-		for (var i = 60; i <= 73; i++) {
+		for (var i = 161; i <= 170; i++) {
 			finalListCoffeeTea.push(parseInt(table.rows[i].cells[0].innerHTML));
 		}
-		for (var i = 74; i <= 87; i++) {
+		for (var i = 171; i <= 180; i++) {
 			finalListBakery.push(parseInt(table.rows[i].cells[0].innerHTML));
 		}
 		for (var i = 181; i <= 190; i++) {
@@ -561,6 +556,7 @@
 		for (var i = 241; i <= 250; i++) {
 			finalListShopping.push(parseInt(table.rows[i].cells[0].innerHTML));
 		}
+
 
 
 		document.getElementById("myTableCategory");
@@ -1540,46 +1536,6 @@
 			listTestSundayValuesTN.push(parseInt(table.rows[i].cells[0].innerHTML));
 		}
 
-
-
-		/*
-							document.getElementById("myTableMonday");
-						console.log(listTestMondayTimes);
-						console.log(listTestMondayValues);
-						console.log(listTestMondayTimesAB);
-						console.log(listTestMondayValuesAB);
-						console.log(listTestMondayValuesAZ);
-						console.log(listTestMondayValuesCA);
-						console.log(listTestMondayValuesDE);
-						console.log(listTestMondayValuesFL);
-						console.log(listTestMondayValuesID);
-						console.log(listTestMondayValuesIL);
-						console.log(listTestMondayValuesIN);
-						console.log(listTestMondayValuesLA);
-						console.log(listTestMondayValuesMO);
-						console.log(listTestMondayValuesNJ);
-						console.log(listTestMondayValuesNV);
-						console.log(listTestMondayValuesPA);
-						console.log(listTestMondayValuesTN);
-				
-				
-						console.log(listTestTuesdayValues);
-						console.log(listTestTuesdayTimesAB);
-						console.log(listTestTuesdayValuesAB);
-						console.log(listTestTuesdayValuesAZ);
-						console.log(listTestTuesdayValuesCA);
-						console.log(listTestTuesdayValuesDE);
-						console.log(listTestTuesdayValuesFL);
-						console.log(listTestTuesdayValuesID);
-						console.log(listTestTuesdayValuesIL);
-						console.log(listTestTuesdayValuesIN);
-						console.log(listTestTuesdayValuesLA);
-						console.log(listTestTuesdayValuesMO);
-						console.log(listTestTuesdayValuesNJ);
-						console.log(listTestTuesdayValuesNV);
-						console.log(listTestTuesdayValuesPA);
-						console.log(listTestTuesdayValuesTN);
-				*/
 	</script>
 
 	<script>
@@ -1760,7 +1716,7 @@
 
 					],
 
-					backgroundcolor: ['rgb(255, 26, 104, 0.2)', 'rgb(255, 26, 104, 0.2)', 'rgb(255, 26, 104, 0.2)', 'rgb(255, 26, 104, 0.2)', 'rgb(255, 26, 104, 0.2)', 'rgb(255, 26, 104, 0.2)', 'rgb(255, 26, 104, 0.2)', 'rgb(255, 26, 104, 0.2)', 'rgb(255, 26, 104, 0.2)', 'rgb(255, 26, 104, 0.2)'],
+					backgroundColor: ['rgb(255, 26, 104, 0.2)', 'rgb(255, 26, 104, 0.2)', 'rgb(255, 26, 104, 0.2)', 'rgb(255, 26, 104, 0.2)', 'rgb(255, 26, 104, 0.2)', 'rgb(255, 26, 104, 0.2)', 'rgb(255, 26, 104, 0.2)', 'rgb(255, 26, 104, 0.2)', 'rgb(255, 26, 104, 0.2)', 'rgb(255, 26, 104, 0.2)'],
 					borderColor: ['rgba(255, 0, 0, 1)', 'rgba(255, 0, 0, 1)', 'rgba(255, 0, 0, 1)', 'rgba(255, 0, 0, 1)', 'rgba(255, 0, 0, 1)', 'rgba(255, 0, 0, 1)', 'rgba(255, 0, 0, 1)', 'rgba(255, 0, 0, 1)', 'rgba(255, 0, 0, 1)', 'rgba(255, 0, 0, 1)'],
 					borderWidth: 1
 				}]
