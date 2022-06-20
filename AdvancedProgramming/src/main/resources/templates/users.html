@@ -7,26 +7,43 @@
 	<link rel="stylesheet" type="text/css" href="/webjars/bootstrap/css/bootstrap.min.css" />
 	<script type="text/javascript" src="/webjars/jquery/jquery.min.js"></script>
 	<script type="text/javascript" src="/webjars/bootstrap/js/bootstrap.min.js"></script>
-	
 
-	
+
+
 </head>
 
 <body>
+	<section class="header">
+
+			<h1>
+				<img src="images/logo.jpg" width="80" height="80">CityGude
+			</h1>
+
+			<nav>
 
 
-	
+
+				<div class="nav-links">
+					<ul>
+
+
+						<li> <a href="test">Charts</a>
+						<li> <a href="map">Map</a>
+						<li> <a href="users">List of Users</a>
+						<li> <a href="index">Logout</a>
+					</ul>
+				</div>
+
+			</nav>
+		<div id="map"></div>
+
+		</section>
+
+
 	<div class="container text-center">
+
 		<div>
-			<form th:action="@{/logout}" method="post">
-				<p>
-					Welcome <b>[[${#request.userPrincipal.principal.fullName}]]</b>
-				</p>
-				<input type="submit" value="Sign Out" />
-			</form>
-		</div>
-		<div>
-			<h1>List of Users</h1>
+			<h2>List of Users</h2>
 		</div>
 
 		<div>
@@ -50,58 +67,6 @@
 			</table>
 		</div>
 	</div>
-
-	<style>
-		.button {
-			border: none;
-			color: white;
-			padding: 16px 32px;
-			text-align: center;
-			text-decoration: none;
-			display: inline-block;
-			font-size: 16px;
-			margin: 4px 2px;
-			transition-duration: 0.4s;
-			cursor: pointer;
-		}
-
-		.Stars {
-			background-color: white;
-			color: black;
-			border: 2px solid #4CAF50;
-		}
-		
-		.State {
-			background-color: white;
-			color: black;
-			border: 2px solid #4CAF50;
-		}
-		.OpenClose {
-			background-color: white;
-			color: black;
-			border: 2px solid #4CAF50;
-		}
-	</style>
-
-	<li>
-		<form class="form-inline" th:action="@{/businessStars}" method="post">
-			<input type="hidden" id="nid" name="nid"> <input type="submit" class="button Stars" value="Stars">
-		</form>
-	</li>
-
-	<li>
-		<form class="form-inline" th:action="@{/businessState}" method="post">
-			<input type="hidden" id="nid" name="nid"> <input type="submit" class="button State" value="State">
-		</form>
-	</li>
-	
-	<li>
-		<form class="form-inline" th:action="@{/businessOpenClose}" method="post">
-			<input type="hidden" id="nid" name="nid"> <input type="submit" class="button OpenClose" value="Open/Close">
-		</form>
-	</li>
-
-
 
 
 </body>

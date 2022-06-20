@@ -11,8 +11,8 @@
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.min.js"></script>
 	<style>
 		.chartCard {
-			width: 100vw;
-			height: calc(100vh-40px);
+			width: 50vw;
+			height: calc(50vh-20px);
 			background: rgb(255, 0, 0);
 			display: flex;
 			align-items: center;
@@ -20,9 +20,9 @@
 		}
 
 		.chartBox {
-			width: 100vw;
-			padding: 20px;
-			border-radius: 20px;
+			width: 50vw;
+			padding: 15px;
+			border-radius: 15px;
 			border: solid 3px rgb(255, 0, 0);
 			background: white;
 		}
@@ -31,12 +31,57 @@
 </head>
 
 <body>
+	<section class="header">
+
+		<h1>
+			<img src="images/logo.jpg" width="80" height="80">CityGude
+		</h1>
+
+		<nav>
 
 
 
-	<div>
-		<h1>List of BusinessState</h1>
-	</div>
+			<div class="container">
+				<nav class="navbar navbar-expand-md navbar-light bg-custom">
+
+					<div class="collapse navbar-collapse " id="thenavbarDefault">
+						<ul class="navbar-nav ml-auto">
+							<li>
+								<form th:action="@{/users}" method="get">
+									<input type="submit" class="btn btn-outline-primary" th:value="Ready">
+								</form>
+							</li>
+							<li>
+								<form class="form-inline" th:action="@{/categories}" method="get">
+									<input type="hidden" id="nid" name="nid"> <input type="submit"
+										class="btn btn-outline-primary" value="Categories">
+								</form>
+							</li>
+							<li>
+								<form th:action="@{/weekdays}" method="get">
+									<input type="submit" class="btn btn-outline-primary" value="Weekdays">
+								</form>
+							</li>
+							<li>
+								<form th:action="@{/map}" method="get">
+									<input type="submit" class="btn btn-outline-primary" value="Map">
+								</form>
+							</li>
+
+
+							<li>
+								<form th:action="@{/logout}" method="post">
+									<input type="submit" class="btn btn-outline-success" value="Sign out">
+								</form>
+							</li>
+						</ul>
+					</div>
+				</nav>
+			</div>
+
+		</nav>
+
+	</section>
 
 	<div>
 		<table id="myTableState" class="table table-striped table-bordered" hidden>
@@ -157,6 +202,8 @@
 					<td th:text="${business}">Value</td>
 				</tr>
 
+				<!-- 7 -->
+
 			</tbody>
 		</table>
 	</div>
@@ -178,10 +225,11 @@
 		var finalListNV = [];
 		var finalListPA = [];
 		var finalListTN = [];
+
 		var finalListFood = [];
 		var finalListCoffeeTea = [];
 		var finalListBakery = [];
-
+		// 7...
 
 
 
@@ -244,6 +292,10 @@
 		for (var i = 43; i <= 45; i++) {
 			finalListTN.push(parseInt(table.rows[i].cells[0].innerHTML));
 		}
+
+
+
+
 		for (var i = 46; i <= 59; i++) {
 			finalListFood.push(parseInt(table.rows[i].cells[0].innerHTML));
 		}
@@ -270,9 +322,11 @@
 		console.log(finalListNV);
 		console.log(finalListPA);
 		console.log(finalListTN);
+
 		console.log(finalListFood);
 		console.log(finalListCoffeeTea);
 		console.log(finalListBakery);
+		// 7...
 
 
 
@@ -374,12 +428,16 @@
 
 				datasets: [{
 					label: 'Categories',
-					data: [{x: 'Coffee & Tea', y: finalListAll[0], state: finalListCoffeeTea},
-					{x: 'Food', y: finalListAll[1], state: finalListFood},
-					{x: 'Bakeries', y: finalListAll[2], state: finalListBakery},
+					data: [
+
+						{x: 'Coffee & Tea', y: finalListAll[0], state: finalListCoffeeTea},
+						{x: 'Food', y: finalListAll[1], state: finalListFood},
+						{x: 'Bakeries', y: finalListAll[2], state: finalListBakery},
+
+
 					],
 
-					backgroundcolor: ['rgb(255, 26, 104, 0.2)', 'rgb(255, 26, 104, 0.2)', 'rgb(255, 26, 104, 0.2)'],
+					backgroundColor: ['rgb(255, 26, 104, 0.2)', 'rgb(255, 26, 104, 0.2)', 'rgb(255, 26, 104, 0.2)'],
 					borderColor: ['rgba(255, 0, 0, 1)', 'rgba(255, 0, 0, 1)', 'rgba(255, 0, 0, 1)'],
 					borderWidth: 1
 				}]
@@ -414,9 +472,9 @@
 		};
 
 		document.getElementById('testMyChart1').onclick = clickHandler;
-		
-		
-	function clickHandlerSecond(click) {
+
+
+		function clickHandlerSecond(click) {
 			const color = ['rgb(255, 26, 104, 0.2)', 'rgb(255, 26, 104, 0.2)', 'rgb(255, 26, 104, 0.2)'];
 			testMyChartCategory.data.datasets[0].backgroundColor = color;
 			const points = testMyChartCategory.getElementsAtEventForMode(click, 'nearest', {

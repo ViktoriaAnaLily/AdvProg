@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+	<meta charset="ISO-8859-1">
+	<link rel="stylesheet" type="text/css" href="/webjars/bootstrap/css/bootstrap.min.css" />
+	<script type="text/javascript" src="/webjars/jquery/jquery.min.js"></script>
+	<script type="text/javascript" src="/webjars/bootstrap/js/bootstrap.min.js"></script>
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Ubuntu:ital,wght@0,300;0,400;0,700;1,300;1,700&display=swap"
+		rel="stylesheet">
+	<link rel="stylesheet" href="https://unpkg.com/leaflet@1.8.0/dist/leaflet.css"
+		integrity="sha512-hoalWLoI8r4UszCkZ5kL8vayOGVae1oxXe/2A4AO6J9+580uKHDO3JdHb7NzwwzK5xr/Fs0W40kiNHxM9vyTtQ=="
+		crossorigin="" />
+	<script src="https://unpkg.com/leaflet@1.8.0/dist/leaflet.js"
+		integrity="sha512-BB3hKbKWOc9Ez/TAwyWxNXeoV9c1v6FIeYiBieIWkpLjauysF18NzgR1MBNBXf8/KABdlkX68nAhlwcDFLGPCQ=="
+		crossorigin=""></script>
+
+	<!--Chart.js JS CDN-->
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.min.js"></script>
+
+	<link rel="stylesheet" type="text/css" href="css/navbar.css" />
+	<style>
+		* {
+			font-family: 'Ubuntu', sans-serif;
+		}
+
+		.chartCard {
+			width: 100vw;
+			height: calc(100vh-40px);
+			background: rgb(255, 0, 0);
+			display: flex;
+			align-items: center;
+			justify-content: center;
+		}
+
+		.chartBox {
+			width: 100vw;
+			padding: 20px;
+			border-radius: 20px;
+			border: solid 3px rgb(255, 0, 0);
+			background: white;
+		}
+	</style>
+
+</head>
+
+<body>
+
+
+	<title>CityGude</title>
+
+	</head>
+
+
+	<body>
+		<section class="header">
+
+			<h1>
+				<img src="images/logo.jpg" width="80" height="80">CityGude
+			</h1>
+
+			<nav>
+
+
+
+				<div class="nav-links">
+					<ul>
+
+
+						<li> <a href="test">Charts</a>
+						<li> <a href="map">Map</a>
+						<li> <a href="users">List of Users</a>
+						<li> <a href="index">Logout</a>
+					</ul>
+				</div>
+
+			</nav>
+		<div id="map"></div>
+
+		</section>
+
+		<script>
+			let mapOptions = {
+				center: [51.958, 9.141],
+				zoom: 10
+			}
+
+
+			let map = new L.map('map', mapOptions);
+
+			let layer = new L.TileLayer('http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png');
+			map.addLayer(layer);
+
+			let marker = new L.Marker([51.958, 9.141]);
+			marker.addTo(map);
+
+		</script>
+
+
+
+
+	</body>

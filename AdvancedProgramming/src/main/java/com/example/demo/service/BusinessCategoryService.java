@@ -5,6 +5,7 @@ import java.util.List;
 public interface BusinessCategoryService {
 	
 	List<Integer> businessCategoryAll();
+	
 	List<Integer> businessCategoryAB();
 	List<Integer> businessCategoryAZ();
 	List<Integer> businessCategoryCA();
@@ -24,6 +25,14 @@ public interface BusinessCategoryService {
 	 List<Integer> businessCategoryCoffeeTea();
 	 List<Integer> businessCategoryFood();
 	 List<Integer> businessCategoryBakery();
+	 List<Integer> businessCategoryBars();
+	 List<Integer> businessCategoryHotels();
+	 List<Integer> businessCategoryArtsEntertainment();
+	 List<Integer> businessCategoryHomeGarden();
+	 List<Integer> businessCategoryMuseums();
+	 List<Integer> businessCategoryDoctors();
+	 List<Integer> businessCategoryShopping();
+	 // 7...
 
 
 	
