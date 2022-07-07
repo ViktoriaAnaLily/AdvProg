@@ -11,6 +11,7 @@ import com.example.demo.model.Business;
 @Repository
 public interface BusinessRepository extends JpaRepository<Business, Long> {
 
+
 	@Query(value = "SELECT * FROM businessdateinew b where b.stars like %?1", nativeQuery = true)
 	public List<Business> findByStars(String stars);
 

@@ -1,0 +1,2589 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+	<meta charset="ISO-8859-1">
+	<link rel="stylesheet" type="text/css" href="/webjars/bootstrap/css/bootstrap.min.css" />
+	<script type="text/javascript" src="/webjars/jquery/jquery.min.js"></script>
+	<script type="text/javascript" src="/webjars/bootstrap/js/bootstrap.min.js"></script>
+	<link rel="stylesheet" type="text/css" href="css/navbar.css" />
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.min.js"></script>
+	<style>
+		.chartCard {
+			width: 50vw;
+			height: calc(100vh-40px);
+			background: rgba(255, 26, 104, 0.2);
+			display: flex;
+			align-items: center;
+			justify-content: center;
+		}
+
+		.chartBox {
+			width: 100vw;
+			padding: 20px;
+			border-radius: 20px;
+			border: solid 3px rgba(255, 26, 104, 1);
+			background: white;
+		}
+		
+		.chartCardWeekday {
+			width: 50vw;
+			height: calc(100vh-40px);
+			background: rgba(255, 26, 104, 0.2);
+			display: flex;
+			align-items: center;
+			justify-content: center;
+		}
+
+		.chartBoxWeekday {
+			width: 100vw;
+			padding: 20px;
+			border-radius: 20px;
+			border: solid 3px rgba(255, 26, 104, 1);
+			background: white;
+		}
+	</style>
+</head>
+
+<body>
+
+	<!-- Navigation MENU -->
+	<h1>
+		<img src="images/logo.jpg" width="80" height="80">CityGude
+	</h1>
+
+	<nav>
+		<div class="nav-links">
+			<ul>
+
+
+				<li> <a href="charts">Charts</a>
+				<li> <a href="map">Map</a>
+				<li> <a href="users">Home Page</a>
+				<li> <a href="index">Logout</a>
+			</ul>
+		</div>
+
+	</nav>
+	<!-- Navigation MENU -->
+
+
+	<div class="container text-center">
+
+		<div>
+
+			<!--TableState -->
+			<table id="TableState" class="table table-striped table-bordered" hidden>
+				<thead class="thead-dark">
+					<tr>
+						<th>state</th>
+						<th>amount</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr th:each="business: ${listState}">
+						<td th:text="${business.state}">state</td>
+						<td th:text="${business.amount}">amount</td>
+					</tr>
+				</tbody>
+			</table>
+
+
+			<!--TableStarsALL -->
+			<table id="TableStars" class="table table-striped table-bordered" hidden>
+				<thead class="thead-dark">
+					<tr>
+						<th>Stars</th>
+						<th>Amount</th>
+
+					</tr>
+				</thead>
+				<tbody>
+					<tr th:each="business: ${listStars}">
+						<td th:text="${business.stars}">Stars</td>
+						<td th:text="${business.amount}">Amount</td>
+
+					</tr>
+				</tbody>
+			</table>
+
+
+			<!--TableStateStars -->
+			<table id="TableStateStars" class="table table-striped table-bordered" hidden>
+				<thead class="thead-dark">
+					<tr>
+						<th>State</th>
+						<th>Stars</th>
+						<th>Amount</th>
+
+					</tr>
+				</thead>
+				<tbody>
+					<tr th:each="business: ${listStateStars}">
+						<td th:text="${business.state}">Stars</td>
+						<td th:text="${business.stars}">Stars</td>
+						<td th:text="${business.amount}">Amount</td>
+
+					</tr>
+				</tbody>
+			</table>
+
+			<!--TableCategories -->
+			<table id="TableCategories" class="table table-striped table-bordered" hidden>
+				<thead class="thead-dark">
+					<tr>
+						<th>State</th>
+						<th>Amount</th>
+
+					</tr>
+				</thead>
+				<tbody>
+					<tr th:each="business: ${listCategories}">
+						<td th:text="${business.state}">Stars</td>
+						<td th:text="${business.amount}">Amount</td>
+
+					</tr>
+				</tbody>
+			</table>
+
+			<!--TableStateStarsCategories -->
+			<table id="TableStateStarsCategories" class="table table-striped table-bordered" hidden>
+				<thead class="thead-dark">
+					<tr>
+						<th>amount</th>
+
+					</tr>
+				</thead>
+				<tbody>
+					<tr th:each="business: ${listStateStarsCategories}">
+						<td th:text="${business.amount}">amount</td>
+
+					</tr>
+				</tbody>
+			</table>
+
+
+			<!--TableMondayOpen -->
+			<table id="TableMondayOpen" class="table table-striped table-bordered" hidden>
+				<thead class="thead-dark">
+					<tr>
+						<th>time</th>
+						<th>state</th>
+						<th>amount</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr th:each="business: ${listMondayOpen}">
+						<td th:text="${business.time}">time</td>
+						<td th:text="${business.state}">state</td>
+						<td th:text="${business.amount}">amount</td>
+					</tr>
+				</tbody>
+			</table>
+
+			<!--TableTuesdayOpen -->
+			<table id="TableTuesdayOpen" class="table table-striped table-bordered" hidden>
+				<thead class="thead-dark">
+					<tr>
+						<th>time</th>
+						<th>state</th>
+						<th>amount</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr th:each="business: ${listTuesdayOpen}">
+						<td th:text="${business.time}">time</td>
+						<td th:text="${business.state}">state</td>
+						<td th:text="${business.amount}">amount</td>
+					</tr>
+				</tbody>
+			</table>
+
+			<!--TableWednesdayOpen -->
+			<table id="TableWednesdayOpen" class="table table-striped table-bordered" hidden>
+				<thead class="thead-dark">
+					<tr>
+						<th>time</th>
+						<th>state</th>
+						<th>amount</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr th:each="business: ${listWednesdayOpen}">
+						<td th:text="${business.time}">time</td>
+						<td th:text="${business.state}">state</td>
+						<td th:text="${business.amount}">amount</td>
+					</tr>
+				</tbody>
+			</table>
+
+			<!--TableThursdayOpen -->
+			<table id="TableThursdayOpen" class="table table-striped table-bordered" hidden>
+				<thead class="thead-dark">
+					<tr>
+						<th>time</th>
+						<th>state</th>
+						<th>amount</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr th:each="business: ${listThursdayOpen}">
+						<td th:text="${business.time}">time</td>
+						<td th:text="${business.state}">state</td>
+						<td th:text="${business.amount}">amount</td>
+					</tr>
+				</tbody>
+			</table>
+
+			<!--TableFridayOpen -->
+			<table id="TableFridayOpen" class="table table-striped table-bordered" hidden>
+				<thead class="thead-dark">
+					<tr>
+						<th>time</th>
+						<th>state</th>
+						<th>amount</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr th:each="business: ${listFridayOpen}">
+						<td th:text="${business.time}">time</td>
+						<td th:text="${business.state}">state</td>
+						<td th:text="${business.amount}">amount</td>
+					</tr>
+				</tbody>
+			</table>
+
+			<!--TableSaturdayOpen -->
+			<table id="TableSaturdayOpen" class="table table-striped table-bordered" hidden>
+				<thead class="thead-dark">
+					<tr>
+						<th>time</th>
+						<th>state</th>
+						<th>amount</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr th:each="business: ${listSaturdayOpen}">
+						<td th:text="${business.time}">time</td>
+						<td th:text="${business.state}">state</td>
+						<td th:text="${business.amount}">amount</td>
+					</tr>
+				</tbody>
+			</table>
+
+			<!--TableSundayOpen -->
+			<table id="TableSundayOpen" class="table table-striped table-bordered" hidden>
+				<thead class="thead-dark">
+					<tr>
+						<th>time</th>
+						<th>state</th>
+						<th>amount</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr th:each="business: ${listSundayOpen}">
+						<td th:text="${business.time}">time</td>
+						<td th:text="${business.state}">state</td>
+						<td th:text="${business.amount}">amount</td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+	</div>
+
+	<!--TableState -->
+	<script>
+		var table = document.getElementById("TableState");
+		var listTableStateAmount = [];
+		for (var i = 1; i < table.rows.length; i++) {
+			listTableStateAmount.push(parseInt(table.rows[i].cells[1].innerHTML));
+		}
+		document.getElementById("TableState");
+		console.log(listTableStateAmount);
+	</script>
+
+	<!--TableStars -->
+	<script>
+		var table = document.getElementById("TableStars");
+		var listTableStarsAmount = [];
+		for (var i = 1; i < table.rows.length; i++) {
+			listTableStarsAmount.push(parseInt(table.rows[i].cells[1].innerHTML));
+		}
+		document.getElementById("TableStars");
+		console.log(listTableStarsAmount);
+	</script>
+
+	<!--TableStateStars -->
+	<script>
+		var table = document.getElementById("TableStateStars");
+		var listStateStarsAB = [];
+		for (var i = 1; i <= 9; i++) {
+			listStateStarsAB.push(parseInt(table.rows[i].cells[2].innerHTML));
+		}
+		var listStateStarsAZ = [];
+		for (var i = 10; i <= 18; i++) {
+			listStateStarsAZ.push(parseInt(table.rows[i].cells[2].innerHTML));
+		}
+		var listStateStarsCA = [];
+		for (var i = 19; i <= 27; i++) {
+			listStateStarsCA.push(parseInt(table.rows[i].cells[2].innerHTML));
+		}
+		var listStateStarsDE = [];
+		for (var i = 28; i <= 36; i++) {
+			listStateStarsDE.push(parseInt(table.rows[i].cells[2].innerHTML));
+		}
+		var listStateStarsFL = [];
+		for (var i = 37; i <= 45; i++) {
+			listStateStarsFL.push(parseInt(table.rows[i].cells[2].innerHTML));
+		}
+		var listStateStarsID = [];
+		for (var i = 46; i <= 54; i++) {
+			listStateStarsID.push(parseInt(table.rows[i].cells[2].innerHTML));
+		}
+		var listStateStarsIL = [];
+		for (var i = 55; i <= 63; i++) {
+			listStateStarsIL.push(parseInt(table.rows[i].cells[2].innerHTML));
+		}
+		var listStateStarsIN = [];
+		for (var i = 64; i <= 72; i++) {
+			listStateStarsIN.push(parseInt(table.rows[i].cells[2].innerHTML));
+		}
+		var listStateStarsLA = [];
+		for (var i = 73; i <= 81; i++) {
+			listStateStarsLA.push(parseInt(table.rows[i].cells[2].innerHTML));
+		}
+		var listStateStarsMO = [];
+		for (var i = 82; i <= 90; i++) {
+			listStateStarsMO.push(parseInt(table.rows[i].cells[2].innerHTML));
+		}
+		var listStateStarsNJ = [];
+		for (var i = 91; i <= 99; i++) {
+			listStateStarsNJ.push(parseInt(table.rows[i].cells[2].innerHTML));
+		}
+		var listStateStarsNV = [];
+		for (var i = 100; i <= 108; i++) {
+			listStateStarsNV.push(parseInt(table.rows[i].cells[2].innerHTML));
+		}
+		var listStateStarsPA = [];
+		for (var i = 109; i <= 117; i++) {
+			listStateStarsPA.push(parseInt(table.rows[i].cells[2].innerHTML));
+		}
+		var listStateStarsTN = [];
+		for (var i = 118; i <= 126; i++) {
+			listStateStarsTN.push(parseInt(table.rows[i].cells[2].innerHTML));
+		}
+	</script>
+
+	<!--TableCategories -->
+	<script>
+		var table = document.getElementById("TableCategories");
+		var listCategories = [];
+		for (var i = 1; i <= 8; i++) {
+			listCategories.push(parseInt(table.rows[i].cells[1].innerHTML));
+		}
+		var listCategoriesAB = [];
+		for (var i = 9; i <= 16; i++) {
+			listCategoriesAB.push(parseInt(table.rows[i].cells[1].innerHTML));
+		}
+		var listCategoriesAZ = [];
+		for (var i = 17; i <= 24; i++) {
+			listCategoriesAZ.push(parseInt(table.rows[i].cells[1].innerHTML));
+		}
+		var listCategoriesCA = [];
+		for (var i = 25; i <= 32; i++) {
+			listCategoriesCA.push(parseInt(table.rows[i].cells[1].innerHTML));
+		}
+		var listCategoriesDE = [];
+		for (var i = 33; i <= 40; i++) {
+			listCategoriesDE.push(parseInt(table.rows[i].cells[1].innerHTML));
+		}
+		var listCategoriesFL = [];
+		for (var i = 41; i <= 48; i++) {
+			listCategoriesFL.push(parseInt(table.rows[i].cells[1].innerHTML));
+		}
+		var listCategoriesID = [];
+		for (var i = 49; i <= 56; i++) {
+			listCategoriesID.push(parseInt(table.rows[i].cells[1].innerHTML));
+		}
+		var listCategoriesIL = [];
+		for (var i = 57; i <= 64; i++) {
+			listCategoriesIL.push(parseInt(table.rows[i].cells[1].innerHTML));
+		}
+		var listCategoriesIN = [];
+		for (var i = 65; i <= 72; i++) {
+			listCategoriesIN.push(parseInt(table.rows[i].cells[1].innerHTML));
+		}
+		var listCategoriesLA = [];
+		for (var i = 73; i <= 80; i++) {
+			listCategoriesLA.push(parseInt(table.rows[i].cells[1].innerHTML));
+		}
+		var listCategoriesMO = [];
+		for (var i = 81; i <= 88; i++) {
+			listCategoriesMO.push(parseInt(table.rows[i].cells[1].innerHTML));
+		}
+		var listCategoriesNJ = [];
+		for (var i = 89; i <= 96; i++) {
+			listCategoriesNJ.push(parseInt(table.rows[i].cells[1].innerHTML));
+		}
+		var listCategoriesNV = [];
+		for (var i = 97; i <= 104; i++) {
+			listCategoriesNV.push(parseInt(table.rows[i].cells[1].innerHTML));
+		}
+		var listCategoriesPA = [];
+		for (var i = 105; i <= 112; i++) {
+			listCategoriesPA.push(parseInt(table.rows[i].cells[1].innerHTML));
+		}
+		var listCategoriesTN = [];
+		for (var i = 113; i <= 120; i++) {
+			listCategoriesTN.push(parseInt(table.rows[i].cells[1].innerHTML));
+		}
+	</script>
+
+	<!--TableStateStarsCategories -->
+	<script>
+		var table = document.getElementById("TableStateStarsCategories");
+
+		// AB
+		var listStateStarsCategories1 = [];
+		for (var i = 1; i <= 8; i++) {
+			listStateStarsCategories1.push(parseInt(table.rows[i].cells[0].innerHTML));
+		}
+		var listStateStarsCategories15 = [];
+		for (var i = 9; i <= 16; i++) {
+			listStateStarsCategories15.push(parseInt(table.rows[i].cells[0].innerHTML));
+		}
+		var listStateStarsCategories2 = [];
+		for (var i = 17; i <= 24; i++) {
+			listStateStarsCategories2.push(parseInt(table.rows[i].cells[0].innerHTML));
+		}
+		var listStateStarsCategories25 = [];
+		for (var i = 25; i <= 32; i++) {
+			listStateStarsCategories25.push(parseInt(table.rows[i].cells[0].innerHTML));
+		}
+		var listStateStarsCategories3 = [];
+		for (var i = 33; i <= 40; i++) {
+			listStateStarsCategories3.push(parseInt(table.rows[i].cells[0].innerHTML));
+		}
+		var listStateStarsCategories35 = [];
+		for (var i = 41; i <= 48; i++) {
+			listStateStarsCategories35.push(parseInt(table.rows[i].cells[0].innerHTML));
+		}
+		var listStateStarsCategories4 = [];
+		for (var i = 49; i <= 56; i++) {
+			listStateStarsCategories4.push(parseInt(table.rows[i].cells[0].innerHTML));
+		}
+		var listStateStarsCategories45 = [];
+		for (var i = 57; i <= 64; i++) {
+			listStateStarsCategories45.push(parseInt(table.rows[i].cells[0].innerHTML));
+		}
+		var listStateStarsCategories5 = [];
+		for (var i = 65; i <= 72; i++) {
+			listStateStarsCategories5.push(parseInt(table.rows[i].cells[0].innerHTML));
+		}
+
+		// AZ
+		var listStateStarsCategoriesAZ1 = [];
+		for (var i = 73; i <= 80; i++) {
+			listStateStarsCategoriesAZ1.push(parseInt(table.rows[i].cells[0].innerHTML));
+		}
+		var listStateStarsCategoriesAZ15 = [];
+		for (var i = 81; i <= 88; i++) {
+			listStateStarsCategoriesAZ15.push(parseInt(table.rows[i].cells[0].innerHTML));
+		}
+		var listStateStarsCategoriesAZ2 = [];
+		for (var i = 89; i <= 96; i++) {
+			listStateStarsCategoriesAZ2.push(parseInt(table.rows[i].cells[0].innerHTML));
+		}
+		var listStateStarsCategoriesAZ25 = [];
+		for (var i = 97; i <= 104; i++) {
+			listStateStarsCategoriesAZ25.push(parseInt(table.rows[i].cells[0].innerHTML));
+		}
+		var listStateStarsCategoriesAZ3 = [];
+		for (var i = 105; i <= 112; i++) {
+			listStateStarsCategoriesAZ3.push(parseInt(table.rows[i].cells[0].innerHTML));
+		}
+		var listStateStarsCategoriesAZ35 = [];
+		for (var i = 113; i <= 120; i++) {
+			listStateStarsCategoriesAZ35.push(parseInt(table.rows[i].cells[0].innerHTML));
+		}
+		var listStateStarsCategoriesAZ4 = [];
+		for (var i = 121; i <= 128; i++) {
+			listStateStarsCategoriesAZ4.push(parseInt(table.rows[i].cells[0].innerHTML));
+		}
+		var listStateStarsCategoriesAZ45 = [];
+		for (var i = 129; i <= 136; i++) {
+			listStateStarsCategoriesAZ45.push(parseInt(table.rows[i].cells[0].innerHTML));
+		}
+		var listStateStarsCategoriesAZ5 = [];
+		for (var i = 137; i <= 144; i++) {
+			listStateStarsCategoriesAZ5.push(parseInt(table.rows[i].cells[0].innerHTML));
+		}
+
+		// CA
+		var listStateStarsCategoriesCA1 = [];
+		for (var i = 145; i <= 152; i++) {
+			listStateStarsCategoriesCA1.push(parseInt(table.rows[i].cells[0].innerHTML));
+		}
+		var listStateStarsCategoriesCA15 = [];
+		for (var i = 153; i <= 160; i++) {
+			listStateStarsCategoriesCA15.push(parseInt(table.rows[i].cells[0].innerHTML));
+		}
+		var listStateStarsCategoriesCA2 = [];
+		for (var i = 161; i <= 168; i++) {
+			listStateStarsCategoriesCA2.push(parseInt(table.rows[i].cells[0].innerHTML));
+		}
+		var listStateStarsCategoriesCA25 = [];
+		for (var i = 169; i <= 176; i++) {
+			listStateStarsCategoriesCA25.push(parseInt(table.rows[i].cells[0].innerHTML));
+		}
+		var listStateStarsCategoriesCA3 = [];
+		for (var i = 177; i <= 184; i++) {
+			listStateStarsCategoriesCA3.push(parseInt(table.rows[i].cells[0].innerHTML));
+		}
+		var listStateStarsCategoriesCA35 = [];
+		for (var i = 185; i <= 192; i++) {
+			listStateStarsCategoriesCA35.push(parseInt(table.rows[i].cells[0].innerHTML));
+		}
+		var listStateStarsCategoriesCA4 = [];
+		for (var i = 193; i <= 200; i++) {
+			listStateStarsCategoriesCA4.push(parseInt(table.rows[i].cells[0].innerHTML));
+		}
+		var listStateStarsCategoriesCA45 = [];
+		for (var i = 201; i <= 208; i++) {
+			listStateStarsCategoriesCA45.push(parseInt(table.rows[i].cells[0].innerHTML));
+		}
+		var listStateStarsCategoriesCA5 = [];
+		for (var i = 209; i <= 216; i++) {
+			listStateStarsCategoriesCA5.push(parseInt(table.rows[i].cells[0].innerHTML));
+		}
+
+		// DE
+		var listStateStarsCategoriesDE1 = [];
+		for (var i = 217; i <= 224; i++) {
+			listStateStarsCategoriesDE1.push(parseInt(table.rows[i].cells[0].innerHTML));
+		}
+		var listStateStarsCategoriesDE15 = [];
+		for (var i = 225; i <= 232; i++) {
+			listStateStarsCategoriesDE15.push(parseInt(table.rows[i].cells[0].innerHTML));
+		}
+		var listStateStarsCategoriesDE2 = [];
+		for (var i = 232; i <= 240; i++) {
+			listStateStarsCategoriesDE2.push(parseInt(table.rows[i].cells[0].innerHTML));
+		}
+		var listStateStarsCategoriesDE25 = [];
+		for (var i = 241; i <= 248; i++) {
+			listStateStarsCategoriesDE25.push(parseInt(table.rows[i].cells[0].innerHTML));
+		}
+		var listStateStarsCategoriesDE3 = [];
+		for (var i = 249; i <= 256; i++) {
+			listStateStarsCategoriesDE3.push(parseInt(table.rows[i].cells[0].innerHTML));
+		}
+		var listStateStarsCategoriesDE35 = [];
+		for (var i = 257; i <= 264; i++) {
+			listStateStarsCategoriesDE35.push(parseInt(table.rows[i].cells[0].innerHTML));
+		}
+		var listStateStarsCategoriesDE4 = [];
+		for (var i = 265; i <= 272; i++) {
+			listStateStarsCategoriesDE4.push(parseInt(table.rows[i].cells[0].innerHTML));
+		}
+		var listStateStarsCategoriesDE45 = [];
+		for (var i = 273; i <= 280; i++) {
+			listStateStarsCategoriesDE45.push(parseInt(table.rows[i].cells[0].innerHTML));
+		}
+		var listStateStarsCategoriesDE5 = [];
+		for (var i = 281; i <= 288; i++) {
+			listStateStarsCategoriesDE5.push(parseInt(table.rows[i].cells[0].innerHTML));
+		}
+
+		// FL
+		var listStateStarsCategoriesFL1 = [];
+		for (var i = 289; i <= 296; i++) {
+			listStateStarsCategoriesFL1.push(parseInt(table.rows[i].cells[0].innerHTML));
+		}
+		var listStateStarsCategoriesFL15 = [];
+		for (var i = 297; i <= 304; i++) {
+			listStateStarsCategoriesFL15.push(parseInt(table.rows[i].cells[0].innerHTML));
+		}
+		var listStateStarsCategoriesFL2 = [];
+		for (var i = 305; i <= 312; i++) {
+			listStateStarsCategoriesFL2.push(parseInt(table.rows[i].cells[0].innerHTML));
+		}
+		var listStateStarsCategoriesFL25 = [];
+		for (var i = 313; i <= 320; i++) {
+			listStateStarsCategoriesFL25.push(parseInt(table.rows[i].cells[0].innerHTML));
+		}
+		var listStateStarsCategoriesFL3 = [];
+		for (var i = 321; i <= 328; i++) {
+			listStateStarsCategoriesFL3.push(parseInt(table.rows[i].cells[0].innerHTML));
+		}
+		var listStateStarsCategoriesFL35 = [];
+		for (var i = 329; i <= 336; i++) {
+			listStateStarsCategoriesFL35.push(parseInt(table.rows[i].cells[0].innerHTML));
+		}
+		var listStateStarsCategoriesFL4 = [];
+		for (var i = 337; i <= 344; i++) {
+			listStateStarsCategoriesFL4.push(parseInt(table.rows[i].cells[0].innerHTML));
+		}
+		var listStateStarsCategoriesFL45 = [];
+		for (var i = 345; i <= 352; i++) {
+			listStateStarsCategoriesFL45.push(parseInt(table.rows[i].cells[0].innerHTML));
+		}
+		var listStateStarsCategoriesFL5 = [];
+		for (var i = 353; i <= 360; i++) {
+			listStateStarsCategoriesFL5.push(parseInt(table.rows[i].cells[0].innerHTML));
+		}
+
+		// ID
+		var listStateStarsCategoriesID1 = [];
+		for (var i = 361; i <= 368; i++) {
+			listStateStarsCategoriesID1.push(parseInt(table.rows[i].cells[0].innerHTML));
+		}
+		var listStateStarsCategoriesID15 = [];
+		for (var i = 369; i <= 376; i++) {
+			listStateStarsCategoriesID15.push(parseInt(table.rows[i].cells[0].innerHTML));
+		}
+		var listStateStarsCategoriesID2 = [];
+		for (var i = 377; i <= 384; i++) {
+			listStateStarsCategoriesID2.push(parseInt(table.rows[i].cells[0].innerHTML));
+		}
+		var listStateStarsCategoriesID25 = [];
+		for (var i = 385; i <= 392; i++) {
+			listStateStarsCategoriesID25.push(parseInt(table.rows[i].cells[0].innerHTML));
+		}
+		var listStateStarsCategoriesID3 = [];
+		for (var i = 393; i <= 400; i++) {
+			listStateStarsCategoriesID3.push(parseInt(table.rows[i].cells[0].innerHTML));
+		}
+		var listStateStarsCategoriesID35 = [];
+		for (var i = 401; i <= 408; i++) {
+			listStateStarsCategoriesID35.push(parseInt(table.rows[i].cells[0].innerHTML));
+		}
+		var listStateStarsCategoriesID4 = [];
+		for (var i = 409; i <= 416; i++) {
+			listStateStarsCategoriesID4.push(parseInt(table.rows[i].cells[0].innerHTML));
+		}
+		var listStateStarsCategoriesID45 = [];
+		for (var i = 417; i <= 424; i++) {
+			listStateStarsCategoriesID45.push(parseInt(table.rows[i].cells[0].innerHTML));
+		}
+		var listStateStarsCategoriesID5 = [];
+		for (var i = 425; i <= 432; i++) {
+			listStateStarsCategoriesID5.push(parseInt(table.rows[i].cells[0].innerHTML));
+		}
+
+		// IL
+		var listStateStarsCategoriesIL1 = [];
+		for (var i = 433; i <= 440; i++) {
+			listStateStarsCategoriesIL1.push(parseInt(table.rows[i].cells[0].innerHTML));
+		}
+		var listStateStarsCategoriesIL15 = [];
+		for (var i = 441; i <= 448; i++) {
+			listStateStarsCategoriesIL15.push(parseInt(table.rows[i].cells[0].innerHTML));
+		}
+		var listStateStarsCategoriesIL2 = [];
+		for (var i = 449; i <= 456; i++) {
+			listStateStarsCategoriesIL2.push(parseInt(table.rows[i].cells[0].innerHTML));
+		}
+		var listStateStarsCategoriesIL25 = [];
+		for (var i = 457; i <= 464; i++) {
+			listStateStarsCategoriesIL25.push(parseInt(table.rows[i].cells[0].innerHTML));
+		}
+		var listStateStarsCategoriesIL3 = [];
+		for (var i = 465; i <= 472; i++) {
+			listStateStarsCategoriesIL3.push(parseInt(table.rows[i].cells[0].innerHTML));
+		}
+		var listStateStarsCategoriesIL35 = [];
+		for (var i = 473; i <= 480; i++) {
+			listStateStarsCategoriesIL35.push(parseInt(table.rows[i].cells[0].innerHTML));
+		}
+		var listStateStarsCategoriesIL4 = [];
+		for (var i = 481; i <= 488; i++) {
+			listStateStarsCategoriesIL4.push(parseInt(table.rows[i].cells[0].innerHTML));
+		}
+		var listStateStarsCategoriesIL45 = [];
+		for (var i = 489; i <= 496; i++) {
+			listStateStarsCategoriesIL45.push(parseInt(table.rows[i].cells[0].innerHTML));
+		}
+		var listStateStarsCategoriesIL5 = [];
+		for (var i = 497; i <= 504; i++) {
+			listStateStarsCategoriesIL5.push(parseInt(table.rows[i].cells[0].innerHTML));
+		}
+
+		// IN
+		var listStateStarsCategoriesIN1 = [];
+		for (var i = 505; i <= 512; i++) {
+			listStateStarsCategoriesIN1.push(parseInt(table.rows[i].cells[0].innerHTML));
+		}
+		var listStateStarsCategoriesIN15 = [];
+		for (var i = 513; i <= 520; i++) {
+			listStateStarsCategoriesIN15.push(parseInt(table.rows[i].cells[0].innerHTML));
+		}
+		var listStateStarsCategoriesIN2 = [];
+		for (var i = 521; i <= 528; i++) {
+			listStateStarsCategoriesIN2.push(parseInt(table.rows[i].cells[0].innerHTML));
+		}
+		var listStateStarsCategoriesIN25 = [];
+		for (var i = 529; i <= 536; i++) {
+			listStateStarsCategoriesIN25.push(parseInt(table.rows[i].cells[0].innerHTML));
+		}
+		var listStateStarsCategoriesIN3 = [];
+		for (var i = 537; i <= 544; i++) {
+			listStateStarsCategoriesIN3.push(parseInt(table.rows[i].cells[0].innerHTML));
+		}
+		var listStateStarsCategoriesIN35 = [];
+		for (var i = 545; i <= 552; i++) {
+			listStateStarsCategoriesIN35.push(parseInt(table.rows[i].cells[0].innerHTML));
+		}
+		var listStateStarsCategoriesIN4 = [];
+		for (var i = 553; i <= 560; i++) {
+			listStateStarsCategoriesIN4.push(parseInt(table.rows[i].cells[0].innerHTML));
+		}
+		var listStateStarsCategoriesIN45 = [];
+		for (var i = 561; i <= 568; i++) {
+			listStateStarsCategoriesIN45.push(parseInt(table.rows[i].cells[0].innerHTML));
+		}
+		var listStateStarsCategoriesIN5 = [];
+		for (var i = 569; i <= 576; i++) {
+			listStateStarsCategoriesIN5.push(parseInt(table.rows[i].cells[0].innerHTML));
+		}
+
+		// LA
+		var listStateStarsCategoriesLA1 = [];
+		for (var i = 577; i <= 584; i++) {
+			listStateStarsCategoriesLA1.push(parseInt(table.rows[i].cells[0].innerHTML));
+		}
+		var listStateStarsCategoriesLA15 = [];
+		for (var i = 585; i <= 592; i++) {
+			listStateStarsCategoriesLA15.push(parseInt(table.rows[i].cells[0].innerHTML));
+		}
+		var listStateStarsCategoriesLA2 = [];
+		for (var i = 593; i <= 600; i++) {
+			listStateStarsCategoriesLA2.push(parseInt(table.rows[i].cells[0].innerHTML));
+		}
+		var listStateStarsCategoriesLA25 = [];
+		for (var i = 601; i <= 608; i++) {
+			listStateStarsCategoriesLA25.push(parseInt(table.rows[i].cells[0].innerHTML));
+		}
+		var listStateStarsCategoriesLA3 = [];
+		for (var i = 609; i <= 616; i++) {
+			listStateStarsCategoriesLA3.push(parseInt(table.rows[i].cells[0].innerHTML));
+		}
+		var listStateStarsCategoriesLA35 = [];
+		for (var i = 617; i <= 624; i++) {
+			listStateStarsCategoriesLA35.push(parseInt(table.rows[i].cells[0].innerHTML));
+		}
+		var listStateStarsCategoriesLA4 = [];
+		for (var i = 625; i <= 632; i++) {
+			listStateStarsCategoriesLA4.push(parseInt(table.rows[i].cells[0].innerHTML));
+		}
+		var listStateStarsCategoriesLA45 = [];
+		for (var i = 633; i <= 640; i++) {
+			listStateStarsCategoriesLA45.push(parseInt(table.rows[i].cells[0].innerHTML));
+		}
+		var listStateStarsCategoriesLA5 = [];
+		for (var i = 641; i <= 648; i++) {
+			listStateStarsCategoriesLA5.push(parseInt(table.rows[i].cells[0].innerHTML));
+		}
+
+		// MO
+		var listStateStarsCategoriesMO1 = [];
+		for (var i = 649; i <= 656; i++) {
+			listStateStarsCategoriesMO1.push(parseInt(table.rows[i].cells[0].innerHTML));
+		}
+		var listStateStarsCategoriesMO15 = [];
+		for (var i = 657; i <= 664; i++) {
+			listStateStarsCategoriesMO15.push(parseInt(table.rows[i].cells[0].innerHTML));
+		}
+		var listStateStarsCategoriesMO2 = [];
+		for (var i = 665; i <= 672; i++) {
+			listStateStarsCategoriesMO2.push(parseInt(table.rows[i].cells[0].innerHTML));
+		}
+		var listStateStarsCategoriesMO25 = [];
+		for (var i = 673; i <= 680; i++) {
+			listStateStarsCategoriesMO25.push(parseInt(table.rows[i].cells[0].innerHTML));
+		}
+		var listStateStarsCategoriesMO3 = [];
+		for (var i = 681; i <= 688; i++) {
+			listStateStarsCategoriesMO3.push(parseInt(table.rows[i].cells[0].innerHTML));
+		}
+		var listStateStarsCategoriesMO35 = [];
+		for (var i = 689; i <= 696; i++) {
+			listStateStarsCategoriesMO35.push(parseInt(table.rows[i].cells[0].innerHTML));
+		}
+		var listStateStarsCategoriesMO4 = [];
+		for (var i = 697; i <= 704; i++) {
+			listStateStarsCategoriesMO4.push(parseInt(table.rows[i].cells[0].innerHTML));
+		}
+		var listStateStarsCategoriesMO45 = [];
+		for (var i = 705; i <= 712; i++) {
+			listStateStarsCategoriesMO45.push(parseInt(table.rows[i].cells[0].innerHTML));
+		}
+		var listStateStarsCategoriesMO5 = [];
+		for (var i = 713; i <= 720; i++) {
+			listStateStarsCategoriesMO5.push(parseInt(table.rows[i].cells[0].innerHTML));
+		}
+
+		// NJ
+		var listStateStarsCategoriesNJ1 = [];
+		for (var i = 721; i <= 728; i++) {
+			listStateStarsCategoriesNJ1.push(parseInt(table.rows[i].cells[0].innerHTML));
+		}
+		var listStateStarsCategoriesNJ15 = [];
+		for (var i = 729; i <= 736; i++) {
+			listStateStarsCategoriesNJ15.push(parseInt(table.rows[i].cells[0].innerHTML));
+		}
+		var listStateStarsCategoriesNJ2 = [];
+		for (var i = 737; i <= 744; i++) {
+			listStateStarsCategoriesNJ2.push(parseInt(table.rows[i].cells[0].innerHTML));
+		}
+		var listStateStarsCategoriesNJ25 = [];
+		for (var i = 745; i <= 752; i++) {
+			listStateStarsCategoriesNJ25.push(parseInt(table.rows[i].cells[0].innerHTML));
+		}
+		var listStateStarsCategoriesNJ3 = [];
+		for (var i = 753; i <= 760; i++) {
+			listStateStarsCategoriesNJ3.push(parseInt(table.rows[i].cells[0].innerHTML));
+		}
+		var listStateStarsCategoriesNJ35 = [];
+		for (var i = 761; i <= 768; i++) {
+			listStateStarsCategoriesNJ35.push(parseInt(table.rows[i].cells[0].innerHTML));
+		}
+		var listStateStarsCategoriesNJ4 = [];
+		for (var i = 769; i <= 776; i++) {
+			listStateStarsCategoriesNJ4.push(parseInt(table.rows[i].cells[0].innerHTML));
+		}
+		var listStateStarsCategoriesNJ45 = [];
+		for (var i = 777; i <= 784; i++) {
+			listStateStarsCategoriesNJ45.push(parseInt(table.rows[i].cells[0].innerHTML));
+		}
+		var listStateStarsCategoriesNJ5 = [];
+		for (var i = 785; i <= 792; i++) {
+			listStateStarsCategoriesNJ5.push(parseInt(table.rows[i].cells[0].innerHTML));
+		}
+
+		// NV
+		var listStateStarsCategoriesNV1 = [];
+		for (var i = 793; i <= 800; i++) {
+			listStateStarsCategoriesNV1.push(parseInt(table.rows[i].cells[0].innerHTML));
+		}
+		var listStateStarsCategoriesNV15 = [];
+		for (var i = 801; i <= 808; i++) {
+			listStateStarsCategoriesNV15.push(parseInt(table.rows[i].cells[0].innerHTML));
+		}
+		var listStateStarsCategoriesNV2 = [];
+		for (var i = 809; i <= 816; i++) {
+			listStateStarsCategoriesNV2.push(parseInt(table.rows[i].cells[0].innerHTML));
+		}
+		var listStateStarsCategoriesNV25 = [];
+		for (var i = 817; i <= 824; i++) {
+			listStateStarsCategoriesNV25.push(parseInt(table.rows[i].cells[0].innerHTML));
+		}
+		var listStateStarsCategoriesNV3 = [];
+		for (var i = 825; i <= 832; i++) {
+			listStateStarsCategoriesNV3.push(parseInt(table.rows[i].cells[0].innerHTML));
+		}
+		var listStateStarsCategoriesNV35 = [];
+		for (var i = 833; i <= 840; i++) {
+			listStateStarsCategoriesNV35.push(parseInt(table.rows[i].cells[0].innerHTML));
+		}
+		var listStateStarsCategoriesNV4 = [];
+		for (var i = 841; i <= 848; i++) {
+			listStateStarsCategoriesNV4.push(parseInt(table.rows[i].cells[0].innerHTML));
+		}
+		var listStateStarsCategoriesNV45 = [];
+		for (var i = 849; i <= 856; i++) {
+			listStateStarsCategoriesNV45.push(parseInt(table.rows[i].cells[0].innerHTML));
+		}
+		var listStateStarsCategoriesNV5 = [];
+		for (var i = 857; i <= 864; i++) {
+			listStateStarsCategoriesNV5.push(parseInt(table.rows[i].cells[0].innerHTML));
+		}
+
+		// PA
+		var listStateStarsCategoriesPA1 = [];
+		for (var i = 865; i <= 872; i++) {
+			listStateStarsCategoriesPA1.push(parseInt(table.rows[i].cells[0].innerHTML));
+		}
+		var listStateStarsCategoriesPA15 = [];
+		for (var i = 873; i <= 880; i++) {
+			listStateStarsCategoriesPA15.push(parseInt(table.rows[i].cells[0].innerHTML));
+		}
+		var listStateStarsCategoriesPA2 = [];
+		for (var i = 881; i <= 888; i++) {
+			listStateStarsCategoriesPA2.push(parseInt(table.rows[i].cells[0].innerHTML));
+		}
+		var listStateStarsCategoriesPA25 = [];
+		for (var i = 889; i <= 896; i++) {
+			listStateStarsCategoriesPA25.push(parseInt(table.rows[i].cells[0].innerHTML));
+		}
+		var listStateStarsCategoriesPA3 = [];
+		for (var i = 897; i <= 904; i++) {
+			listStateStarsCategoriesPA3.push(parseInt(table.rows[i].cells[0].innerHTML));
+		}
+		var listStateStarsCategoriesPA35 = [];
+		for (var i = 905; i <= 912; i++) {
+			listStateStarsCategoriesPA35.push(parseInt(table.rows[i].cells[0].innerHTML));
+		}
+		var listStateStarsCategoriesPA4 = [];
+		for (var i = 913; i <= 920; i++) {
+			listStateStarsCategoriesPA4.push(parseInt(table.rows[i].cells[0].innerHTML));
+		}
+		var listStateStarsCategoriesPA45 = [];
+		for (var i = 921; i <= 928; i++) {
+			listStateStarsCategoriesPA45.push(parseInt(table.rows[i].cells[0].innerHTML));
+		}
+		var listStateStarsCategoriesPA5 = [];
+		for (var i = 929; i <= 936; i++) {
+			listStateStarsCategoriesPA5.push(parseInt(table.rows[i].cells[0].innerHTML));
+		}
+
+		// TN
+		var listStateStarsCategoriesTN1 = [];
+		for (var i = 937; i <= 944; i++) {
+			listStateStarsCategoriesTN1.push(parseInt(table.rows[i].cells[0].innerHTML));
+		}
+		var listStateStarsCategoriesTN15 = [];
+		for (var i = 945; i <= 952; i++) {
+			listStateStarsCategoriesTN15.push(parseInt(table.rows[i].cells[0].innerHTML));
+		}
+		var listStateStarsCategoriesTN2 = [];
+		for (var i = 953; i <= 960; i++) {
+			listStateStarsCategoriesTN2.push(parseInt(table.rows[i].cells[0].innerHTML));
+		}
+		var listStateStarsCategoriesTN25 = [];
+		for (var i = 961; i <= 968; i++) {
+			listStateStarsCategoriesTN25.push(parseInt(table.rows[i].cells[0].innerHTML));
+		}
+		var listStateStarsCategoriesTN3 = [];
+		for (var i = 969; i <= 976; i++) {
+			listStateStarsCategoriesTN3.push(parseInt(table.rows[i].cells[0].innerHTML));
+		}
+		var listStateStarsCategoriesTN35 = [];
+		for (var i = 977; i <= 984; i++) {
+			listStateStarsCategoriesTN35.push(parseInt(table.rows[i].cells[0].innerHTML));
+		}
+		var listStateStarsCategoriesTN4 = [];
+		for (var i = 985; i <= 992; i++) {
+			listStateStarsCategoriesTN4.push(parseInt(table.rows[i].cells[0].innerHTML));
+		}
+		var listStateStarsCategoriesTN45 = [];
+		for (var i = 993; i <= 1000; i++) {
+			listStateStarsCategoriesTN45.push(parseInt(table.rows[i].cells[0].innerHTML));
+		}
+		var listStateStarsCategoriesTN5 = [];
+		for (var i = 1001; i <= 1008; i++) {
+			listStateStarsCategoriesTN5.push(parseInt(table.rows[i].cells[0].innerHTML));
+		}
+
+
+
+
+
+	</script>
+
+	<!--TableMondayOpen -->
+	<script>
+		var table = document.getElementById("TableMondayOpen");
+		var listMondayAmountAB = [];
+		for (var i = 1; i <= 8; i++) {
+			listMondayAmountAB.push(parseInt(table.rows[i].cells[2].innerHTML));
+		}
+		var listMondayAmountAZ = [];
+		for (var i = 9; i <= 16; i++) {
+			listMondayAmountAZ.push(parseInt(table.rows[i].cells[2].innerHTML));
+		}
+		var listMondayAmountCA = [];
+		for (var i = 17; i <= 24; i++) {
+			listMondayAmountCA.push(parseInt(table.rows[i].cells[2].innerHTML));
+		}
+		var listMondayAmountALL = [];
+		for (var i = 25; i <= 32; i++) {
+			listMondayAmountALL.push(parseInt(table.rows[i].cells[2].innerHTML));
+		}
+		var listMondayAmountDE = [];
+		for (var i = 33; i <= 40; i++) {
+			listMondayAmountDE.push(parseInt(table.rows[i].cells[2].innerHTML));
+		}
+		var listMondayAmountFL = [];
+		for (var i = 41; i <= 48; i++) {
+			listMondayAmountFL.push(parseInt(table.rows[i].cells[2].innerHTML));
+		}
+		var listMondayAmountID = [];
+		for (var i = 49; i <= 56; i++) {
+			listMondayAmountID.push(parseInt(table.rows[i].cells[2].innerHTML));
+		}
+		var listMondayAmountIL = [];
+		for (var i = 57; i <= 64; i++) {
+			listMondayAmountIL.push(parseInt(table.rows[i].cells[2].innerHTML));
+		}
+		var listMondayAmountIN = [];
+		for (var i = 65; i <= 72; i++) {
+			listMondayAmountIN.push(parseInt(table.rows[i].cells[2].innerHTML));
+		}
+		var listMondayAmountLA = [];
+		for (var i = 73; i <= 80; i++) {
+			listMondayAmountLA.push(parseInt(table.rows[i].cells[2].innerHTML));
+		}
+		var listMondayAmountMO = [];
+		for (var i = 81; i <= 88; i++) {
+			listMondayAmountMO.push(parseInt(table.rows[i].cells[2].innerHTML));
+		}
+		var listMondayAmountNJ = [];
+		for (var i = 89; i <= 96; i++) {
+			listMondayAmountNJ.push(parseInt(table.rows[i].cells[2].innerHTML));
+		}
+		var listMondayAmountNV = [];
+		for (var i = 97; i <= 104; i++) {
+			listMondayAmountNV.push(parseInt(table.rows[i].cells[2].innerHTML));
+		}
+		var listMondayAmountPA = [];
+		for (var i = 105; i <= 112; i++) {
+			listMondayAmountPA.push(parseInt(table.rows[i].cells[2].innerHTML));
+		}
+		var listMondayAmountTN = [];
+		for (var i = 113; i <= 120; i++) {
+			listMondayAmountTN.push(parseInt(table.rows[i].cells[2].innerHTML));
+		}
+	</script>
+
+	<!--TableTuesdayOpen -->
+	<script>
+		var table = document.getElementById("TableTuesdayOpen");
+		var listTuesdayAmountAB = [];
+		for (var i = 1; i <= 8; i++) {
+			listTuesdayAmountAB.push(parseInt(table.rows[i].cells[2].innerHTML));
+		}
+		var listTuesdayAmountAZ = [];
+		for (var i = 9; i <= 16; i++) {
+			listTuesdayAmountAZ.push(parseInt(table.rows[i].cells[2].innerHTML));
+		}
+		var listTuesdayAmountCA = [];
+		for (var i = 17; i <= 24; i++) {
+			listTuesdayAmountCA.push(parseInt(table.rows[i].cells[2].innerHTML));
+		}
+		var listTuesdayAmountALL = [];
+		for (var i = 25; i <= 32; i++) {
+			listTuesdayAmountALL.push(parseInt(table.rows[i].cells[2].innerHTML));
+		}
+		var listTuesdayAmountDE = [];
+		for (var i = 33; i <= 40; i++) {
+			listTuesdayAmountDE.push(parseInt(table.rows[i].cells[2].innerHTML));
+		}
+		var listTuesdayAmountFL = [];
+		for (var i = 41; i <= 48; i++) {
+			listTuesdayAmountFL.push(parseInt(table.rows[i].cells[2].innerHTML));
+		}
+		var listTuesdayAmountID = [];
+		for (var i = 49; i <= 56; i++) {
+			listTuesdayAmountID.push(parseInt(table.rows[i].cells[2].innerHTML));
+		}
+		var listTuesdayAmountIL = [];
+		for (var i = 57; i <= 64; i++) {
+			listTuesdayAmountIL.push(parseInt(table.rows[i].cells[2].innerHTML));
+		}
+		var listTuesdayAmountIN = [];
+		for (var i = 65; i <= 72; i++) {
+			listTuesdayAmountIN.push(parseInt(table.rows[i].cells[2].innerHTML));
+		}
+		var listTuesdayAmountLA = [];
+		for (var i = 73; i <= 80; i++) {
+			listTuesdayAmountLA.push(parseInt(table.rows[i].cells[2].innerHTML));
+		}
+		var listTuesdayAmountMO = [];
+		for (var i = 81; i <= 88; i++) {
+			listTuesdayAmountMO.push(parseInt(table.rows[i].cells[2].innerHTML));
+		}
+		var listTuesdayAmountNJ = [];
+		for (var i = 89; i <= 96; i++) {
+			listTuesdayAmountNJ.push(parseInt(table.rows[i].cells[2].innerHTML));
+		}
+		var listTuesdayAmountNV = [];
+		for (var i = 97; i <= 104; i++) {
+			listTuesdayAmountNV.push(parseInt(table.rows[i].cells[2].innerHTML));
+		}
+		var listTuesdayAmountPA = [];
+		for (var i = 105; i <= 112; i++) {
+			listTuesdayAmountPA.push(parseInt(table.rows[i].cells[2].innerHTML));
+		}
+		var listTuesdayAmountTN = [];
+		for (var i = 113; i <= 120; i++) {
+			listTuesdayAmountTN.push(parseInt(table.rows[i].cells[2].innerHTML));
+		}
+	</script>
+
+	<!--TableWednesdayOpen -->
+	<script>
+		var table = document.getElementById("TableWednesdayOpen");
+		var listWednesdayAmountAB = [];
+		for (var i = 1; i <= 8; i++) {
+			listWednesdayAmountAB.push(parseInt(table.rows[i].cells[2].innerHTML));
+		}
+		var listWednesdayAmountAZ = [];
+		for (var i = 9; i <= 16; i++) {
+			listWednesdayAmountAZ.push(parseInt(table.rows[i].cells[2].innerHTML));
+		}
+		var listWednesdayAmountCA = [];
+		for (var i = 17; i <= 24; i++) {
+			listWednesdayAmountCA.push(parseInt(table.rows[i].cells[2].innerHTML));
+		}
+		var listWednesdayAmountALL = [];
+		for (var i = 25; i <= 32; i++) {
+			listWednesdayAmountALL.push(parseInt(table.rows[i].cells[2].innerHTML));
+		}
+		var listWednesdayAmountDE = [];
+		for (var i = 33; i <= 40; i++) {
+			listWednesdayAmountDE.push(parseInt(table.rows[i].cells[2].innerHTML));
+		}
+		var listWednesdayAmountFL = [];
+		for (var i = 41; i <= 48; i++) {
+			listWednesdayAmountFL.push(parseInt(table.rows[i].cells[2].innerHTML));
+		}
+		var listWednesdayAmountID = [];
+		for (var i = 49; i <= 56; i++) {
+			listWednesdayAmountID.push(parseInt(table.rows[i].cells[2].innerHTML));
+		}
+		var listWednesdayAmountIL = [];
+		for (var i = 57; i <= 64; i++) {
+			listWednesdayAmountIL.push(parseInt(table.rows[i].cells[2].innerHTML));
+		}
+		var listWednesdayAmountIN = [];
+		for (var i = 65; i <= 72; i++) {
+			listWednesdayAmountIN.push(parseInt(table.rows[i].cells[2].innerHTML));
+		}
+		var listWednesdayAmountLA = [];
+		for (var i = 73; i <= 80; i++) {
+			listWednesdayAmountLA.push(parseInt(table.rows[i].cells[2].innerHTML));
+		}
+		var listWednesdayAmountMO = [];
+		for (var i = 81; i <= 88; i++) {
+			listWednesdayAmountMO.push(parseInt(table.rows[i].cells[2].innerHTML));
+		}
+		var listWednesdayAmountNJ = [];
+		for (var i = 89; i <= 96; i++) {
+			listWednesdayAmountNJ.push(parseInt(table.rows[i].cells[2].innerHTML));
+		}
+		var listWednesdayAmountNV = [];
+		for (var i = 97; i <= 104; i++) {
+			listWednesdayAmountNV.push(parseInt(table.rows[i].cells[2].innerHTML));
+		}
+		var listWednesdayAmountPA = [];
+		for (var i = 105; i <= 112; i++) {
+			listWednesdayAmountPA.push(parseInt(table.rows[i].cells[2].innerHTML));
+		}
+		var listWednesdayAmountTN = [];
+		for (var i = 113; i <= 120; i++) {
+			listWednesdayAmountTN.push(parseInt(table.rows[i].cells[2].innerHTML));
+		}
+	</script>
+
+	<!--TableThursdayOpen -->
+	<script>
+		var table = document.getElementById("TableThursdayOpen");
+		var listThursdayAmountAB = [];
+		for (var i = 1; i <= 8; i++) {
+			listThursdayAmountAB.push(parseInt(table.rows[i].cells[2].innerHTML));
+		}
+		var listThursdayAmountAZ = [];
+		for (var i = 9; i <= 16; i++) {
+			listThursdayAmountAZ.push(parseInt(table.rows[i].cells[2].innerHTML));
+		}
+		var listThursdayAmountCA = [];
+		for (var i = 17; i <= 24; i++) {
+			listThursdayAmountCA.push(parseInt(table.rows[i].cells[2].innerHTML));
+		}
+		var listThursdayAmountALL = [];
+		for (var i = 25; i <= 32; i++) {
+			listThursdayAmountALL.push(parseInt(table.rows[i].cells[2].innerHTML));
+		}
+		var listThursdayAmountDE = [];
+		for (var i = 33; i <= 40; i++) {
+			listThursdayAmountDE.push(parseInt(table.rows[i].cells[2].innerHTML));
+		}
+		var listThursdayAmountFL = [];
+		for (var i = 41; i <= 48; i++) {
+			listThursdayAmountFL.push(parseInt(table.rows[i].cells[2].innerHTML));
+		}
+		var listThursdayAmountID = [];
+		for (var i = 49; i <= 56; i++) {
+			listThursdayAmountID.push(parseInt(table.rows[i].cells[2].innerHTML));
+		}
+		var listThursdayAmountIL = [];
+		for (var i = 57; i <= 64; i++) {
+			listThursdayAmountIL.push(parseInt(table.rows[i].cells[2].innerHTML));
+		}
+		var listThursdayAmountIN = [];
+		for (var i = 65; i <= 72; i++) {
+			listThursdayAmountIN.push(parseInt(table.rows[i].cells[2].innerHTML));
+		}
+		var listThursdayAmountLA = [];
+		for (var i = 73; i <= 80; i++) {
+			listThursdayAmountLA.push(parseInt(table.rows[i].cells[2].innerHTML));
+		}
+		var listThursdayAmountMO = [];
+		for (var i = 81; i <= 88; i++) {
+			listThursdayAmountMO.push(parseInt(table.rows[i].cells[2].innerHTML));
+		}
+		var listThursdayAmountNJ = [];
+		for (var i = 89; i <= 96; i++) {
+			listThursdayAmountNJ.push(parseInt(table.rows[i].cells[2].innerHTML));
+		}
+		var listThursdayAmountNV = [];
+		for (var i = 97; i <= 104; i++) {
+			listThursdayAmountNV.push(parseInt(table.rows[i].cells[2].innerHTML));
+		}
+		var listThursdayAmountPA = [];
+		for (var i = 105; i <= 112; i++) {
+			listThursdayAmountPA.push(parseInt(table.rows[i].cells[2].innerHTML));
+		}
+		var listThursdayAmountTN = [];
+		for (var i = 113; i <= 120; i++) {
+			listThursdayAmountTN.push(parseInt(table.rows[i].cells[2].innerHTML));
+		}
+	</script>
+
+	<!--TableFridayOpen -->
+	<script>
+		var table = document.getElementById("TableFridayOpen");
+		var listFridayAmountAB = [];
+		for (var i = 1; i <= 8; i++) {
+			listFridayAmountAB.push(parseInt(table.rows[i].cells[2].innerHTML));
+		}
+		var listFridayAmountAZ = [];
+		for (var i = 9; i <= 16; i++) {
+			listFridayAmountAZ.push(parseInt(table.rows[i].cells[2].innerHTML));
+		}
+		var listFridayAmountCA = [];
+		for (var i = 17; i <= 24; i++) {
+			listFridayAmountCA.push(parseInt(table.rows[i].cells[2].innerHTML));
+		}
+		var listFridayAmountALL = [];
+		for (var i = 25; i <= 32; i++) {
+			listFridayAmountALL.push(parseInt(table.rows[i].cells[2].innerHTML));
+		}
+		var listFridayAmountDE = [];
+		for (var i = 33; i <= 40; i++) {
+			listFridayAmountDE.push(parseInt(table.rows[i].cells[2].innerHTML));
+		}
+		var listFridayAmountFL = [];
+		for (var i = 41; i <= 48; i++) {
+			listFridayAmountFL.push(parseInt(table.rows[i].cells[2].innerHTML));
+		}
+		var listFridayAmountID = [];
+		for (var i = 49; i <= 56; i++) {
+			listFridayAmountID.push(parseInt(table.rows[i].cells[2].innerHTML));
+		}
+		var listFridayAmountIL = [];
+		for (var i = 57; i <= 64; i++) {
+			listFridayAmountIL.push(parseInt(table.rows[i].cells[2].innerHTML));
+		}
+		var listFridayAmountIN = [];
+		for (var i = 65; i <= 72; i++) {
+			listFridayAmountIN.push(parseInt(table.rows[i].cells[2].innerHTML));
+		}
+		var listFridayAmountLA = [];
+		for (var i = 73; i <= 80; i++) {
+			listFridayAmountLA.push(parseInt(table.rows[i].cells[2].innerHTML));
+		}
+		var listFridayAmountMO = [];
+		for (var i = 81; i <= 88; i++) {
+			listFridayAmountMO.push(parseInt(table.rows[i].cells[2].innerHTML));
+		}
+		var listFridayAmountNJ = [];
+		for (var i = 89; i <= 96; i++) {
+			listFridayAmountNJ.push(parseInt(table.rows[i].cells[2].innerHTML));
+		}
+		var listFridayAmountNV = [];
+		for (var i = 97; i <= 104; i++) {
+			listFridayAmountNV.push(parseInt(table.rows[i].cells[2].innerHTML));
+		}
+		var listFridayAmountPA = [];
+		for (var i = 105; i <= 112; i++) {
+			listFridayAmountPA.push(parseInt(table.rows[i].cells[2].innerHTML));
+		}
+		var listFridayAmountTN = [];
+		for (var i = 113; i <= 120; i++) {
+			listFridayAmountTN.push(parseInt(table.rows[i].cells[2].innerHTML));
+		}
+	</script>
+
+	<!--TableSaturdayOpen -->
+	<script>
+		var table = document.getElementById("TableSaturdayOpen");
+		var listSaturdayAmountAB = [];
+		for (var i = 1; i <= 8; i++) {
+			listSaturdayAmountAB.push(parseInt(table.rows[i].cells[2].innerHTML));
+		}
+		var listSaturdayAmountAZ = [];
+		for (var i = 9; i <= 16; i++) {
+			listSaturdayAmountAZ.push(parseInt(table.rows[i].cells[2].innerHTML));
+		}
+		var listSaturdayAmountCA = [];
+		for (var i = 17; i <= 24; i++) {
+			listSaturdayAmountCA.push(parseInt(table.rows[i].cells[2].innerHTML));
+		}
+		var listSaturdayAmountALL = [];
+		for (var i = 25; i <= 32; i++) {
+			listSaturdayAmountALL.push(parseInt(table.rows[i].cells[2].innerHTML));
+		}
+		var listSaturdayAmountDE = [];
+		for (var i = 33; i <= 40; i++) {
+			listSaturdayAmountDE.push(parseInt(table.rows[i].cells[2].innerHTML));
+		}
+		var listSaturdayAmountFL = [];
+		for (var i = 41; i <= 48; i++) {
+			listSaturdayAmountFL.push(parseInt(table.rows[i].cells[2].innerHTML));
+		}
+		var listSaturdayAmountID = [];
+		for (var i = 49; i <= 56; i++) {
+			listSaturdayAmountID.push(parseInt(table.rows[i].cells[2].innerHTML));
+		}
+		var listSaturdayAmountIL = [];
+		for (var i = 57; i <= 64; i++) {
+			listSaturdayAmountIL.push(parseInt(table.rows[i].cells[2].innerHTML));
+		}
+		var listSaturdayAmountIN = [];
+		for (var i = 65; i <= 72; i++) {
+			listSaturdayAmountIN.push(parseInt(table.rows[i].cells[2].innerHTML));
+		}
+		var listSaturdayAmountLA = [];
+		for (var i = 73; i <= 80; i++) {
+			listSaturdayAmountLA.push(parseInt(table.rows[i].cells[2].innerHTML));
+		}
+		var listSaturdayAmountMO = [];
+		for (var i = 81; i <= 88; i++) {
+			listSaturdayAmountMO.push(parseInt(table.rows[i].cells[2].innerHTML));
+		}
+		var listSaturdayAmountNJ = [];
+		for (var i = 89; i <= 96; i++) {
+			listSaturdayAmountNJ.push(parseInt(table.rows[i].cells[2].innerHTML));
+		}
+		var listSaturdayAmountNV = [];
+		for (var i = 97; i <= 104; i++) {
+			listSaturdayAmountNV.push(parseInt(table.rows[i].cells[2].innerHTML));
+		}
+		var listSaturdayAmountPA = [];
+		for (var i = 105; i <= 112; i++) {
+			listSaturdayAmountPA.push(parseInt(table.rows[i].cells[2].innerHTML));
+		}
+		var listSaturdayAmountTN = [];
+		for (var i = 113; i <= 120; i++) {
+			listSaturdayAmountTN.push(parseInt(table.rows[i].cells[2].innerHTML));
+		}
+	</script>
+
+	<!--TableSundayOpen -->
+	<script>
+		var table = document.getElementById("TableSundayOpen");
+		var listSundayAmountAB = [];
+		for (var i = 1; i <= 8; i++) {
+			listSundayAmountAB.push(parseInt(table.rows[i].cells[2].innerHTML));
+		}
+		var listSundayAmountAZ = [];
+		for (var i = 9; i <= 16; i++) {
+			listSundayAmountAZ.push(parseInt(table.rows[i].cells[2].innerHTML));
+		}
+		var listSundayAmountCA = [];
+		for (var i = 17; i <= 24; i++) {
+			listSundayAmountCA.push(parseInt(table.rows[i].cells[2].innerHTML));
+		}
+		var listSundayAmountALL = [];
+		for (var i = 25; i <= 32; i++) {
+			listSundayAmountALL.push(parseInt(table.rows[i].cells[2].innerHTML));
+		}
+		var listSundayAmountDE = [];
+		for (var i = 33; i <= 40; i++) {
+			listSundayAmountDE.push(parseInt(table.rows[i].cells[2].innerHTML));
+		}
+		var listSundayAmountFL = [];
+		for (var i = 41; i <= 48; i++) {
+			listSundayAmountFL.push(parseInt(table.rows[i].cells[2].innerHTML));
+		}
+		var listSundayAmountID = [];
+		for (var i = 49; i <= 56; i++) {
+			listSundayAmountID.push(parseInt(table.rows[i].cells[2].innerHTML));
+		}
+		var listSundayAmountIL = [];
+		for (var i = 57; i <= 64; i++) {
+			listSundayAmountIL.push(parseInt(table.rows[i].cells[2].innerHTML));
+		}
+		var listSundayAmountIN = [];
+		for (var i = 65; i <= 72; i++) {
+			listSundayAmountIN.push(parseInt(table.rows[i].cells[2].innerHTML));
+		}
+		var listSundayAmountLA = [];
+		for (var i = 73; i <= 80; i++) {
+			listSundayAmountLA.push(parseInt(table.rows[i].cells[2].innerHTML));
+		}
+		var listSundayAmountMO = [];
+		for (var i = 81; i <= 88; i++) {
+			listSundayAmountMO.push(parseInt(table.rows[i].cells[2].innerHTML));
+		}
+		var listSundayAmountNJ = [];
+		for (var i = 89; i <= 96; i++) {
+			listSundayAmountNJ.push(parseInt(table.rows[i].cells[2].innerHTML));
+		}
+		var listSundayAmountNV = [];
+		for (var i = 97; i <= 104; i++) {
+			listSundayAmountNV.push(parseInt(table.rows[i].cells[2].innerHTML));
+		}
+		var listSundayAmountPA = [];
+		for (var i = 105; i <= 112; i++) {
+			listSundayAmountPA.push(parseInt(table.rows[i].cells[2].innerHTML));
+		}
+		var listSundayAmountTN = [];
+		for (var i = 113; i <= 120; i++) {
+			listSundayAmountTN.push(parseInt(table.rows[i].cells[2].innerHTML));
+		}
+	</script>
+
+
+	<div class="chartCard">
+		<div class="chartBox">
+			<canvas id="ChartState"></canvas>
+			<canvas id="ChartStars"></canvas>
+			<canvas id="ChartCategories"></canvas>
+		</div>
+	</div>
+	
+	<div class="chartCardWeekday">
+		<div class="chartBoxWeekday">
+			<canvas id="ChartMondayOpen"></canvas>
+			<canvas id="ChartTuesdayOpen"></canvas>
+			<canvas id="ChartWednesdayOpen"></canvas>
+			<canvas id="ChartThursdayOpen"></canvas>
+			<canvas id="ChartFridayOpen"></canvas>
+			<canvas id="ChartSaturdayOpen"></canvas>
+			<canvas id="ChartSundayOpen"></canvas>
+		</div>
+	</div>
+
+	<!-- ChartState -->
+	<script>
+		var ChartState = new Chart(
+			document.getElementById('ChartState'), {
+			type: 'bar',
+			data: {
+				labels: ['AB', 'AZ', 'CA', 'DE', 'FL', 'ID', 'IL', 'IN', 'LA', 'MO', 'NJ', 'NV', 'PA', 'TN'],
+				datasets: [{
+					label: 'State',
+					data: [
+						{
+							x: 'AB', y: listTableStateAmount[0],
+							monday: listMondayAmountAB, tuesday: listTuesdayAmountAB, wednesday: listWednesdayAmountAB,
+							thursday: listThursdayAmountAB, friday: listFridayAmountAB, saturday: listSaturdayAmountAB,
+							sunday: listSundayAmountAB, stars: listStateStarsAB, category: listCategoriesAB
+						},
+						{
+							x: 'AZ', y: listTableStateAmount[1],
+							monday: listMondayAmountAZ, tuesday: listTuesdayAmountAZ, wednesday: listWednesdayAmountAZ,
+							thursday: listThursdayAmountAZ, friday: listFridayAmountAZ, saturday: listSaturdayAmountAZ,
+							sunday: listSundayAmountAZ, stars: listStateStarsAZ, category: listCategoriesAZ
+						},
+						{
+							x: 'CA', y: listTableStateAmount[2],
+							monday: listMondayAmountCA, tuesday: listTuesdayAmountCA, wednesday: listWednesdayAmountCA,
+							thursday: listThursdayAmountCA, friday: listFridayAmountCA, saturday: listSaturdayAmountCA,
+							sunday: listSundayAmountCA, stars: listStateStarsCA, category: listCategoriesCA
+						},
+						{
+							x: 'DE', y: listTableStateAmount[3],
+							monday: listMondayAmountDE,
+							monday: listMondayAmountDE, tuesday: listTuesdayAmountDE, wednesday: listWednesdayAmountDE,
+							thursday: listThursdayAmountDE, friday: listFridayAmountDE, saturday: listSaturdayAmountDE,
+							sunday: listSundayAmountDE, stars: listStateStarsDE, category: listCategoriesDE
+						},
+						{
+							x: 'FL', y: listTableStateAmount[4],
+							monday: listMondayAmountFL, tuesday: listTuesdayAmountFL, wednesday: listWednesdayAmountFL,
+							thursday: listThursdayAmountFL, friday: listFridayAmountFL, saturday: listSaturdayAmountFL,
+							sunday: listSundayAmountFL, stars: listStateStarsFL, category: listCategoriesFL
+						},
+						{
+							x: 'ID', y: listTableStateAmount[5],
+							monday: listMondayAmountID, tuesday: listTuesdayAmountID, wednesday: listWednesdayAmountID,
+							thursday: listThursdayAmountID, friday: listFridayAmountID, saturday: listSaturdayAmountID,
+							sunday: listSundayAmountID, stars: listStateStarsID, category: listCategoriesID
+						},
+						{
+							x: 'IL', y: listTableStateAmount[6],
+							monday: listMondayAmountIL, tuesday: listTuesdayAmountIL, wednesday: listWednesdayAmountIL,
+							thursday: listThursdayAmountIL, friday: listFridayAmountIL, saturday: listSaturdayAmountIL,
+							sunday: listSundayAmountIL, stars: listStateStarsIL, category: listCategoriesIL
+						},
+						{
+							x: 'IN', y: listTableStateAmount[7],
+							monday: listMondayAmountIN, tuesday: listTuesdayAmountIN, wednesday: listWednesdayAmountIN,
+							thursday: listThursdayAmountIN, friday: listFridayAmountIN, saturday: listSaturdayAmountIN,
+							sunday: listSundayAmountIN, stars: listStateStarsIN, category: listCategoriesIN
+						},
+						{
+							x: 'LA', y: listTableStateAmount[8],
+							monday: listMondayAmountLA, tuesday: listTuesdayAmountLA, wednesday: listWednesdayAmountLA,
+							thursday: listThursdayAmountLA, friday: listFridayAmountLA, saturday: listSaturdayAmountLA,
+							sunday: listSundayAmountLA, stars: listStateStarsLA, category: listCategoriesLA
+						},
+						{
+							x: 'MO', y: listTableStateAmount[9],
+							monday: listMondayAmountMO, tuesday: listTuesdayAmountMO, wednesday: listWednesdayAmountMO,
+							thursday: listThursdayAmountMO, friday: listFridayAmountMO, saturday: listSaturdayAmountMO,
+							sunday: listSundayAmountMO, stars: listStateStarsMO, category: listCategoriesMO
+						},
+						{
+							x: 'NJ', y: listTableStateAmount[10],
+							monday: listMondayAmountNJ, tuesday: listTuesdayAmountNJ, wednesday: listWednesdayAmountNJ,
+							thursday: listThursdayAmountNJ, friday: listFridayAmountNJ, saturday: listSaturdayAmountNJ,
+							sunday: listSundayAmountNJ, stars: listStateStarsNJ, category: listCategoriesNJ
+						},
+						{
+							x: 'NV', y: listTableStateAmount[11],
+							monday: listMondayAmountNV, tuesday: listTuesdayAmountNV, wednesday: listWednesdayAmountNV,
+							thursday: listThursdayAmountNV, friday: listFridayAmountNV, saturday: listSaturdayAmountNV,
+							sunday: listSundayAmountNV, stars: listStateStarsNV, category: listCategoriesNV
+						},
+						{
+							x: 'PA', y: listTableStateAmount[12],
+							monday: listMondayAmountPA, tuesday: listTuesdayAmountPA, wednesday: listWednesdayAmountPA,
+							thursday: listThursdayAmountPA, friday: listFridayAmountPA, saturday: listSaturdayAmountPA,
+							sunday: listSundayAmountPA, stars: listStateStarsPA, category: listCategoriesPA
+						},
+						{
+							x: 'TN', y: listTableStateAmount[13],
+							monday: listMondayAmountTN, tuesday: listTuesdayAmountTN, wednesday: listWednesdayAmountTN,
+							thursday: listThursdayAmountTN, friday: listFridayAmountTN, saturday: listSaturdayAmountTN,
+							sunday: listSundayAmountTN, stars: listStateStarsTN, category: listCategoriesTN
+						}
+
+					],
+					backgroundColor: ['rgb(255, 26, 104, 0.2)', 'rgba(235, 245, 39, 0.2)', 'rgba(179, 245, 39, 0.2)', 'rgba(245, 39, 171, 0.2)',
+						'rgba(245, 118, 39, 0.2)',
+						'rgba(245, 186, 39, 0.2)', 'rgba(39, 245, 195, 0.2)', 'rgba(39, 132, 245, 0.2)', 'rgba(139, 39, 245, 0.2)',
+						'rgba(195, 39, 245, 0.2)',
+						'rgba(245, 39, 145, 0.2)', 'rgba(53, 39, 245, 0.2)', 'rgba(245, 203, 39, 0.2)', 'rgba(115, 196, 204, 0.2)'],
+					borderColor: ['rgb(255, 26, 104, 1)', 'rgba(235, 245, 39, 1)', 'rgba(179, 245, 39, 1)', 'rgba(245, 39, 171, 1)',
+						'rgba(245, 118, 39, 1)',
+						'rgba(245, 186, 39, 1)', 'rgba(39, 245, 195, 1)', 'rgba(39, 132, 245, 1)', 'rgba(139, 39, 245, 1)',
+						'rgba(195, 39, 245, 1)',
+						'rgba(245, 39, 145, 1)', 'rgba(53, 39, 245, 1)', 'rgba(245, 203, 39, 1)', 'rgba(115, 196, 204, 1)'],
+					borderWidth: 1,
+					options: {
+						scales: {
+							y: {
+								beginAtZero: true
+							}
+						}
+					}
+				}]
+
+			}
+		});
+
+	</script>
+
+	<!-- ChartStars -->
+	<script>
+		var ChartStars = new Chart(
+			document.getElementById('ChartStars'), {
+			type: 'bar',
+			data: {
+				labels: ['1.0', '1.5', '2.0', '2.5', '3.0', '3.5', '4.0', '4.5', '5.0'],
+				datasets: [{
+					label: 'Stars',
+					data: [
+						{x: '1.0', y: listTableStarsAmount[1]},
+						{x: '1.5', y: listTableStarsAmount[0]},
+						{x: '2.0', y: listTableStarsAmount[2]},
+						{x: '2.5', y: listTableStarsAmount[3]},
+						{x: '3.0', y: listTableStarsAmount[4]},
+						{x: '3.5', y: listTableStarsAmount[5]},
+						{x: '4.0', y: listTableStarsAmount[6]},
+						{x: '4.5', y: listTableStarsAmount[7]},
+						{x: '5.0', y: listTableStarsAmount[8]}
+					],
+
+					backgroundColor: ['rgb(255, 26, 104, 0.2)', 'rgba(235, 245, 39, 0.2)', 'rgba(179, 245, 39, 0.2)', 'rgba(245, 39, 171, 0.2)',
+						'rgba(245, 118, 39, 0.2)',
+						'rgba(245, 186, 39, 0.2)', 'rgba(39, 245, 195, 0.2)', 'rgba(39, 132, 245, 0.2)', 'rgba(139, 39, 245, 0.2)'],
+					borderColor: ['rgb(255, 26, 104, 1)', 'rgba(235, 245, 39, 1)', 'rgba(179, 245, 39, 1)', 'rgba(245, 39, 171, 1)',
+						'rgba(245, 118, 39, 1)',
+						'rgba(245, 186, 39, 1)', 'rgba(39, 245, 195, 1)', 'rgba(39, 132, 245, 1)', 'rgba(139, 39, 245, 1)'],
+					borderWidth: 1
+				}]
+
+			}
+		});
+	</script>
+
+	<!-- ChartCategories -->
+	<script>
+		var ChartCategories = new Chart(
+			document.getElementById('ChartCategories'), {
+			type: 'bar',
+			data: {
+				labels: ["Coffee & Tea", "Food", "Bakeries", "Bars", "Hotels",
+					"Museums", "Doctors", "Shopping"],
+				datasets: [{
+					label: 'Categories',
+					data: [listCategories[0], listCategories[1], listCategories[2], listCategories[3],
+					listCategories[4], listCategories[5],
+					listCategories[6], listCategories[7],
+					listCategories[8]],
+					backgroundColor: ['rgb(255, 26, 104, 0.2)', 'rgba(235, 245, 39, 0.2)', 'rgba(179, 245, 39, 0.2)', 'rgba(245, 39, 171, 0.2)',
+						'rgba(245, 118, 39, 0.2)', 'rgba(245, 186, 39, 0.2)', 'rgba(39, 245, 195, 0.2)', 'rgba(39, 132, 245, 0.2)'],
+					borderColor: ['rgb(255, 26, 104, 1)', 'rgba(235, 245, 39, 1)', 'rgba(179, 245, 39, 1)', 'rgba(245, 39, 171, 1)',
+						'rgba(245, 118, 39, 1)',
+						'rgba(245, 186, 39, 1)', 'rgba(39, 245, 195, 1)', 'rgba(39, 132, 245, 1)'],
+					borderWidth: 1
+				}]
+
+			}
+		});
+	</script>
+
+
+	<!-- clickHandler - FUNKTION -->
+	<script>
+		function clickHandler(click) {
+			const color = ['rgb(255, 26, 104, 0.2)', 'rgba(235, 245, 39, 0.2)', 'rgba(179, 245, 39, 0.2)', 'rgba(245, 39, 171, 0.2)',
+				'rgba(245, 118, 39, 0.2)',
+				'rgba(245, 186, 39, 0.2)', 'rgba(39, 245, 195, 0.2)', 'rgba(39, 132, 245, 0.2)', 'rgba(139, 39, 245, 0.2)',
+				'rgba(195, 39, 245, 0.2)',
+				'rgba(245, 39, 145, 0.2)', 'rgba(53, 39, 245, 0.2)', 'rgba(245, 203, 39, 0.2)', 'rgba(115, 196, 204, 0.2)'];
+			ChartState.data.datasets[0].backgroundColor = color;
+			// CONST for ChartState
+			const points = ChartState.getElementsAtEventForMode(click, 'nearest', {
+				intersect: true
+			}, true);
+
+			if (points.length) {
+
+				ChartMondayOpen.data.datasets[0].data = points[0]._chart.config.data.datasets[0].data[points[0]._index].monday;
+				ChartTuesdayOpen.data.datasets[0].data = points[0]._chart.config.data.datasets[0].data[points[0]._index].tuesday;
+				ChartWednesdayOpen.data.datasets[0].data = points[0]._chart.config.data.datasets[0].data[points[0]._index].wednesday;
+				ChartThursdayOpen.data.datasets[0].data = points[0]._chart.config.data.datasets[0].data[points[0]._index].thursday;
+				ChartFridayOpen.data.datasets[0].data = points[0]._chart.config.data.datasets[0].data[points[0]._index].friday;
+				ChartSaturdayOpen.data.datasets[0].data = points[0]._chart.config.data.datasets[0].data[points[0]._index].saturday;
+				ChartSundayOpen.data.datasets[0].data = points[0]._chart.config.data.datasets[0].data[points[0]._index].sunday;
+				ChartStars.data.datasets[0].data = points[0]._chart.config.data.datasets[0].data[points[0]._index].stars;
+				ChartCategories.data.datasets[0].data = points[0]._chart.config.data.datasets[0].data[points[0]._index].category;
+
+				ChartMondayOpen.update();
+				ChartTuesdayOpen.update();
+				ChartWednesdayOpen.update();
+				ChartThursdayOpen.update();
+				ChartFridayOpen.update();
+				ChartSaturdayOpen.update();
+				ChartSundayOpen.update();
+				ChartStars.update();
+				ChartCategories.update();
+
+
+			}
+
+			if (points[0]) {
+				//console.log(points[0]._chart.config.data.datasets[0].backgroundColor[points[0]._index])
+				ChartState.data.datasets[0].backgroundColor[points[0]._index] = "rgba(255, 0, 0, 1)";
+			}
+
+			ChartState.update();
+		};
+
+		document.getElementById('ChartState').onclick = clickHandler;
+	</script>
+
+	<!-- clickHandlerStars - FUNKTION -->
+	<script>
+		function clickHandlerStars(click) {
+			const color = ['rgb(255, 26, 104, 0.2)', 'rgba(235, 245, 39, 0.2)', 'rgba(179, 245, 39, 0.2)', 'rgba(245, 39, 171, 0.2)',
+				'rgba(245, 118, 39, 0.2)',
+				'rgba(245, 186, 39, 0.2)', 'rgba(39, 245, 195, 0.2)', 'rgba(39, 132, 245, 0.2)', 'rgba(139, 39, 245, 0.2)'];
+			ChartStars.data.datasets[0].backgroundColor = color;
+			// CONST for ChartState
+			const points = ChartStars.getElementsAtEventForMode(click, 'nearest', {
+				intersect: true
+			}, true);
+
+			//AB
+			if (ChartState.data.datasets[0].backgroundColor[0] == "rgba(255, 0, 0, 1)") {
+				if (points[0]._index == 0) {
+					console.log(points[0]._index)
+					console.log(ChartCategories.data.datasets[0].data)
+					ChartCategories.data.datasets[0].data = listStateStarsCategories1;
+				}
+
+				if (points[0]._index == 1) {
+					console.log(points[0]._index)
+					console.log(ChartCategories.data.datasets[0].data)
+					ChartCategories.data.datasets[0].data = listStateStarsCategories15;
+				}
+				if (points[0]._index == 2) {
+					console.log(points[0]._index)
+					console.log(ChartCategories.data.datasets[0].data)
+					ChartCategories.data.datasets[0].data = listStateStarsCategories2;
+				}
+				if (points[0]._index == 3) {
+					console.log(points[0]._index)
+					console.log(ChartCategories.data.datasets[0].data)
+					ChartCategories.data.datasets[0].data = listStateStarsCategories25;
+				}
+				if (points[0]._index == 4) {
+					console.log(points[0]._index)
+					console.log(ChartCategories.data.datasets[0].data)
+					ChartCategories.data.datasets[0].data = listStateStarsCategories3;
+				}
+				if (points[0]._index == 5) {
+					console.log(points[0]._index)
+					console.log(ChartCategories.data.datasets[0].data)
+					ChartCategories.data.datasets[0].data = listStateStarsCategories35;
+				}
+				if (points[0]._index == 6) {
+					console.log(points[0]._index)
+					console.log(ChartCategories.data.datasets[0].data)
+					ChartCategories.data.datasets[0].data = listStateStarsCategories4;
+				}
+				if (points[0]._index == 7) {
+					console.log(points[0]._index)
+					console.log(ChartCategories.data.datasets[0].data)
+					ChartCategories.data.datasets[0].data = listStateStarsCategories45;
+				}
+				if (points[0]._index == 8) {
+					console.log(points[0]._index)
+					console.log(ChartCategories.data.datasets[0].data)
+					ChartCategories.data.datasets[0].data = listStateStarsCategories5;
+				}
+			}
+			//AZ
+			if (ChartState.data.datasets[0].backgroundColor[1] == "rgba(255, 0, 0, 1)") {
+				if (points[0]._index == 0) {
+					console.log(points[0]._index)
+					console.log(ChartCategories.data.datasets[0].data)
+					ChartCategories.data.datasets[0].data = listStateStarsCategoriesAZ1;
+				}
+
+				if (points[0]._index == 1) {
+					console.log(points[0]._index)
+					console.log(ChartCategories.data.datasets[0].data)
+					ChartCategories.data.datasets[0].data = listStateStarsCategoriesAZ15;
+				}
+				if (points[0]._index == 2) {
+					console.log(points[0]._index)
+					console.log(ChartCategories.data.datasets[0].data)
+					ChartCategories.data.datasets[0].data = listStateStarsCategoriesAZ2;
+				}
+				if (points[0]._index == 3) {
+					console.log(points[0]._index)
+					console.log(ChartCategories.data.datasets[0].data)
+					ChartCategories.data.datasets[0].data = listStateStarsCategoriesAZ25;
+				}
+				if (points[0]._index == 4) {
+					console.log(points[0]._index)
+					console.log(ChartCategories.data.datasets[0].data)
+					ChartCategories.data.datasets[0].data = listStateStarsCategoriesAZ3;
+				}
+				if (points[0]._index == 5) {
+					console.log(points[0]._index)
+					console.log(ChartCategories.data.datasets[0].data)
+					ChartCategories.data.datasets[0].data = listStateStarsCategoriesAZ35;
+				}
+				if (points[0]._index == 6) {
+					console.log(points[0]._index)
+					console.log(ChartCategories.data.datasets[0].data)
+					ChartCategories.data.datasets[0].data = listStateStarsCategoriesAZ4;
+				}
+				if (points[0]._index == 7) {
+					console.log(points[0]._index)
+					console.log(ChartCategories.data.datasets[0].data)
+					ChartCategories.data.datasets[0].data = listStateStarsCategoriesAZ45;
+				}
+				if (points[0]._index == 8) {
+					console.log(points[0]._index)
+					console.log(ChartCategories.data.datasets[0].data)
+					ChartCategories.data.datasets[0].data = listStateStarsCategoriesAZ5;
+				}
+
+
+			}
+
+			//CA
+			if (ChartState.data.datasets[0].backgroundColor[2] == "rgba(255, 0, 0, 1)") {
+				if (points[0]._index == 0) {
+					console.log(points[0]._index)
+					console.log(ChartCategories.data.datasets[0].data)
+					ChartCategories.data.datasets[0].data = listStateStarsCategoriesCA1;
+				}
+
+				if (points[0]._index == 1) {
+					console.log(points[0]._index)
+					console.log(ChartCategories.data.datasets[0].data)
+					ChartCategories.data.datasets[0].data = listStateStarsCategoriesCA15;
+				}
+				if (points[0]._index == 2) {
+					console.log(points[0]._index)
+					console.log(ChartCategories.data.datasets[0].data)
+					ChartCategories.data.datasets[0].data = listStateStarsCategoriesCA2;
+				}
+				if (points[0]._index == 3) {
+					console.log(points[0]._index)
+					console.log(ChartCategories.data.datasets[0].data)
+					ChartCategories.data.datasets[0].data = listStateStarsCategoriesCA25;
+				}
+				if (points[0]._index == 4) {
+					console.log(points[0]._index)
+					console.log(ChartCategories.data.datasets[0].data)
+					ChartCategories.data.datasets[0].data = listStateStarsCategoriesCA3;
+				}
+				if (points[0]._index == 5) {
+					console.log(points[0]._index)
+					console.log(ChartCategories.data.datasets[0].data)
+					ChartCategories.data.datasets[0].data = listStateStarsCategoriesCA35;
+				}
+				if (points[0]._index == 6) {
+					console.log(points[0]._index)
+					console.log(ChartCategories.data.datasets[0].data)
+					ChartCategories.data.datasets[0].data = listStateStarsCategoriesCA4;
+				}
+				if (points[0]._index == 7) {
+					console.log(points[0]._index)
+					console.log(ChartCategories.data.datasets[0].data)
+					ChartCategories.data.datasets[0].data = listStateStarsCategoriesCA45;
+				}
+				if (points[0]._index == 8) {
+					console.log(points[0]._index)
+					console.log(ChartCategories.data.datasets[0].data)
+					ChartCategories.data.datasets[0].data = listStateStarsCategoriesCA5;
+				}
+			}
+
+
+			//DE
+			if (ChartState.data.datasets[0].backgroundColor[3] == "rgba(255, 0, 0, 1)") {
+				if (points[0]._index == 0) {
+					console.log(points[0]._index)
+					console.log(ChartCategories.data.datasets[0].data)
+					ChartCategories.data.datasets[0].data = listStateStarsCategoriesDE1;
+				}
+
+				if (points[0]._index == 1) {
+					console.log(points[0]._index)
+					console.log(ChartCategories.data.datasets[0].data)
+					ChartCategories.data.datasets[0].data = listStateStarsCategoriesDE15;
+				}
+				if (points[0]._index == 2) {
+					console.log(points[0]._index)
+					console.log(ChartCategories.data.datasets[0].data)
+					ChartCategories.data.datasets[0].data = listStateStarsCategoriesDE2;
+				}
+				if (points[0]._index == 3) {
+					console.log(points[0]._index)
+					console.log(ChartCategories.data.datasets[0].data)
+					ChartCategories.data.datasets[0].data = listStateStarsCategoriesDE25;
+				}
+				if (points[0]._index == 4) {
+					console.log(points[0]._index)
+					console.log(ChartCategories.data.datasets[0].data)
+					ChartCategories.data.datasets[0].data = listStateStarsCategoriesDE3;
+				}
+				if (points[0]._index == 5) {
+					console.log(points[0]._index)
+					console.log(ChartCategories.data.datasets[0].data)
+					ChartCategories.data.datasets[0].data = listStateStarsCategoriesDE35;
+				}
+				if (points[0]._index == 6) {
+					console.log(points[0]._index)
+					console.log(ChartCategories.data.datasets[0].data)
+					ChartCategories.data.datasets[0].data = listStateStarsCategoriesDE4;
+				}
+				if (points[0]._index == 7) {
+					console.log(points[0]._index)
+					console.log(ChartCategories.data.datasets[0].data)
+					ChartCategories.data.datasets[0].data = listStateStarsCategoriesDE45;
+				}
+				if (points[0]._index == 8) {
+					console.log(points[0]._index)
+					console.log(ChartCategories.data.datasets[0].data)
+					ChartCategories.data.datasets[0].data = listStateStarsCategoriesDE5;
+				}
+			}
+
+			//FL
+			if (ChartState.data.datasets[0].backgroundColor[4] == "rgba(255, 0, 0, 1)") {
+				if (points[0]._index == 0) {
+					console.log(points[0]._index)
+					console.log(ChartCategories.data.datasets[0].data)
+					ChartCategories.data.datasets[0].data = listStateStarsCategoriesFL1;
+				}
+
+				if (points[0]._index == 1) {
+					console.log(points[0]._index)
+					console.log(ChartCategories.data.datasets[0].data)
+					ChartCategories.data.datasets[0].data = listStateStarsCategoriesFL15;
+				}
+				if (points[0]._index == 2) {
+					console.log(points[0]._index)
+					console.log(ChartCategories.data.datasets[0].data)
+					ChartCategories.data.datasets[0].data = listStateStarsCategoriesFL2;
+				}
+				if (points[0]._index == 3) {
+					console.log(points[0]._index)
+					console.log(ChartCategories.data.datasets[0].data)
+					ChartCategories.data.datasets[0].data = listStateStarsCategoriesFL25;
+				}
+				if (points[0]._index == 4) {
+					console.log(points[0]._index)
+					console.log(ChartCategories.data.datasets[0].data)
+					ChartCategories.data.datasets[0].data = listStateStarsCategoriesFL3;
+				}
+				if (points[0]._index == 5) {
+					console.log(points[0]._index)
+					console.log(ChartCategories.data.datasets[0].data)
+					ChartCategories.data.datasets[0].data = listStateStarsCategoriesFL35;
+				}
+				if (points[0]._index == 6) {
+					console.log(points[0]._index)
+					console.log(ChartCategories.data.datasets[0].data)
+					ChartCategories.data.datasets[0].data = listStateStarsCategoriesFL4;
+				}
+				if (points[0]._index == 7) {
+					console.log(points[0]._index)
+					console.log(ChartCategories.data.datasets[0].data)
+					ChartCategories.data.datasets[0].data = listStateStarsCategoriesFL45;
+				}
+				if (points[0]._index == 8) {
+					console.log(points[0]._index)
+					console.log(ChartCategories.data.datasets[0].data)
+					ChartCategories.data.datasets[0].data = listStateStarsCategoriesFL5;
+				}
+			}
+
+			//ID
+			if (ChartState.data.datasets[0].backgroundColor[5] == "rgba(255, 0, 0, 1)") {
+				if (points[0]._index == 0) {
+					console.log(points[0]._index)
+					console.log(ChartCategories.data.datasets[0].data)
+					ChartCategories.data.datasets[0].data = listStateStarsCategoriesID1;
+				}
+
+				if (points[0]._index == 1) {
+					console.log(points[0]._index)
+					console.log(ChartCategories.data.datasets[0].data)
+					ChartCategories.data.datasets[0].data = listStateStarsCategoriesID15;
+				}
+				if (points[0]._index == 2) {
+					console.log(points[0]._index)
+					console.log(ChartCategories.data.datasets[0].data)
+					ChartCategories.data.datasets[0].data = listStateStarsCategoriesID2;
+				}
+				if (points[0]._index == 3) {
+					console.log(points[0]._index)
+					console.log(ChartCategories.data.datasets[0].data)
+					ChartCategories.data.datasets[0].data = listStateStarsCategoriesID25;
+				}
+				if (points[0]._index == 4) {
+					console.log(points[0]._index)
+					console.log(ChartCategories.data.datasets[0].data)
+					ChartCategories.data.datasets[0].data = listStateStarsCategoriesID3;
+				}
+				if (points[0]._index == 5) {
+					console.log(points[0]._index)
+					console.log(ChartCategories.data.datasets[0].data)
+					ChartCategories.data.datasets[0].data = listStateStarsCategoriesID35;
+				}
+				if (points[0]._index == 6) {
+					console.log(points[0]._index)
+					console.log(ChartCategories.data.datasets[0].data)
+					ChartCategories.data.datasets[0].data = listStateStarsCategoriesID4;
+				}
+				if (points[0]._index == 7) {
+					console.log(points[0]._index)
+					console.log(ChartCategories.data.datasets[0].data)
+					ChartCategories.data.datasets[0].data = listStateStarsCategoriesID45;
+				}
+				if (points[0]._index == 8) {
+					console.log(points[0]._index)
+					console.log(ChartCategories.data.datasets[0].data)
+					ChartCategories.data.datasets[0].data = listStateStarsCategoriesID5;
+				}
+			}
+
+			//IL
+			if (ChartState.data.datasets[0].backgroundColor[6] == "rgba(255, 0, 0, 1)") {
+				if (points[0]._index == 0) {
+					console.log(points[0]._index)
+					console.log(ChartCategories.data.datasets[0].data)
+					ChartCategories.data.datasets[0].data = listStateStarsCategoriesIL1;
+				}
+
+				if (points[0]._index == 1) {
+					console.log(points[0]._index)
+					console.log(ChartCategories.data.datasets[0].data)
+					ChartCategories.data.datasets[0].data = listStateStarsCategoriesIL15;
+				}
+				if (points[0]._index == 2) {
+					console.log(points[0]._index)
+					console.log(ChartCategories.data.datasets[0].data)
+					ChartCategories.data.datasets[0].data = listStateStarsCategoriesIL2;
+				}
+				if (points[0]._index == 3) {
+					console.log(points[0]._index)
+					console.log(ChartCategories.data.datasets[0].data)
+					ChartCategories.data.datasets[0].data = listStateStarsCategoriesIL25;
+				}
+				if (points[0]._index == 4) {
+					console.log(points[0]._index)
+					console.log(ChartCategories.data.datasets[0].data)
+					ChartCategories.data.datasets[0].data = listStateStarsCategoriesIL3;
+				}
+				if (points[0]._index == 5) {
+					console.log(points[0]._index)
+					console.log(ChartCategories.data.datasets[0].data)
+					ChartCategories.data.datasets[0].data = listStateStarsCategoriesIL35;
+				}
+				if (points[0]._index == 6) {
+					console.log(points[0]._index)
+					console.log(ChartCategories.data.datasets[0].data)
+					ChartCategories.data.datasets[0].data = listStateStarsCategoriesIL4;
+				}
+				if (points[0]._index == 7) {
+					console.log(points[0]._index)
+					console.log(ChartCategories.data.datasets[0].data)
+					ChartCategories.data.datasets[0].data = listStateStarsCategoriesIL45;
+				}
+				if (points[0]._index == 8) {
+					console.log(points[0]._index)
+					console.log(ChartCategories.data.datasets[0].data)
+					ChartCategories.data.datasets[0].data = listStateStarsCategoriesIL5;
+				}
+			}
+
+			//IN
+			if (ChartState.data.datasets[0].backgroundColor[7] == "rgba(255, 0, 0, 1)") {
+				if (points[0]._index == 0) {
+					console.log(points[0]._index)
+					console.log(ChartCategories.data.datasets[0].data)
+					ChartCategories.data.datasets[0].data = listStateStarsCategoriesIN1;
+				}
+
+				if (points[0]._index == 1) {
+					console.log(points[0]._index)
+					console.log(ChartCategories.data.datasets[0].data)
+					ChartCategories.data.datasets[0].data = listStateStarsCategoriesIN15;
+				}
+				if (points[0]._index == 2) {
+					console.log(points[0]._index)
+					console.log(ChartCategories.data.datasets[0].data)
+					ChartCategories.data.datasets[0].data = listStateStarsCategoriesIN2;
+				}
+				if (points[0]._index == 3) {
+					console.log(points[0]._index)
+					console.log(ChartCategories.data.datasets[0].data)
+					ChartCategories.data.datasets[0].data = listStateStarsCategoriesIN25;
+				}
+				if (points[0]._index == 4) {
+					console.log(points[0]._index)
+					console.log(ChartCategories.data.datasets[0].data)
+					ChartCategories.data.datasets[0].data = listStateStarsCategoriesIN3;
+				}
+				if (points[0]._index == 5) {
+					console.log(points[0]._index)
+					console.log(ChartCategories.data.datasets[0].data)
+					ChartCategories.data.datasets[0].data = listStateStarsCategoriesIN35;
+				}
+				if (points[0]._index == 6) {
+					console.log(points[0]._index)
+					console.log(ChartCategories.data.datasets[0].data)
+					ChartCategories.data.datasets[0].data = listStateStarsCategoriesIN4;
+				}
+				if (points[0]._index == 7) {
+					console.log(points[0]._index)
+					console.log(ChartCategories.data.datasets[0].data)
+					ChartCategories.data.datasets[0].data = listStateStarsCategoriesIN45;
+				}
+				if (points[0]._index == 8) {
+					console.log(points[0]._index)
+					console.log(ChartCategories.data.datasets[0].data)
+					ChartCategories.data.datasets[0].data = listStateStarsCategoriesIN5;
+				}
+			}
+
+			//LA
+			if (ChartState.data.datasets[0].backgroundColor[8] == "rgba(255, 0, 0, 1)") {
+				if (points[0]._index == 0) {
+					console.log(points[0]._index)
+					console.log(ChartCategories.data.datasets[0].data)
+					ChartCategories.data.datasets[0].data = listStateStarsCategoriesLA1;
+				}
+
+				if (points[0]._index == 1) {
+					console.log(points[0]._index)
+					console.log(ChartCategories.data.datasets[0].data)
+					ChartCategories.data.datasets[0].data = listStateStarsCategoriesLA15;
+				}
+				if (points[0]._index == 2) {
+					console.log(points[0]._index)
+					console.log(ChartCategories.data.datasets[0].data)
+					ChartCategories.data.datasets[0].data = listStateStarsCategoriesLA2;
+				}
+				if (points[0]._index == 3) {
+					console.log(points[0]._index)
+					console.log(ChartCategories.data.datasets[0].data)
+					ChartCategories.data.datasets[0].data = listStateStarsCategoriesLA25;
+				}
+				if (points[0]._index == 4) {
+					console.log(points[0]._index)
+					console.log(ChartCategories.data.datasets[0].data)
+					ChartCategories.data.datasets[0].data = listStateStarsCategoriesLA3;
+				}
+				if (points[0]._index == 5) {
+					console.log(points[0]._index)
+					console.log(ChartCategories.data.datasets[0].data)
+					ChartCategories.data.datasets[0].data = listStateStarsCategoriesLA35;
+				}
+				if (points[0]._index == 6) {
+					console.log(points[0]._index)
+					console.log(ChartCategories.data.datasets[0].data)
+					ChartCategories.data.datasets[0].data = listStateStarsCategoriesLA4;
+				}
+				if (points[0]._index == 7) {
+					console.log(points[0]._index)
+					console.log(ChartCategories.data.datasets[0].data)
+					ChartCategories.data.datasets[0].data = listStateStarsCategoriesLA45;
+				}
+				if (points[0]._index == 8) {
+					console.log(points[0]._index)
+					console.log(ChartCategories.data.datasets[0].data)
+					ChartCategories.data.datasets[0].data = listStateStarsCategoriesLA5;
+				}
+			}
+
+			//MO
+			if (ChartState.data.datasets[0].backgroundColor[9] == "rgba(255, 0, 0, 1)") {
+				if (points[0]._index == 0) {
+					console.log(points[0]._index)
+					console.log(ChartCategories.data.datasets[0].data)
+					ChartCategories.data.datasets[0].data = listStateStarsCategoriesMO1;
+				}
+
+				if (points[0]._index == 1) {
+					console.log(points[0]._index)
+					console.log(ChartCategories.data.datasets[0].data)
+					ChartCategories.data.datasets[0].data = listStateStarsCategoriesMO15;
+				}
+				if (points[0]._index == 2) {
+					console.log(points[0]._index)
+					console.log(ChartCategories.data.datasets[0].data)
+					ChartCategories.data.datasets[0].data = listStateStarsCategoriesMO2;
+				}
+				if (points[0]._index == 3) {
+					console.log(points[0]._index)
+					console.log(ChartCategories.data.datasets[0].data)
+					ChartCategories.data.datasets[0].data = listStateStarsCategoriesMO25;
+				}
+				if (points[0]._index == 4) {
+					console.log(points[0]._index)
+					console.log(ChartCategories.data.datasets[0].data)
+					ChartCategories.data.datasets[0].data = listStateStarsCategoriesMO3;
+				}
+				if (points[0]._index == 5) {
+					console.log(points[0]._index)
+					console.log(ChartCategories.data.datasets[0].data)
+					ChartCategories.data.datasets[0].data = listStateStarsCategoriesMO35;
+				}
+				if (points[0]._index == 6) {
+					console.log(points[0]._index)
+					console.log(ChartCategories.data.datasets[0].data)
+					ChartCategories.data.datasets[0].data = listStateStarsCategoriesMO4;
+				}
+				if (points[0]._index == 7) {
+					console.log(points[0]._index)
+					console.log(ChartCategories.data.datasets[0].data)
+					ChartCategories.data.datasets[0].data = listStateStarsCategoriesMO45;
+				}
+				if (points[0]._index == 8) {
+					console.log(points[0]._index)
+					console.log(ChartCategories.data.datasets[0].data)
+					ChartCategories.data.datasets[0].data = listStateStarsCategoriesMO5;
+				}
+			}
+
+			//NJ
+			if (ChartState.data.datasets[0].backgroundColor[10] == "rgba(255, 0, 0, 1)") {
+				if (points[0]._index == 0) {
+					console.log(points[0]._index)
+					console.log(ChartCategories.data.datasets[0].data)
+					ChartCategories.data.datasets[0].data = listStateStarsCategoriesNJ1;
+				}
+
+				if (points[0]._index == 1) {
+					console.log(points[0]._index)
+					console.log(ChartCategories.data.datasets[0].data)
+					ChartCategories.data.datasets[0].data = listStateStarsCategoriesNJ15;
+				}
+				if (points[0]._index == 2) {
+					console.log(points[0]._index)
+					console.log(ChartCategories.data.datasets[0].data)
+					ChartCategories.data.datasets[0].data = listStateStarsCategoriesNJ2;
+				}
+				if (points[0]._index == 3) {
+					console.log(points[0]._index)
+					console.log(ChartCategories.data.datasets[0].data)
+					ChartCategories.data.datasets[0].data = listStateStarsCategoriesNJ25;
+				}
+				if (points[0]._index == 4) {
+					console.log(points[0]._index)
+					console.log(ChartCategories.data.datasets[0].data)
+					ChartCategories.data.datasets[0].data = listStateStarsCategoriesNJ3;
+				}
+				if (points[0]._index == 5) {
+					console.log(points[0]._index)
+					console.log(ChartCategories.data.datasets[0].data)
+					ChartCategories.data.datasets[0].data = listStateStarsCategoriesNJ35;
+				}
+				if (points[0]._index == 6) {
+					console.log(points[0]._index)
+					console.log(ChartCategories.data.datasets[0].data)
+					ChartCategories.data.datasets[0].data = listStateStarsCategoriesNJ4;
+				}
+				if (points[0]._index == 7) {
+					console.log(points[0]._index)
+					console.log(ChartCategories.data.datasets[0].data)
+					ChartCategories.data.datasets[0].data = listStateStarsCategoriesNJ45;
+				}
+				if (points[0]._index == 8) {
+					console.log(points[0]._index)
+					console.log(ChartCategories.data.datasets[0].data)
+					ChartCategories.data.datasets[0].data = listStateStarsCategoriesNJ5;
+				}
+			}
+
+			//NV
+			if (ChartState.data.datasets[0].backgroundColor[11] == "rgba(255, 0, 0, 1)") {
+				if (points[0]._index == 0) {
+					console.log(points[0]._index)
+					console.log(ChartCategories.data.datasets[0].data)
+					ChartCategories.data.datasets[0].data = listStateStarsCategoriesNV1;
+				}
+
+				if (points[0]._index == 1) {
+					console.log(points[0]._index)
+					console.log(ChartCategories.data.datasets[0].data)
+					ChartCategories.data.datasets[0].data = listStateStarsCategoriesNV15;
+				}
+				if (points[0]._index == 2) {
+					console.log(points[0]._index)
+					console.log(ChartCategories.data.datasets[0].data)
+					ChartCategories.data.datasets[0].data = listStateStarsCategoriesNV2;
+				}
+				if (points[0]._index == 3) {
+					console.log(points[0]._index)
+					console.log(ChartCategories.data.datasets[0].data)
+					ChartCategories.data.datasets[0].data = listStateStarsCategoriesNV25;
+				}
+				if (points[0]._index == 4) {
+					console.log(points[0]._index)
+					console.log(ChartCategories.data.datasets[0].data)
+					ChartCategories.data.datasets[0].data = listStateStarsCategoriesNV3;
+				}
+				if (points[0]._index == 5) {
+					console.log(points[0]._index)
+					console.log(ChartCategories.data.datasets[0].data)
+					ChartCategories.data.datasets[0].data = listStateStarsCategoriesNV35;
+				}
+				if (points[0]._index == 6) {
+					console.log(points[0]._index)
+					console.log(ChartCategories.data.datasets[0].data)
+					ChartCategories.data.datasets[0].data = listStateStarsCategoriesNV4;
+				}
+				if (points[0]._index == 7) {
+					console.log(points[0]._index)
+					console.log(ChartCategories.data.datasets[0].data)
+					ChartCategories.data.datasets[0].data = listStateStarsCategoriesNV45;
+				}
+				if (points[0]._index == 8) {
+					console.log(points[0]._index)
+					console.log(ChartCategories.data.datasets[0].data)
+					ChartCategories.data.datasets[0].data = listStateStarsCategoriesNV5;
+				}
+			}
+
+			//PA
+			if (ChartState.data.datasets[0].backgroundColor[12] == "rgba(255, 0, 0, 1)") {
+				if (points[0]._index == 0) {
+					console.log(points[0]._index)
+					console.log(ChartCategories.data.datasets[0].data)
+					ChartCategories.data.datasets[0].data = listStateStarsCategoriesPA1;
+				}
+
+				if (points[0]._index == 1) {
+					console.log(points[0]._index)
+					console.log(ChartCategories.data.datasets[0].data)
+					ChartCategories.data.datasets[0].data = listStateStarsCategoriesPA15;
+				}
+				if (points[0]._index == 2) {
+					console.log(points[0]._index)
+					console.log(ChartCategories.data.datasets[0].data)
+					ChartCategories.data.datasets[0].data = listStateStarsCategoriesPA2;
+				}
+				if (points[0]._index == 3) {
+					console.log(points[0]._index)
+					console.log(ChartCategories.data.datasets[0].data)
+					ChartCategories.data.datasets[0].data = listStateStarsCategoriesPA25;
+				}
+				if (points[0]._index == 4) {
+					console.log(points[0]._index)
+					console.log(ChartCategories.data.datasets[0].data)
+					ChartCategories.data.datasets[0].data = listStateStarsCategoriesPA3;
+				}
+				if (points[0]._index == 5) {
+					console.log(points[0]._index)
+					console.log(ChartCategories.data.datasets[0].data)
+					ChartCategories.data.datasets[0].data = listStateStarsCategoriesPA35;
+				}
+				if (points[0]._index == 6) {
+					console.log(points[0]._index)
+					console.log(ChartCategories.data.datasets[0].data)
+					ChartCategories.data.datasets[0].data = listStateStarsCategoriesPA4;
+				}
+				if (points[0]._index == 7) {
+					console.log(points[0]._index)
+					console.log(ChartCategories.data.datasets[0].data)
+					ChartCategories.data.datasets[0].data = listStateStarsCategoriesPA45;
+				}
+				if (points[0]._index == 8) {
+					console.log(points[0]._index)
+					console.log(ChartCategories.data.datasets[0].data)
+					ChartCategories.data.datasets[0].data = listStateStarsCategoriesPA5;
+				}
+			}
+
+			//TN
+			if (ChartState.data.datasets[0].backgroundColor[13] == "rgba(255, 0, 0, 1)") {
+				if (points[0]._index == 0) {
+					console.log(points[0]._index)
+					console.log(ChartCategories.data.datasets[0].data)
+					ChartCategories.data.datasets[0].data = listStateStarsCategoriesTN1;
+				}
+
+				if (points[0]._index == 1) {
+					console.log(points[0]._index)
+					console.log(ChartCategories.data.datasets[0].data)
+					ChartCategories.data.datasets[0].data = listStateStarsCategoriesTN15;
+				}
+				if (points[0]._index == 2) {
+					console.log(points[0]._index)
+					console.log(ChartCategories.data.datasets[0].data)
+					ChartCategories.data.datasets[0].data = listStateStarsCategoriesTN2;
+				}
+				if (points[0]._index == 3) {
+					console.log(points[0]._index)
+					console.log(ChartCategories.data.datasets[0].data)
+					ChartCategories.data.datasets[0].data = listStateStarsCategoriesTN25;
+				}
+				if (points[0]._index == 4) {
+					console.log(points[0]._index)
+					console.log(ChartCategories.data.datasets[0].data)
+					ChartCategories.data.datasets[0].data = listStateStarsCategoriesTN3;
+				}
+				if (points[0]._index == 5) {
+					console.log(points[0]._index)
+					console.log(ChartCategories.data.datasets[0].data)
+					ChartCategories.data.datasets[0].data = listStateStarsCategoriesTN35;
+				}
+				if (points[0]._index == 6) {
+					console.log(points[0]._index)
+					console.log(ChartCategories.data.datasets[0].data)
+					ChartCategories.data.datasets[0].data = listStateStarsCategoriesTN4;
+				}
+				if (points[0]._index == 7) {
+					console.log(points[0]._index)
+					console.log(ChartCategories.data.datasets[0].data)
+					ChartCategories.data.datasets[0].data = listStateStarsCategoriesTN45;
+				}
+				if (points[0]._index == 8) {
+					console.log(points[0]._index)
+					console.log(ChartCategories.data.datasets[0].data)
+					ChartCategories.data.datasets[0].data = listStateStarsCategoriesTN5;
+				}
+			}
+
+
+			ChartCategories.update();
+
+			if (points[0]) {
+				//console.log(points[0]._chart.config.data.datasets[0].backgroundColor[points[0]._index])
+				ChartStars.data.datasets[0].backgroundColor[points[0]._index] = "rgba(255, 0, 0, 1)";
+			}
+
+			ChartStars.update();
+		}
+
+		document.getElementById('ChartStars').onclick = clickHandlerStars;
+	</script>
+
+	<!-- clickHandlerCategories - FUNKTION -->
+	<script>
+		function clickHandlerCategories(click) {
+			const color = ['rgb(255, 26, 104, 0.2)', 'rgba(235, 245, 39, 0.2)', 'rgba(179, 245, 39, 0.2)', 'rgba(245, 39, 171, 0.2)',
+				'rgba(245, 118, 39, 0.2)',
+				'rgba(245, 186, 39, 0.2)', 'rgba(39, 245, 195, 0.2)', 'rgba(39, 132, 245, 0.2)'];
+			ChartCategories.data.datasets[0].backgroundColor = color;
+			// CONST for ChartState
+			const points = ChartCategories.getElementsAtEventForMode(click, 'nearest', {
+				intersect: true
+			}, true);
+
+			if (points.length) {
+				console.log(points[0])
+			}
+
+			if (points[0]) {
+				console.log(points[0]._chart.config.data.datasets[0].backgroundColor[points[0]._index])
+				ChartCategories.data.datasets[0].backgroundColor[points[0]._index] = "rgba(255, 0, 0, 1)";
+			}
+
+			ChartCategories.update();
+		};
+
+		document.getElementById('ChartCategories').onclick = clickHandlerCategories;
+	</script>
+
+	<!-- ChartMondayOpen -->
+	<script>
+		var ChartMondayOpen = new Chart(
+			document.getElementById('ChartMondayOpen'), {
+			type: 'line',
+			data: {
+				labels: ['9:00', '10:00', '11:00', '12:00', '13:00', '14:00', '15:00', '16:00'],
+				datasets: [{
+					label: 'Opening Hours: Monday',
+					data: [listMondayAmountALL[0], listMondayAmountALL[1], listMondayAmountALL[2], listMondayAmountALL[3],
+					listMondayAmountALL[4], listMondayAmountALL[5], listMondayAmountALL[6], listMondayAmountALL[7]],
+					backgroundColor: 'rgba(255,26,104,0.2)',
+					borderColor: 'rgba(255,26,104,1)',
+					borderWidth: 1
+				}]
+
+			}
+		});
+	</script>
+
+	<!-- ChartTuesdayOpen -->
+	<script>
+		var ChartTuesdayOpen = new Chart(
+			document.getElementById('ChartTuesdayOpen'), {
+			type: 'line',
+			data: {
+				labels: ['9:00', '10:00', '11:00', '12:00', '13:00', '14:00', '15:00', '16:00'],
+				datasets: [{
+					label: 'Opening Hours: Tuesday',
+					data: [listTuesdayAmountALL[0], listTuesdayAmountALL[1], listTuesdayAmountALL[2], listTuesdayAmountALL[3],
+					listTuesdayAmountALL[4], listTuesdayAmountALL[5], listTuesdayAmountALL[6], listTuesdayAmountALL[7]],
+					backgroundColor: 'rgba(255,26,104,0.2)',
+					borderColor: 'rgba(255,26,104,1)',
+					borderWidth: 1
+				}]
+
+			}
+		});
+	</script>
+
+	<!-- ChartWednesdayOpen -->
+	<script>
+		var ChartWednesdayOpen = new Chart(
+			document.getElementById('ChartWednesdayOpen'), {
+			type: 'line',
+			data: {
+				labels: ['9:00', '10:00', '11:00', '12:00', '13:00', '14:00', '15:00', '16:00'],
+				datasets: [{
+					label: 'Opening Hours: Wednesday',
+					data: [listWednesdayAmountALL[0], listWednesdayAmountALL[1], listWednesdayAmountALL[2], listWednesdayAmountALL[3],
+					listWednesdayAmountALL[4], listWednesdayAmountALL[5], listWednesdayAmountALL[6], listWednesdayAmountALL[7]],
+					backgroundColor: 'rgba(255,26,104,0.2)',
+					borderColor: 'rgba(255,26,104,1)',
+					borderWidth: 1
+				}]
+
+			}
+		});
+	</script>
+
+	<!-- ChartThursdayOpen -->
+	<script>
+		var ChartThursdayOpen = new Chart(
+			document.getElementById('ChartThursdayOpen'), {
+			type: 'line',
+			data: {
+				labels: ['9:00', '10:00', '11:00', '12:00', '13:00', '14:00', '15:00', '16:00'],
+				datasets: [{
+					label: 'Opening Hours: Wednesday',
+					data: [listThursdayAmountALL[0], listThursdayAmountALL[1], listThursdayAmountALL[2], listThursdayAmountALL[3],
+					listThursdayAmountALL[4], listThursdayAmountALL[5], listThursdayAmountALL[6], listThursdayAmountALL[7]],
+					backgroundColor: 'rgba(255,26,104,0.2)',
+					borderColor: 'rgba(255,26,104,1)',
+					borderWidth: 1
+				}]
+
+			}
+		});
+	</script>
+
+	<!-- ChartFridayOpen -->
+	<script>
+		var ChartFridayOpen = new Chart(
+			document.getElementById('ChartFridayOpen'), {
+			type: 'line',
+			data: {
+				labels: ['9:00', '10:00', '11:00', '12:00', '13:00', '14:00', '15:00', '16:00'],
+				datasets: [{
+					label: 'Opening Hours: Friday',
+					data: [listFridayAmountALL[0], listFridayAmountALL[1], listFridayAmountALL[2], listFridayAmountALL[3],
+					listFridayAmountALL[4], listFridayAmountALL[5], listFridayAmountALL[6], listFridayAmountALL[7]],
+					backgroundColor: 'rgba(255,26,104,0.2)',
+					borderColor: 'rgba(255,26,104,1)',
+					borderWidth: 1
+				}]
+
+			}
+		});
+	</script>
+
+	<!-- ChartSaturdayOpen -->
+	<script>
+		var ChartSaturdayOpen = new Chart(
+			document.getElementById('ChartSaturdayOpen'), {
+			type: 'line',
+			data: {
+				labels: ['9:00', '10:00', '11:00', '12:00', '13:00', '14:00', '15:00', '16:00'],
+				datasets: [{
+					label: 'Opening Hours: Saturday',
+					data: [listSaturdayAmountALL[0], listSaturdayAmountALL[1], listSaturdayAmountALL[2], listSaturdayAmountALL[3],
+					listSaturdayAmountALL[4], listSaturdayAmountALL[5], listSaturdayAmountALL[6], listSaturdayAmountALL[7]],
+					backgroundColor: 'rgba(255,26,104,0.2)',
+					borderColor: 'rgba(255,26,104,1)',
+					borderWidth: 1
+				}]
+
+			}
+		});
+	</script>
+
+	<!-- ChartSundayOpen -->
+	<script>
+		var ChartSundayOpen = new Chart(
+			document.getElementById('ChartSundayOpen'), {
+			type: 'line',
+			data: {
+				labels: ['9:00', '10:00', '11:00', '12:00', '13:00', '14:00', '15:00', '16:00'],
+				datasets: [{
+					label: 'Opening Hours: Sunday',
+					data: [listSundayAmountALL[0], listSundayAmountALL[1], listSundayAmountALL[2], listSundayAmountALL[3],
+					listSundayAmountALL[4], listSundayAmountALL[5], listSundayAmountALL[6], listSundayAmountALL[7]],
+					backgroundColor: 'rgba(255,26,104,0.2)',
+					borderColor: 'rgba(255,26,104,1)',
+					borderWidth: 1
+				}]
+
+			}
+		});
+	</script>
+</body>
+
+</html>
