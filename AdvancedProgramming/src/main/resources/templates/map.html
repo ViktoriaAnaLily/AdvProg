@@ -55,6 +55,7 @@
 
 
 	<body>
+	
 		<section class="header">
 
 			<h1>
@@ -69,35 +70,74 @@
 					<ul>
 
 
-						<li> <a href="test">Charts</a>
+						<li> <a href="charts">Charts</a>
 						<li> <a href="map">Map</a>
-						<li> <a href="users">Home Page</a>
+						<li> <a href="users">List of Users</a>
 						<li> <a href="index">Logout</a>
 					</ul>
 				</div>
 
 			</nav>
-		<div id="map"></div>
+			
+			
+			
+			<div class="container text-center">
+		<h4><a th:href="@{/mapAB}">Top locations in AB in Map</a></h4>
 
-		</section>
+	</div>
+	<div class="container text-center">
+		<h4><a th:href="@{/mapAZ}">Top locations in AZ in Map</a></h4>
 
-		<script>
-			let mapOptions = {
-				center: [51.958, 9.141],
-				zoom: 10
-			}
+	</div>
+	<div class="container text-center">
+		<h4><a th:href="@{/mapCA}">Top locations in CA in Map</a></h4>
 
+	</div>
+	<div class="container text-center">
+		<h4><a th:href="@{/mapDE}">Top locations in DE in Map</a></h4>
 
-			let map = new L.map('map', mapOptions);
+	</div>
+	<div class="container text-center">
+		<h4><a th:href="@{/mapFL}">Top locations in FL in Map</a></h4>
 
-			let layer = new L.TileLayer('http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png');
-			map.addLayer(layer);
+	</div>
+	<div class="container text-center">
+		<h4><a th:href="@{/mapID}">Top locations in ID in Map</a></h4>
 
-			let marker = new L.Marker([51.958, 9.141]);
-			marker.addTo(map);
+	</div>
+	<div class="container text-center">
+		<h4><a th:href="@{/mapIL}">Top locations in IL in Map</a></h4>
 
-		</script>
+	</div>
+	<div class="container text-center">
+		<h4><a th:href="@{/mapIN}">Top locations in IN in Map</a></h4>
 
+	</div>
+	<div class="container text-center">
+		<h4><a th:href="@{/mapLA}">Top locations in LA in Map</a></h4>
+
+	</div>
+	<div class="container text-center">
+		<h4><a th:href="@{/mapMO}">Top locations in MO in Map</a></h4>
+
+	</div>
+	<div class="container text-center">
+		<h4><a th:href="@{/mapNJ}">Top locations in NJ in Map</a></h4>
+
+	</div>
+	<div class="container text-center">
+		<h4><a th:href="@{/mapNV}">Top locations in NV in Map</a></h4>
+
+	</div>
+	</div>
+	<div class="container text-center">
+		<h4><a th:href="@{/mapPA}">Top locations in PA in Map</a></h4>
+
+	</div>
+	</div>
+	<div class="container text-center">
+		<h4><a th:href="@{/mapTN}">Top locations in TN in Map</a></h4>
+	</div>
 
 
 

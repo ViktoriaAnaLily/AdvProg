@@ -25,7 +25,7 @@
 			border: solid 3px rgba(255, 26, 104, 1);
 			background: white;
 		}
-		
+
 		.chartCardWeekday {
 			width: 50vw;
 			height: calc(100vh-40px);
@@ -47,6 +47,7 @@
 
 <body>
 
+
 	<!-- Navigation MENU -->
 	<h1>
 		<img src="images/logo.jpg" width="80" height="80">CityGude
@@ -56,19 +57,15 @@
 		<div class="nav-links">
 			<ul>
 
-
-				<li> <a href="charts">Charts</a>
-				<li> <a href="map">Map</a>
-				<li> <a href="users">Home Page</a>
-				<li> <a href="index">Logout</a>
+						<li> <a href="charts">Charts</a>
+						<li> <a href="map">Map</a>
+						<li> <a href="users">List of Users</a>
+						<li> <a href="index">Logout</a>
 			</ul>
 		</div>
 
 	</nav>
 	<!-- Navigation MENU -->
-
-
-	<div class="container text-center">
 
 		<div>
 
@@ -1444,7 +1441,7 @@
 			<canvas id="ChartCategories"></canvas>
 		</div>
 	</div>
-	
+
 	<div class="chartCardWeekday">
 		<div class="chartBoxWeekday">
 			<canvas id="ChartMondayOpen"></canvas>
@@ -1640,7 +1637,7 @@
 	</script>
 
 
-	<!-- clickHandler - FUNKTION -->
+	<!-- clickHandlerState - FUNKTION -->
 	<script>
 		function clickHandler(click) {
 			const color = ['rgb(255, 26, 104, 0.2)', 'rgba(235, 245, 39, 0.2)', 'rgba(179, 245, 39, 0.2)', 'rgba(245, 39, 171, 0.2)',
