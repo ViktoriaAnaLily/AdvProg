@@ -44,7 +44,7 @@ import org.slf4j.LoggerFactory;
 
 @Controller
 public class AppController {
-//
+// Controller
 	private static final Logger log = LoggerFactory.getLogger(AppController.class);
 
 	@Autowired
